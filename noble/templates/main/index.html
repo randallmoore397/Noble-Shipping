@@ -1,0 +1,784 @@
+ {% extends "main/main_layout.html" %} {% block content %}
+<!-- main-area -->
+<main>
+    <style>
+        .slider-area .single-slider {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blur-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Darken the background */
+            /* Apply blur effect */
+            background: rgba(0, 0, 0, 0.41);
+            backdrop-filter: blur(3.3px);
+            z-index: 1;
+        }
+        
+        .slider-content {
+            position: relative;
+            z-index: 2;
+            /* Make sure the text is above the blur overlay */
+            color: #fff;
+            /* Ensure text is visible */
+        }
+    </style>
+    <!-- slider-area -->
+    <!-- <section class="slider-area">
+            <div class="slider-active">
+                <div class="single-slider slider-bg d-flex align-items-center">
+                    <div class="blur-overlay"></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-10 col-lg-11">
+                                <div class="slider-content text-center">
+                                    <h2 data-animation="fadeInUpS" data-delay=".3s" style="font-size: 71px !important;">Shipping & Security Services</h2>
+                                    <p data-animation="fadeInUpS" data-delay=".6s">Explore ways to become more efficient, see printing offers and solutions insights and inspiration for your small business.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-slider slider-bg slider-video-overlay d-flex align-items-center youtube-bg" data-property="{videoURL:'enKKcVrPGs0',}">
+                    <div class="blur-overlay"></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-10 col-lg-11">
+                                <div class="slider-content text-center">
+                                    <h2 data-animation="fadeInUpS" data-delay=".3s" style="font-size: 71px !important;">Noble Services</h2>
+                                    <p data-animation="fadeInUpS" data-delay=".6s">Explore ways to become more efficient, see printing offers and solutions insights and inspiration for your small business.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+    <!-- slider-area-end -->
+
+    <!-- slider-area -->
+    <section class="slider-area">
+        <div class="slider-active">
+            <div class="single-slider slider-bg d-flex align-items-center">
+                <div class="blur-overlay"></div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-10 col-lg-11">
+                            <div class="slider-content text-center">
+                                <h2 data-animation="fadeInUpS" data-delay=".3s" style="font-size: 71px !important;">Shipping & Security Services</h2>
+                                <p data-animation="fadeInUpS" data-delay=".6s">Explore ways to become more efficient, see printing offers and solutions insights and inspiration for your small business.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-slider slider-bg slider-video-overlay d-flex align-items-center youtube-bg" data-property="{videoURL:'enKKcVrPGs0',}">
+                <div class="blur-overlay"></div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-10 col-lg-11">
+                            <div class="slider-content text-center">
+                                <h2 data-animation="fadeInUpS" data-delay=".3s" style="font-size: 71px !important;">Noble Services</h2>
+                                <p data-animation="fadeInUpS" data-delay=".6s">Explore ways to become more efficient, see printing offers and solutions insights and inspiration for your small business.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- slider-area-end -->
+
+    <!-- category-area -->
+    <section class="category-area">
+        <div class="container">
+            <div class="category-bg">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="category-list">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <div class="category-icon">
+                                            <i class="flaticon-cruise"></i>
+                                        </div>
+                                        <h5>Sea Freight</h5>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="service-air.html">
+                                        <div class="category-icon">
+                                            <i class="flaticon-air-freight"></i>
+                                        </div>
+                                        <h5>Air Freight</h5>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="category-icon">
+                                            <i class="flaticon-delivery-1"></i>
+                                        </div>
+                                        <h5>Insurance</h5>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="category-icon">
+                                            <i class="flaticon-warehouse"></i>
+                                        </div>
+                                        <h5>Warehousing</h5>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="category-icon">
+                                            <i class="flaticon-package"></i>
+                                        </div>
+                                        <h5>Forwarding</h5>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- category-area-end -->
+
+    <!-- about-area -->
+    <section class="about-area about-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="about-active">
+                        <div class="single-about-wrap">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6">
+                                    <div class="about-img">
+                                        <img src="img/images/about_img01.png" alt="img">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="about-content">
+                                        <div class="section-title about-title mb-25">
+                                            <h2>About Our Cargo Delivery</h2>
+                                            <h6>Noble Cargo delivery is an innovative service</h6>
+                                        </div>
+                                        <p>Noble Cargo delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful for companies of various effective logistics scale.</p>
+                                        <a href="#" class="btn">comparison</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-about-wrap">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6">
+                                    <div class="about-img">
+                                        <img src="img/images/about_img02.png" alt="img">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="about-content">
+                                        <div class="section-title about-title mb-25">
+                                            <h2>Logistics Cargo Service</h2>
+                                            <h6>Noble Cargo delivery is an innovative service</h6>
+                                        </div>
+                                        <p>Noble Cargo delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful for companies of various effective logistics scale.</p>
+                                        <a href="#" class="btn">comparison</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-about-wrap">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6">
+                                    <div class="about-img">
+                                        <img src="img/images/about_img03.png" alt="img">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="about-content">
+                                        <div class="section-title about-title mb-25">
+                                            <h2>International Cargo Service</h2>
+                                            <h6>Noble Cargo delivery is an innovative service</h6>
+                                        </div>
+                                        <p>Noble Cargo delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful for companies of various effective logistics scale.</p>
+                                        <a href="#" class="btn">comparison</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- about-area-end -->
+
+    <!-- services-area -->
+    <section class="services-area pt-115 pb-90">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-lg-10">
+                    <div class="section-title text-center mb-60">
+                        <h6>Delivery innovative service</h6>
+                        <h2>About Cargo Delivery</h2>
+                        <p>Noble Cargo delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful for companies of various effective logistics scale.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="services-wrapper">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-services mb-30">
+                            <div class="services-thumb">
+                                <a href="#"><img src="img/images/services_img01.jpg" alt="img"></a>
+                            </div>
+                            <div class="services-content">
+                                <div class="services-icon">
+                                    <i class="flaticon-shipping-and-delivery"></i>
+                                </div>
+                                <h3><a href="#">Aircargo Delivery</a></h3>
+                                <span>Delivery Service</span>
+                                <p>Noble Cargo delivery is an innovativ service is effective logistics solutio for delivery of small cargo service.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-services mb-30">
+                            <div class="services-thumb">
+                                <a href="#"><img src="img/images/services_img02.jpg" alt="img"></a>
+                            </div>
+                            <div class="services-content">
+                                <div class="services-icon">
+                                    <i class="flaticon-shipping"></i>
+                                </div>
+                                <h3><a href="#">Shipping Cargo Delivery</a></h3>
+                                <span>Delivery Service</span>
+                                <p>Noble Cargo delivery is an innovativ service is effective logistics solutio for delivery of small cargo service.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-services mb-30">
+                            <div class="services-thumb">
+                                <a href="#"><img src="img/images/services_img03.jpg" alt="img"></a>
+                            </div>
+                            <div class="services-content">
+                                <div class="services-icon">
+                                    <i class="flaticon-location"></i>
+                                </div>
+                                <h3><a href="#">Security Services</a></h3>
+                                <span>Delivery Service</span>
+                                <p>Noble Cargo delivery is an innovativ service is effective logistics solutio for delivery of small cargo service.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- services-area-end -->
+
+    <!-- section-area -->
+    <section class="area-wrapper black-bg position-relative pt-115 pb-120">
+        <div class="area-wrap-bg"></div>
+        <div class="testimonial-map-bg"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="testimonial-area">
+                        <div class="section-title white-title mb-55">
+                            <h6>Happy Customer Quotes</h6>
+                            <h2>Our Top Reviews</h2>
+                        </div>
+                        <div class="testimonial-active">
+                            <div class="single-testimonial">
+                                <div class="testimonial-cat mb-30">
+                                    <h5>Shipping Cargo</h5>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="testimonial-content mb-45">
+                                    <p>“ Noble Cargo delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful companied various effective logistics scala ”</p>
+                                </div>
+                                <div class="testimonial-avatar">
+                                    <div class="testi-avatar-img">
+                                        <img src="img/images/testi_avatar01.png" alt="img">
+                                    </div>
+                                    <div class="testi-avatar-info">
+                                        <h6>Tonoy Alexander</h6>
+                                        <span>Founder Cargo</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-testimonial">
+                                <div class="testimonial-cat mb-30">
+                                    <h5>Air Freight</h5>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="testimonial-content mb-45">
+                                    <p>“ Noble Cargo delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful companied various effective logistics scala ”</p>
+                                </div>
+                                <div class="testimonial-avatar">
+                                    <div class="testi-avatar-img">
+                                        <img src="img/images/testi_avatar02.png" alt="img">
+                                    </div>
+                                    <div class="testi-avatar-info">
+                                        <h6>Lanu Dexander</h6>
+                                        <span>Founder Cargo</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="cta-area cta-pl">
+                        <div class="section-title white-title mb-60">
+                            <h6>Clients Trust Us</h6>
+                            <h2>Cargo Request Quote</h2>
+                        </div>
+                        <div class="cta-from">
+                            <form action="#">
+                                <div class="cta-form-col d-flex justify-content-between">
+                                    <select class="custom-select">
+                                                <option selected="">Select Service</option>
+                                                <option>Air Freight</option>
+                                                <option>Shipping Cargo</option>
+                                                <option>Rail Cargo</option>
+                                                <option>Warehousing</option>
+                                            </select>
+                                    <input type="text" placeholder="Length cm">
+                                    <input type="text" placeholder="Hight cm">
+                                </div>
+                                <div class="cta-form-col d-flex justify-content-between">
+                                    <select class="custom-select">
+                                                <option selected="">From Country</option>
+                                                <option value="United States">United States</option>
+                                                <option value="United Kingdom">United Kingdom</option>
+                                                <option value="Afghanistan">Afghanistan</option>
+                                                <option value="Albania">Albania</option>
+                                                <option value="Algeria">Algeria</option>
+                                                <option value="American Samoa">American Samoa</option>
+                                                <option value="Andorra">Andorra</option>
+                                                <option value="Angola">Angola</option>
+                                                <option value="Anguilla">Anguilla</option>
+                                                <option value="Antarctica">Antarctica</option>
+                                                <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                                <option value="Argentina">Argentina</option>
+                                                <option value="Armenia">Armenia</option>
+                                                <option value="Aruba">Aruba</option>
+                                                <option value="Australia">Australia</option>
+                                                <option value="Austria">Austria</option>
+                                                <option value="Azerbaijan">Azerbaijan</option>
+                                                <option value="Bahamas">Bahamas</option>
+                                                <option value="Bahrain">Bahrain</option>
+                                                <option value="Bangladesh">Bangladesh</option>
+                                                <option value="Barbados">Barbados</option>
+                                                <option value="Belarus">Belarus</option>
+                                                <option value="Belgium">Belgium</option>
+                                                <option value="Belize">Belize</option>
+                                                <option value="Benin">Benin</option>
+                                                <option value="Bermuda">Bermuda</option>
+                                                <option value="Bhutan">Bhutan</option>
+                                                <option value="Bolivia">Bolivia</option>
+                                            </select>
+                                    <select class="custom-select">
+                                                <option selected="">To Country</option>
+                                                <option value="Iceland">Iceland</option>
+                                                <option value="India">India</option>
+                                                <option value="Indonesia">Indonesia</option>
+                                                <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+                                                <option value="Iraq">Iraq</option>
+                                                <option value="Ireland">Ireland</option>
+                                                <option value="Israel">Israel</option>
+                                                <option value="Italy">Italy</option>
+                                                <option value="Jamaica">Jamaica</option>
+                                                <option value="Japan">Japan</option>
+                                                <option value="Jordan">Jordan</option>
+                                                <option value="Kazakhstan">Kazakhstan</option>
+                                                <option value="Kenya">Kenya</option>
+                                                <option value="Kiribati">Kiribati</option>
+                                                <option value="Korea, Republic of">Korea, Republic of</option>
+                                                <option value="Kuwait">Kuwait</option>
+                                                <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                                <option value="Latvia">Latvia</option>
+                                                <option value="Lebanon">Lebanon</option>
+                                                <option value="Lesotho">Lesotho</option>
+                                                <option value="Liberia">Liberia</option>
+                                            </select>
+                                </div>
+                                <div class="cta-form-col d-flex justify-content-between">
+                                    <select class="custom-select">
+                                                <option selected="">Weight kg</option>
+                                                <option>100Kg</option>
+                                                <option>200Kg</option>
+                                                <option>300Kg</option>
+                                                <option>400Kg</option>
+                                                <option>500Kg</option>
+                                                <option>600Kg</option>
+                                                <option>700Kg</option>
+                                            </select>
+                                    <input class="cta-email" type="email" placeholder="Email ID">
+                                </div>
+                                <h4 class="extra-services"><i class="fas fa-binoculars"></i>Extra Service</h4>
+                                <ul>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">Air Freight</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                            <label class="custom-control-label" for="customCheck2">Shipping Cargo</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                            <label class="custom-control-label" for="customCheck3">Rail Cargo</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                            <label class="custom-control-label" for="customCheck4">Warehousing</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <button class="btn">comparison</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section-area-end -->
+
+    <!-- gallery-area -->
+    <section class="gallery-area gallery-bg pt-115 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center mb-70">
+                        <h6>Delivery Anything</h6>
+                        <h2>Exclusive Cargo Gallery</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row gallery-active">
+                <div class="col-lg-8 col-md-12 grid-item grid-sizer">
+                    <div class="single-gallery-img mb-30">
+                        <a href="#"><img src="img/gallery/gallery_thumb01.jpg" alt="img"></a>
+                        <div class="gallery-overlay">
+                            <h5 class="gallery-overlay-title"><a href="#">Cargo Truck</a></h5>
+                            <span>Blanding , Digital</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 grid-item grid-sizer">
+                    <div class="single-gallery-img mb-30">
+                        <a href="#"><img src="img/gallery/gallery_thumb02.jpg" alt="img"></a>
+                        <div class="gallery-overlay">
+                            <h5 class="gallery-overlay-title"><a href="#">Cargo Truck</a></h5>
+                            <span>Blanding , Digital</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 grid-item grid-sizer">
+                    <div class="single-gallery-img mb-30">
+                        <a href="#"><img src="img/gallery/gallery_thumb03.jpg" alt="img"></a>
+                        <div class="gallery-overlay">
+                            <h5 class="gallery-overlay-title"><a href="#">Cargo Truck</a></h5>
+                            <span>Blanding , Digital</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 grid-item grid-sizer">
+                    <div class="single-gallery-img mb-30">
+                        <a href="#"><img src="img/gallery/gallery_thumb04.jpg" alt="img"></a>
+                        <div class="gallery-overlay">
+                            <h5 class="gallery-overlay-title"><a href="#">Cargo Truck</a></h5>
+                            <span>Blanding , Digital</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="gallery-btn text-center mt-30">
+                        <a href="#" class="btn">view gallery</a>
+                        <div class="gallery-overlay">
+                            <h5 class="gallery-overlay-title"><a href="#">Cargo Truck</a></h5>
+                            <span>Blanding , Digital</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- gallery-area-end -->
+
+    <!-- fact-area -->
+    <section class="fact-area position-relative pt-115">
+        <div class="fact-bg"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center mb-70">
+                        <h6>Delivery Anything</h6>
+                        <h2>Exclusive Cargo Gallery</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="single-fact mb-50">
+                        <div class="fact-icon mb-25">
+                            <i class="flaticon-package"></i>
+                        </div>
+                        <div class="fact-content">
+                            <h4><span class="count">3,560</span> km</h4>
+                            <h6>Package Delivered</h6>
+                            <p>Noble Cargo delivery is an innaiv service effective logistics solution</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="single-fact mb-50">
+                        <div class="fact-icon mb-25">
+                            <i class="flaticon-placeholder"></i>
+                        </div>
+                        <div class="fact-content">
+                            <h4><span class="count">195</span></h4>
+                            <h6>Countries Covered</h6>
+                            <p>Noble Cargo delivery is an innaiv service effective logistics solution</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="single-fact mb-50">
+                        <div class="fact-icon mb-25">
+                            <i class="flaticon-user"></i>
+                        </div>
+                        <div class="fact-content">
+                            <h4><span class="count">456</span> k</h4>
+                            <h6>Happy Customer</h6>
+                            <p>Noble Cargo delivery is an innaiv service effective logistics solution</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="single-fact mb-50">
+                        <div class="fact-icon mb-25">
+                            <i class="flaticon-like"></i>
+                        </div>
+                        <div class="fact-content">
+                            <h4><span class="count">23</span> Yr</h4>
+                            <h6>Year Experience</h6>
+                            <p>Noble Cargo delivery is an innaiv service effective logistics solution</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- fact-area-end -->
+
+    <!-- extra-features -->
+    <section class="extra-features ef-md-padding pb-115 fix pt-65">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-5 col-lg-6">
+                    <div class="section-title mb-25">
+                        <h6>Extra Features</h6>
+                        <h2>Explore Our Container Cargo <span>Shiping</span></h2>
+                    </div>
+                    <div class="extra-features-content">
+                        <h5>Noble Cargo delivery innovative service effective logistics solution for the delivery small cargo.</h5>
+                        <p>Noble Cargo delivery is an innovative service is effective logi solution for the delivery of small cargo. This service is use for companies of various effective logisti scale.Noble Cargo delivery.</p>
+                        <a href="#" class="btn">Get Fare Rate</a>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-6">
+                    <div class="extra-features-img">
+                        <img src="img/images/container-isolated.png" class="wow bounceInDown" data-wow-delay=".3s" alt="img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- extra-features-end -->
+
+    <!-- blog-area -->
+    <section class="blog-area blog-bg pt-115 pb-90">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center mb-70">
+                        <h6>Latest News</h6>
+                        <h2>Latest Popular Articles</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-blog-post mb-30">
+                        <div class="blog-thumb">
+                            <a href="blog-details.html"><img src="img/blog/blog_thumb01.jpg" alt="img"></a>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> OCTOBER 9, 2019</li>
+                                    <li><a href="#"><i class="far fa-comments"></i> 03</a></li>
+                                </ul>
+                            </div>
+                            <h4><a href="blog-details.html">Track your airfreight shipment by airwaybill</a></h4>
+                            <p>Noble Cargo delivery is an innovative service refers effective logi solution but the majorty have an suffered alteration the delivery.
+                            </p>
+                            <div class="blog-read-more text-center">
+                                <a href="blog-details.html">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-blog-post mb-30">
+                        <div class="blog-thumb">
+                            <a href="blog-details.html"><img src="img/blog/blog_thumb02.jpg" alt="img"></a>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> OCTOBER 9, 2019</li>
+                                    <li><a href="#"><i class="far fa-comments"></i> 03</a></li>
+                                </ul>
+                            </div>
+                            <h4><a href="blog-details.html">Consignments may be tracked feeding the airline code</a></h4>
+                            <p>Noble Cargo delivery is an innovative service refers effective logi solution but the majorty have an suffered alteration the delivery.
+                            </p>
+                            <div class="blog-read-more text-center">
+                                <a href="blog-details.html">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-blog-post mb-30">
+                        <div class="blog-thumb">
+                            <a href="blog-details.html"><img src="img/blog/blog_thumb03.jpg" alt="img"></a>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <ul>
+                                    <li><i class="far fa-clock"></i> OCTOBER 9, 2019</li>
+                                    <li><a href="#"><i class="far fa-comments"></i> 03</a></li>
+                                </ul>
+                            </div>
+                            <h4><a href="blog-details.html">Words Cargo and Freight Refer Particular to Goods</a></h4>
+                            <p>Noble Cargo delivery is an innovative service refers effective logi solution but the majorty have an suffered alteration the delivery.
+                            </p>
+                            <div class="blog-read-more text-center">
+                                <a href="blog-details.html">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- blog-area-end -->
+
+    <!-- brand-area -->
+    <div class="brand-area pt-120 pb-120">
+        <div class="container">
+            <div class="row brand-active">
+                <div class="col-12">
+                    <div class="signle-bran">
+                        <img src="img/brands/dhl.png" alt="img" style="width: 160px; height: 100px;">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="signle-">
+                        <img src="img/brands/FedEx.png" alt="img" style="width: 160px; height: 100px;">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="signle-">
+                        <img src="img/brands/ups.png" alt="img" style="width: 90px; height: 100px;">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="signle-">
+                        <img src="img/brands/TNT_Logo.svg.png" alt="img" style="width: 160px; height: 100px;">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="signle-">
+                        <img src="img/brands/DB_Schenker_logo.svg.png" alt="img" style="width: 200px; height: 100px;">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="signle-brand">
+                        <img src="img/brand/brnad_logo03.png" alt="img" style="width: 90px; height: 100px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- brand-area-end -->
+
+    <!-- newsletter -->
+    <section class="newsletter-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="newsletter-wrap">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="newsletter-content">
+                                    <h4>Newsletter Sign Up</h4>
+                                    <span>Notifications our best deals...</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="newsletter-form">
+                                    <form action="#">
+                                        <input type="email" placeholder="Enter your email...">
+                                        <button class="btn">subscribe</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- newsletter-end -->
+
+</main>
+<!-- main-area-end -->
+{% endblock content %}

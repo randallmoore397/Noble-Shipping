@@ -1,0 +1,10 @@
+./env
+./migrations
+./.vscode
+./__pycache__
+./.git
+./.gitignore
+./application.py
+./momo.py
+./orange-money.py
+./stripe.py
