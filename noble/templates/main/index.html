@@ -70,7 +70,7 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-10 col-lg-11">
                             <div class="slider-content text-center">
-                                <h2 data-animation="fadeInUpS" data-delay=".3s" style="font-size: 71px !important;">Shipping & Security Services</h2>
+                                <h2 data-animation="fadeInUpS" data-delay=".3s" style="font-size: 71px !important;">Noble Shipping Company</h2>
                                 <p data-animation="fadeInUpS" data-delay=".6s">Explore ways to become more efficient, see printing offers and solutions insights and inspiration for your small business.</p>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-10 col-lg-11">
                             <div class="slider-content text-center">
-                                <h2 data-animation="fadeInUpS" data-delay=".3s" style="font-size: 71px !important;">Noble Services</h2>
+                                <h2 data-animation="fadeInUpS" data-delay=".3s" style="font-size: 71px !important;">Noble Security Services</h2>
                                 <p data-animation="fadeInUpS" data-delay=".6s">Explore ways to become more efficient, see printing offers and solutions insights and inspiration for your small business.</p>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                         <div class="category-list">
                             <ul>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{url_for('main.services_container')}}">
                                         <div class="category-icon">
                                             <i class="flaticon-cruise"></i>
                                         </div>
@@ -111,7 +111,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="service-air.html">
+                                    <a href="{{url_for('main.services_aircargo')}}">
                                         <div class="category-icon">
                                             <i class="flaticon-air-freight"></i>
                                         </div>
@@ -119,7 +119,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{url_for('main.services_bullion_vault')}}">
                                         <div class="category-icon">
                                             <i class="flaticon-delivery-1"></i>
                                         </div>
@@ -127,7 +127,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{url_for('main.services_goods_logistics')}}">
                                         <div class="category-icon">
                                             <i class="flaticon-warehouse"></i>
                                         </div>
@@ -135,11 +135,11 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{{url_for('main.services_parcel')}}">
                                         <div class="category-icon">
                                             <i class="flaticon-package"></i>
                                         </div>
-                                        <h5>Forwarding</h5>
+                                        <h5>Parcel</h5>
                                     </a>
                                 </li>
                             </ul>
@@ -161,7 +161,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6">
                                     <div class="about-img">
-                                        <img src="img/images/about_img01.png" alt="img">
+                                        <img src="{{url_for('static',filename='/services/chuttersnap.jpg')}}" alt="img" style="width: 500px;">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -170,7 +170,10 @@
                                             <h2>About Our Cargo Delivery</h2>
                                             <h6>Noble Cargo delivery is an innovative service</h6>
                                         </div>
-                                        <p>Noble Cargo delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful for companies of various effective logistics scale.</p>
+                                        <p>
+                                            At Noble Services, we are dedicated to delivering solutions that not only meet but exceed our clients' expectations. Our comprehensive approach to logistics and security ensures that we provide the best possible service for each unique situation. We continuously
+                                            evaluate and refine our methods to ensure that our solutions remain at the forefront of industry standards.
+                                        </p>
                                         <a href="#" class="btn">comparison</a>
                                     </div>
                                 </div>
@@ -180,7 +183,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6">
                                     <div class="about-img">
-                                        <img src="img/images/about_img02.png" alt="img">
+                                        <img src="{{url_for('static',filename='img/images/about_img02.png')}}" alt="img">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -199,7 +202,7 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6">
                                     <div class="about-img">
-                                        <img src="img/images/about_img03.png" alt="img">
+                                        <img src="{{url_for('static',filename='img/images/about_img03.png')}}" alt="img">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -238,7 +241,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="single-services mb-30">
                             <div class="services-thumb">
-                                <a href="#"><img src="img/images/services_img01.jpg" alt="img"></a>
+                                <a href="#"><img src="{{url_for('static',filename='img/close-up-delivery.jpg')}}" alt="img"></a>
                             </div>
                             <div class="services-content">
                                 <div class="services-icon">
@@ -253,7 +256,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="single-services mb-30">
                             <div class="services-thumb">
-                                <a href="#"><img src="img/images/services_img02.jpg" alt="img"></a>
+                                <a href="#"><img src="{{url_for('static',filename='img/african-woman-package-delivery.jpg')}}" alt="img"></a>
                             </div>
                             <div class="services-content">
                                 <div class="services-icon">
@@ -268,7 +271,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="single-services mb-30">
                             <div class="services-thumb">
-                                <a href="#"><img src="img/images/services_img03.jpg" alt="img"></a>
+                                <a href="#"><img src="{{url_for('static',filename='img/images/services_img03.jpg')}}" alt="img"></a>
                             </div>
                             <div class="services-content">
                                 <div class="services-icon">
@@ -315,7 +318,7 @@
                                 </div>
                                 <div class="testimonial-avatar">
                                     <div class="testi-avatar-img">
-                                        <img src="img/images/testi_avatar01.png" alt="img">
+                                        <img src="{{url_for('static',filename='img/images/testi_avatar01.png')}}" alt="img">
                                     </div>
                                     <div class="testi-avatar-info">
                                         <h6>Tonoy Alexander</h6>
@@ -339,7 +342,7 @@
                                 </div>
                                 <div class="testimonial-avatar">
                                     <div class="testi-avatar-img">
-                                        <img src="img/images/testi_avatar02.png" alt="img">
+                                        <img src="{{url_for('static',filename='img/images/testi_avatar02.png')}}" alt="img">
                                     </div>
                                     <div class="testi-avatar-info">
                                         <h6>Lanu Dexander</h6>
@@ -490,7 +493,7 @@
             <div class="row gallery-active">
                 <div class="col-lg-8 col-md-12 grid-item grid-sizer">
                     <div class="single-gallery-img mb-30">
-                        <a href="#"><img src="img/gallery/gallery_thumb01.jpg" alt="img"></a>
+                        <a href="#"><img src="{{url_for('static',filename='/services/Tracking-p-1080.png')}}" alt="img"></a>
                         <div class="gallery-overlay">
                             <h5 class="gallery-overlay-title"><a href="#">Cargo Truck</a></h5>
                             <span>Blanding , Digital</span>
@@ -499,7 +502,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 grid-item grid-sizer">
                     <div class="single-gallery-img mb-30">
-                        <a href="#"><img src="img/gallery/gallery_thumb02.jpg" alt="img"></a>
+                        <a href="#"><img src="{{url_for('static',filename='/services/pavan-kumar.jpg')}}" alt="img"></a>
                         <div class="gallery-overlay">
                             <h5 class="gallery-overlay-title"><a href="#">Cargo Truck</a></h5>
                             <span>Blanding , Digital</span>
@@ -508,7 +511,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 grid-item grid-sizer">
                     <div class="single-gallery-img mb-30">
-                        <a href="#"><img src="img/gallery/gallery_thumb03.jpg" alt="img"></a>
+                        <a href="#"><img src="{{url_for('static',filename='/services/chris-leipelt-HqKfLgBFVF4-unsplash.jpg')}}" alt="img"></a>
                         <div class="gallery-overlay">
                             <h5 class="gallery-overlay-title"><a href="#">Cargo Truck</a></h5>
                             <span>Blanding , Digital</span>
@@ -517,7 +520,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 grid-item grid-sizer">
                     <div class="single-gallery-img mb-30">
-                        <a href="#"><img src="img/gallery/gallery_thumb04.jpg" alt="img"></a>
+                        <a href="#"><img src="{{url_for('static',filename='/services/maarten-van.jpg')}}" alt="img"></a>
                         <div class="gallery-overlay">
                             <h5 class="gallery-overlay-title"><a href="#">Cargo Truck</a></h5>
                             <span>Blanding , Digital</span>
@@ -623,7 +626,7 @@
                 </div>
                 <div class="col-xl-7 col-lg-6">
                     <div class="extra-features-img">
-                        <img src="img/images/container-isolated.png" class="wow bounceInDown" data-wow-delay=".3s" alt="img">
+                        <img src="{{url_for('static',filename='img/images/container-isolated.png')}}" class="wow bounceInDown" data-wow-delay=".3s" alt="img">
                     </div>
                 </div>
             </div>
@@ -631,118 +634,40 @@
     </section>
     <!-- extra-features-end -->
 
-    <!-- blog-area -->
-    <section class="blog-area blog-bg pt-115 pb-90">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section-title text-center mb-70">
-                        <h6>Latest News</h6>
-                        <h2>Latest Popular Articles</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-post mb-30">
-                        <div class="blog-thumb">
-                            <a href="blog-details.html"><img src="img/blog/blog_thumb01.jpg" alt="img"></a>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <ul>
-                                    <li><i class="far fa-clock"></i> OCTOBER 9, 2019</li>
-                                    <li><a href="#"><i class="far fa-comments"></i> 03</a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="blog-details.html">Track your airfreight shipment by airwaybill</a></h4>
-                            <p>Noble Cargo delivery is an innovative service refers effective logi solution but the majorty have an suffered alteration the delivery.
-                            </p>
-                            <div class="blog-read-more text-center">
-                                <a href="blog-details.html">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-post mb-30">
-                        <div class="blog-thumb">
-                            <a href="blog-details.html"><img src="img/blog/blog_thumb02.jpg" alt="img"></a>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <ul>
-                                    <li><i class="far fa-clock"></i> OCTOBER 9, 2019</li>
-                                    <li><a href="#"><i class="far fa-comments"></i> 03</a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="blog-details.html">Consignments may be tracked feeding the airline code</a></h4>
-                            <p>Noble Cargo delivery is an innovative service refers effective logi solution but the majorty have an suffered alteration the delivery.
-                            </p>
-                            <div class="blog-read-more text-center">
-                                <a href="blog-details.html">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-post mb-30">
-                        <div class="blog-thumb">
-                            <a href="blog-details.html"><img src="img/blog/blog_thumb03.jpg" alt="img"></a>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <ul>
-                                    <li><i class="far fa-clock"></i> OCTOBER 9, 2019</li>
-                                    <li><a href="#"><i class="far fa-comments"></i> 03</a></li>
-                                </ul>
-                            </div>
-                            <h4><a href="blog-details.html">Words Cargo and Freight Refer Particular to Goods</a></h4>
-                            <p>Noble Cargo delivery is an innovative service refers effective logi solution but the majorty have an suffered alteration the delivery.
-                            </p>
-                            <div class="blog-read-more text-center">
-                                <a href="blog-details.html">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- blog-area-end -->
+
 
     <!-- brand-area -->
-    <div class="brand-area pt-120 pb-120">
+    <div class="brand-area pt-120 pb-120" style="background-color: aliceblue;">
         <div class="container">
             <div class="row brand-active">
                 <div class="col-12">
                     <div class="signle-bran">
-                        <img src="img/brands/dhl.png" alt="img" style="width: 160px; height: 100px;">
+                        <img src="{{url_for('static',filename='img/brands/dhl.png')}}" alt="img" style="width: 150px; height: 100px;">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="signle-">
-                        <img src="img/brands/FedEx.png" alt="img" style="width: 160px; height: 100px;">
+                        <img src="{{url_for('static',filename='img/brands/FedEx.png')}}" alt="img" style="width: 150px; height: 100px;">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="signle-">
-                        <img src="img/brands/ups.png" alt="img" style="width: 90px; height: 100px;">
+                        <img src="{{url_for('static',filename='img/brands/ups.png')}}" alt="img" style="width: 90px; height: 100px;">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="signle-">
-                        <img src="img/brands/TNT_Logo.svg.png" alt="img" style="width: 160px; height: 100px;">
+                        <img src="{{url_for('static',filename='img/brands/TNT_Logo.svg.png')}}" alt="img" style="width: 150px; height: 100px;">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="signle-">
-                        <img src="img/brands/DB_Schenker_logo.svg.png" alt="img" style="width: 200px; height: 100px;">
+                        <img src="{{url_for('static',filename='img/brands/DB_Schenker_logo.svg.png')}}" alt="img" style="width: 200px; height: 80px;">
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="signle-brand">
-                        <img src="img/brand/brnad_logo03.png" alt="img" style="width: 90px; height: 100px;">
+                        <img src="{{url_for('static',filename='img/brand/brnad_logo03.png')}}" alt="img" style="width: 100px; height: 60px;">
                     </div>
                 </div>
             </div>
@@ -751,7 +676,7 @@
     <!-- brand-area-end -->
 
     <!-- newsletter -->
-    <section class="newsletter-area">
+    <section class="newsletter-area" style="background-color: aliceblue;">
         <div class="container">
             <div class="row">
                 <div class="col-12">

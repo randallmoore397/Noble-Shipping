@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"> {% if title %}
+    <title>Noble | {{title}}</title>
+    {% else %}
+    <title>Noble Shipping Company</title>
+    {% endif %}
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="{{url_for('static',filename='/img/favicon.png')}}" rel="icon">
+    <link href="{{url_for('static',filename='niceadmin/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- ------- Data Table file and Configurations ---------- -->
+    <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables-bs4/css/' + 'dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables-responsive/css/' + 'responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables-buttons/css/' + 'buttons.bootstrap4.min.css')}}">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='plugins/' + 'searchPanes.dataTables.min.css')}}">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='plugins/' + 'select.dataTables.min.css')}}">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/default.css')}}">
+
+    <!-- Vendor CSS Files -->
+    <link href="{{url_for('static',filename='niceadmin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/vendor/quill/quill.snow.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/vendor/quill/quill.bubble.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/vendor/simple-datatables/style.css')}}" rel="stylesheet">
+
+
+    <!-- Template Main CSS File -->
+    <link href="{{url_for('static',filename='niceadmin/css/style.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/css/master.css')}}" rel="stylesheet">
+
+
+    <!--? SWEET ALERTS -->
+    <script src="{{url_for('static',filename='/niceadmin/js/sweetalert2@11.js')}}"></script>
+
+</head>
+
+<body>
+    <style>
+        .table {
+            --bs-table-color: var(--bs-body-color);
+            --bs-table-bg: transparent;
+            --bs-table-border-color: #c5cfe9;
+        }
+        
+        th {
+            background-color: #ebebeb !important;
+        }
+    </style>
+    <div class="container mt-4 ">
+        <div class="card gallery-bg">
+            <div class="card-heade mt-3 pb-2" style="background-color: #f64148 !important; color: #fff !important;">
+                <h3 class="text-center text-dar text-uppercas mb-0 mt-2 pb-0 pt-0"><img class="mb-0" src="{{url_for('static',filename='/img/result.png')}}" alt="logo" style="width: 50px;"> <b>Noble Shipping Company</b>
+                    <h5 class="text-center mt-0"><small><small>+231770961810/info@nobleshipping.com </small></small>
+                </h3>
+                <h5 class="text-center mt-0">Container Tracking [ {{tracking_details.tracking_number}} ] Results</h5>
+            </div>
+            <div class="card-body mt-4 ">
+                <h5 class="mt-4 mb-2"><i class="bi bi-arrow-left-right"></i> <b>Tracking Info</b></h5>
+                <table class="table table-bordered  table-stripe border-primar table-dar mt-0" id="example" style="margin-top: 3rem;">
+                    <thead>
+                        <tr>
+                            <th>Tracking Number</th>
+                            <th>Origin</th>
+                            <th>Destination</th>
+                            <th>Last Location</th>
+                            <th>Status</th>
+                            <th>Estimated Delivery Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-capitalize yellow-tbg">{{tracking_details.tracking_number}}</td>
+                            <td class="text-capitalize">{{tracking_details.origin}}</td>
+                            <td class="text-capitalize">{{tracking_details.destination}}</td>
+                            <td class="text-capitalize">{{tracking_details.last_location}}</td>
+                            <td class="text-capitalize">{{tracking_details.status}}</td>
+                            <td class="text-capitalize green-tbg">{{tracking_details.estimated_delivery.strftime('%B %d, %Y')}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+                <h5 class="mt-4 mb-2"><i class="bi bi-box"></i> <b>Cargo Info</b></h5>
+                <table class="table table-bordered  table-stripe border-primar table-dar mt-0" id="example" style="margin-top: 3rem;">
+                    <thead>
+                        <tr>
+                            <th>Cargo Type</th>
+                            <th>Weight</th>
+                            <th>Dimension</th>
+                            <th>Value</th>
+                            <th>Carrier</th>
+                            <th>Description</th>
+                            <th>Insurance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="text-capitalize">{{tracking_details.cargo_type}}</td>
+                            <td class="text-capitalize">{{tracking_details.weight}}</td>
+                            <td class="text-capitalize">{{tracking_details.dimensions}}</td>
+                            <td class="text-capitalize yellow-tbg">{{tracking_details.value}}</td>
+                            <td class="text-capitalize">{{tracking_details.current_carrier}}</td>
+                            <td class="text-capitalize">{{tracking_details.contents_description}}</td>
+                            <td class="text-capitalize">{{tracking_details.insurance}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+                <style>
+                    .dark-tr {
+                        background-color: #f64148 !important;
+                        color: #fff !important;
+                    }
+                    
+                    .text-danger {
+                        --bs-text-opacity: 1;
+                        color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
+                        border-block-style: dashed;
+                        border-width: thin;
+                    }
+                </style>
+                <hr class="text-danger">
+                <h5 class="mt-4 mb-2 text-center text-danger"><i class="bi bi-receipt"></i> <b>Related Tracking History</b></h5>
+                <table class="table table-bordered  table-stripe border-primar table-dar mt-0" id="example" style="margin-top: 3rem;">
+                    <thead>
+                        <tr>
+                            <th class="dark-tr"><i class="bi bi-clock-history"></i> Time Stamp</th>
+                            <th class="dark-tr"><i class="bi bi-arrow-left-right"></i> Status</th>
+                            <!-- <th>Airways Bill Number</th> -->
+                            <th class="dark-tr"><i class="bi bi-pin-map-fill"></i> Last Location</th>
+                            <th class="dark-tr"><i class="ri ri-plane-fill"></i> Carrier</th>
+                            <th class="dark-tr"><i class="bi bi-globe"></i> Origin</th>
+                            <th class="dark-tr"><i class="bi bi-map-fill"></i> Destination</th>
+                            <th class="dark-tr"><i class="bi bi-clipboard-data"></i> Tracking Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for history in tracking_details.history %}
+                        <tr>
+                            <td class="text-capitalize">{{history.timestamp.strftime('%B %d, %Y')}}</td>
+                            <td class="text-capitalize"><i class="bi bi-arrow-up-right-circle text-success"></i> {{history.status}}</td>
+                            <td class="text-capitalize">{{history.location}}</td>
+                            <td class="text-capitalize">{{history.current_carrier}}</td>
+                            <td class="text-capitalize">{{tracking_details.origin}}</td>
+                            <td class="text-capitalize">{{tracking_details.destination}}</td>
+                            <td class="text-capitalize gray-tb"> {{tracking_details.tracking_number}}</td>
+                            <!-- <i class="bi bi-arrow-right-circle-fill text-success"></i> -->
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <img src="{{url_for('static',filename='/QR_Code/barcode.png')}}" alt="barcode" style="width: 170px; float: inline-end;">
+            </div>
+            <div class="card-footer text-center">
+                <p>© Copyright Noble Shipping Company| All Rights Reserved</p>
+            </div>
+        </div>
+
+        <div class="text-left">
+            <a href="{{url_for('main.container_tracking')}}" class="btn btn-primary btn-lg">Continue Tracking</a>
+            <button type="reset" class="btn btn-danger btn-lg">Return Home</button>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script src="{{url_for('static',filename='/niceadmin/js/jquery-3.7.0.min.js')}}"></script>
+    <!-- Vendor JS Files -->
+    <script src="{{url_for('static',filename='niceadmin/vendor/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/chart.js/chart.umd.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/echarts/echarts.min.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/quill/quill.min.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/simple-datatables/simple-datatables.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/tinymce/tinymce.min.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/php-email-form/validate.js')}}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{url_for('static',filename='niceadmin/js/main.js')}}"></script>
+
+
+    <!-- DataTables  & Plugins -->
+    <script src="{{url_for('static',filename='plugins/datatables/' + 'jquery.dataTables.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-bs4/js/' + 'dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-responsive/js/' + 'dataTables.responsive.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-responsive/js/' + 'responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-buttons/js/' + 'dataTables.buttons.min.js')}}"></script>
+
+
+    <script src="{{url_for('static',filename='plugins/datatables-buttons/js/' + 'buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/jszip/' + 'jszip.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/pdfmake/' + 'pdfmake.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/pdfmake/' + 'vfs_fonts.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-buttons/js/' + 'buttons.html5.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-buttons/js/' + 'buttons.print.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-buttons/js/' + 'buttons.colVis.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/' + 'datatables.mark.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/' + 'dataTables.searchPanes.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/' + 'dataTables.select.min.js')}}"></script>
+
+
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                mark: true,
+                debug: true,
+                "buttons": ["copy", "excel", "pdf", "print", "colvis"],
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $("#example2").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                mark: true,
+                debug: true,
+                "buttons": ["copy", "excel", "pdf", "print", "colvis"],
+            }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+            $("#example3").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                mark: true,
+                debug: true,
+                "buttons": ["copy", "excel", "pdf", "print", "colvis"],
+            }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+            $("#example4").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                mark: true,
+                debug: true,
+                "buttons": ["copy", "excel", "pdf", "print", "colvis"],
+            }).buttons().container().appendTo('#example4_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+
+</body>
+
+</html>

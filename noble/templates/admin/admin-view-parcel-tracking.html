@@ -1,0 +1,36 @@
+{% extends "admin/admin_layout.html" %} {% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1 class="d-lg-block d-sm-none d-none ">{{title}}</h1>
+        <h1 class="d-sm-block d-lg-none">Noble Shipping Company</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">{{menu_item1}}</a></li>
+                <li class="breadcrumb-item">{{menu_item2}}</li>
+                <li class="breadcrumb-item active">{{menu_item3}}</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-tit text-center mt-4">This Feature has not been activated</h1>
+                        <p class="text-center">This could be activated in the future, but as of now it is not available.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+<!-- End #main -->
+
+<!-- End #main -->
+{% endblock content %}

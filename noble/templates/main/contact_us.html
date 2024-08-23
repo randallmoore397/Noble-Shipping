@@ -1,0 +1,114 @@
+{% extends "main/main_layout.html" %} {% block content %}
+<!-- main-area -->
+<main>
+    <style>
+        .support-bg {
+            .support-bg {
+                background-image: unset !important;
+                background-position: center !important;
+                background-size: cover;
+                background-color: aliceblue !important;
+            }
+        }
+    </style>
+    <!-- support-area -->
+    <div class="support-area support-bg pt-110 pb-120" style="background-color: aliceblue !important;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-10">
+                    <div class="s-section-title text-center mb-60">
+                        <h2>Get In Touch</h2>
+                        <p>Express delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful for companies various.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="support-form text-center">
+                        <form action="#">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" placeholder="First Name *">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" placeholder="Last Name *">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" placeholder="Your E-mail *">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" placeholder="Website">
+                                </div>
+                            </div>
+                            <textarea name="message" id="message" placeholder="Message"></textarea>
+                            <button class="btn red-btn">Submit Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- support-area-end -->
+
+    <!-- contact-area -->
+    <section class="contact-area primary-bg pt-70 pb-15">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-contact-box mb-50">
+                        <div class="contact-icon mb-30">
+                            <img src="{{url_for('static',filename='img/icon/contact_box_icon01.png')}}" alt="img">
+                        </div>
+                        <div class="contact-content">
+                            <h5>Find Location</h5>
+                            <span>Head Office: ELWA Paynesville City, Liberia West Africa</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-contact-box mb-50">
+                        <div class="contact-icon mb-30">
+                            <img src="{{url_for('static',filename='img/icon/contact_box_icon02.png')}}" alt="img">
+                        </div>
+                        <div class="contact-content">
+                            <h5>Phone Number</h5>
+                            <span>+231-770-961-810</span>
+                            <span>+231-770-961-810</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-contact-box mb-50">
+                        <div class="contact-icon mb-30">
+                            <img src="{{url_for('static',filename='img/icon/contact_box_icon03.png')}}" alt="img">
+                        </div>
+                        <div class="contact-content">
+                            <h5>Social Media</h5>
+                            <span> info@nobleshipping.com </span>
+                            <span> info@nobleshipping.com </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-contact-box mb-50">
+                        <div class="contact-icon mb-30">
+                            <img src="{{url_for('static',filename='img/icon/contact_box_icon04.png')}}" alt="img">
+                        </div>
+                        <div class="contact-content">
+                            <h5>email informing</h5>
+                            <span>99 NY Address street, Bronk Center Brooklyn</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact-area-end -->
+
+    <!-- contact-map -->
+    <div id="contact-page-map"></div>
+    <!-- contact-map-end -->
+
+</main>
+<!-- main-area-end -->
+{% endblock content %}

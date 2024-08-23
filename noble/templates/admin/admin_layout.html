@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"> {% if title %}
+    <title>Noble | {{title}}</title>
+    {% else %}
+    <title>Noble Shipping Company</title>
+    {% endif %}
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="{{url_for('static',filename='/img/favicon.png')}}" rel="icon">
+    <link href="{{url_for('static',filename='niceadmin/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{{url_for('static',filename='niceadmin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/vendor/quill/quill.snow.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/vendor/quill/quill.bubble.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/vendor/simple-datatables/style.css')}}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{url_for('static',filename='niceadmin/css/style.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='niceadmin/css/master.css')}}" rel="stylesheet">
+
+    <!-- ------- Data Table file and Configurations ---------- -->
+    <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables-bs4/css/' + 'dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables-responsive/css/' + 'responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='plugins/datatables-buttons/css/' + 'buttons.bootstrap4.min.css')}}">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='plugins/' + 'searchPanes.dataTables.min.css')}}">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='plugins/' + 'select.dataTables.min.css')}}">
+
+    <!--? SWEET ALERTS -->
+    <script src="{{url_for('static',filename='/niceadmin/js/sweetalert2@11.js')}}"></script>
+
+</head>
+
+<body>
+    <style>
+        .swal2-title {
+            color: #0e0e23 !important;
+        }
+        
+        body.swal2-toast-shown .swal2-container {
+            box-sizing: border-box;
+            width: 473px;
+            max-width: 100%;
+            background-color: rgba(0, 0, 0, 0);
+            pointer-events: none;
+        }
+        
+        .swal2-popup {
+            width: 145% !important;
+            display: inherit !important;
+        }
+        
+        .swal2-popup.swal2-toast>* {
+            grid-column: none;
+            grid-column: unset;
+        }
+        
+        .sidebar-nav .nav-link i:hover {
+            color: #495bf1 !important;
+            background: #8244f0 !important;
+        }
+    </style>
+    <!--! SWEET ALERT MESSAGES -->
+    <div class="container-scroller">
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %}
+        <small class="text-center  text-dark"> 
+                    {% if category == 'success' %} 
+                    <script>
+                    Swal.fire({
+                            title: "{{message}}",
+                            text: "{{ session['success']}}",
+                            backdrop: 'swal2-backdrop-show',
+                            icon: "success",
+                            toast: true,
+                            position: "top-right",
+                        })    
+                    </script>
+                    {% elif category == 'error' %} 
+                    <script>
+                        Swal.fire({
+                            title: "{{message}}",
+                            text: "{{ session['error']}}",
+                            backdrop: 'swal2-backdrop-show',
+                            icon: "error",
+                            toast: true,
+                            position: "top-right",
+                        })
+                    </script> 
+                        {% elif category == 'notice' %} 
+                        <script>
+                            Swal.fire({
+                                title: "{{message}}",
+                                text: "{{ session['notice']}}",
+                                backdrop: 'swal2-backdrop-show',
+                                icon: "notice",
+                                toast: true,
+                            })
+                        </script>
+                    {% endif %} 
+            </small> {% endfor %} {% endif %} {% endwith %}
+    </div>
+    <!--! SWEET ALERT MESSAGES ENDED -->
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="{{url_for('main.index')}}" class="logo d-flex align-items-center">
+                <img src="niceadmin/img/logo.png" alt="">
+                <span class="d-none d-lg-block">Noble Shipping Co.</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div>
+        <!-- End Logo -->
+
+        <div class="search-bar">
+            <form class="search-form d-flex align-items-center" method="POST" action="#">
+                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+        <!-- End Search Bar -->
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link nav-icon search-bar-toggle " href="#">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </li>
+                <!-- End Search Icon-->
+
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-bell"></i>
+                        <span class="badge bg-primary badge-number">4</span>
+                    </a>
+                    <!-- End Notification Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                        <li class="dropdown-header">
+                            You have 4 new notifications
+                            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-exclamation-circle text-warning"></i>
+                            <div>
+                                <h4>Lorem Ipsum</h4>
+                                <p>Quae dolorem earum veritatis oditseno</p>
+                                <p>30 min. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-x-circle text-danger"></i>
+                            <div>
+                                <h4>Atque rerum nesciunt</h4>
+                                <p>Quae dolorem earum veritatis oditseno</p>
+                                <p>1 hr. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-check-circle text-success"></i>
+                            <div>
+                                <h4>Sit rerum fuga</h4>
+                                <p>Quae dolorem earum veritatis oditseno</p>
+                                <p>2 hrs. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-info-circle text-primary"></i>
+                            <div>
+                                <h4>Dicta reprehenderit</h4>
+                                <p>Quae dolorem earum veritatis oditseno</p>
+                                <p>4 hrs. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li class="dropdown-footer">
+                            <a href="#">Show all notifications</a>
+                        </li>
+
+                    </ul>
+                    <!-- End Notification Dropdown Items -->
+
+                </li>
+                <!-- End Notification Nav -->
+
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-chat-left-text"></i>
+                        <span class="badge bg-success badge-number">3</span>
+                    </a>
+                    <!-- End Messages Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+                        <li class="dropdown-header">
+                            You have 3 new messages
+                            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="message-item">
+                            <a href="#">
+                                <img src="niceadmin/img/messages-1.jpg" alt="" class="rounded-circle">
+                                <div>
+                                    <h4>Maria Hudson</h4>
+                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                    <p>4 hrs. ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="message-item">
+                            <a href="#">
+                                <img src="niceadmin/img/messages-2.jpg" alt="" class="rounded-circle">
+                                <div>
+                                    <h4>Anna Nelson</h4>
+                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                    <p>6 hrs. ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="message-item">
+                            <a href="#">
+                                <img src="niceadmin/img/messages-3.jpg" alt="" class="rounded-circle">
+                                <div>
+                                    <h4>David Muldon</h4>
+                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                    <p>8 hrs. ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="dropdown-footer">
+                            <a href="#">Show all messages</a>
+                        </li>
+
+                    </ul>
+                    <!-- End Messages Dropdown Items -->
+
+                </li>
+                <!-- End Messages Nav -->
+
+                <li class="nav-item dropdown pe-3">
+
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <img src="{{url_for('static',filename='/profile/' + current_user.user_staff[0].profile_pic)}}" alt="Profile" class="rounded-circle">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{current_user.user_staff[0].first_name}}</span>
+                    </a>
+                    <!-- End Profile Iamge Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6>{{current_user.user_staff[0].first_name}} {{current_user.user_staff[0].last_name}}</h6>
+                            <span>Administrator</span>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{url_for('admin.admin_profile')}}">
+                                <i class="bi bi-person"></i>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{url_for('admin.admin_password')}}">
+                                <i class="bi bi-gear"></i>
+                                <span>Account Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <i class="bi bi-question-circle"></i>
+                                <span>Need Help?</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{url_for('main.logout')}}">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Sign Out</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <!-- End Profile Dropdown Items -->
+                </li>
+                <!-- End Profile Nav -->
+
+            </ul>
+        </nav>
+        <!-- End Icons Navigation -->
+
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('admin.admin_dashboard')}}">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <!-- End Dashboard Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#my_account" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-person-circle"></i><span>My Account</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="my_account" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{url_for('admin.admin_profile')}}">
+                            <i class="bi bi-circle"></i><span>My Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('admin.admin_password')}}">
+                            <i class="bi bi-circle"></i><span>Reset Password</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <!-- End Components Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                    <i class="ri ri-ship-2-line"></i><span>Container Tracking</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{url_for('admin.admin_container_tracking')}}">
+                            <i class="bi bi-circle"></i><span>Container Tracking</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('admin.admin_view_container_tracking')}}">
+                            <i class="bi bi-circle"></i><span>View Tracking</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Forms Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                    <i class="ri ri-plane-fill"></i><span>Aircargo Tracking</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{url_for('admin.admin_aircargo_tracking')}}">
+                            <i class="bi bi-circle"></i><span>Aircargo Tracking</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('admin.admin_view_aircargo_tracking')}}">
+                            <i class="bi bi-circle"></i><span>View Tracking</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Tables Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-box"></i><span>Parcel Tracking</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{url_for('admin.admin_parcel_tracking')}}">
+                            <i class="bi bi-circle"></i><span>Parcel Tracking</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('admin.admin_view_parcel_tracking')}}">
+                            <i class="bi bi-circle"></i><span>View Tracking</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Charts Nav -->
+
+            {% if current_user.has_role('admin')%}
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#admin-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-person-lines-fill"></i><span>Account Management</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="admin-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{url_for('admin.admin_create_account')}}">
+                            <i class="bi bi-circle"></i><span>Create Account</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('admin.admin_view_users')}}">
+                            <i class="bi bi-circle"></i><span>All User Accounts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('admin.admin_reset_password')}}">
+                            <i class="bi bi-circle"></i><span>Reset Password</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {% endif %}
+            <!-- End Icons Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-megaphone"></i><span>Notification</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{url_for('admin.admin_notification')}}">
+                            <i class="bi bi-circle"></i><span>Send Notification</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('admin.admin_view_notification')}}">
+                            <i class="bi bi-circle"></i><span>View Notification</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Icons Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url_for('main.logout')}}">
+                    <i class="bi bi-power text-danger"></i>
+                    <span>Log Out</span>
+                </a>
+            </li>
+            <!-- End Blank Page Nav -->
+
+        </ul>
+
+    </aside>
+    <!-- End Sidebar-->
+    {% block content %} {% endblock %}
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Noble Shipping Company</span></strong>| All Rights Reserved
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <script src="{{url_for('static',filename='/niceadmin/js/jquery-3.7.0.min.js')}}"></script>
+    <!-- Vendor JS Files -->
+    <script src="{{url_for('static',filename='niceadmin/vendor/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/chart.js/chart.umd.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/echarts/echarts.min.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/quill/quill.min.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/simple-datatables/simple-datatables.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/tinymce/tinymce.min.js')}}"></script>
+    <script src="{{url_for('static',filename='niceadmin/vendor/php-email-form/validate.js')}}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{url_for('static',filename='niceadmin/js/main.js')}}"></script>
+
+
+    <!-- DataTables  & Plugins -->
+    <script src="{{url_for('static',filename='plugins/datatables/' + 'jquery.dataTables.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-bs4/js/' + 'dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-responsive/js/' + 'dataTables.responsive.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-responsive/js/' + 'responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-buttons/js/' + 'dataTables.buttons.min.js')}}"></script>
+
+
+    <script src="{{url_for('static',filename='plugins/datatables-buttons/js/' + 'buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/jszip/' + 'jszip.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/pdfmake/' + 'pdfmake.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/pdfmake/' + 'vfs_fonts.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-buttons/js/' + 'buttons.html5.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-buttons/js/' + 'buttons.print.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/datatables-buttons/js/' + 'buttons.colVis.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/' + 'datatables.mark.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/' + 'dataTables.searchPanes.min.js')}}"></script>
+    <script src="{{url_for('static',filename='plugins/' + 'dataTables.select.min.js')}}"></script>
+
+
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                mark: true,
+                debug: true,
+                "buttons": ["copy", "excel", "pdf", "print", "colvis"],
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $("#example2").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                mark: true,
+                debug: true,
+                "buttons": ["copy", "excel", "pdf", "print", "colvis"],
+            }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+            $("#example3").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                mark: true,
+                debug: true,
+                "buttons": ["copy", "excel", "pdf", "print", "colvis"],
+            }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+            $("#example4").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                mark: true,
+                debug: true,
+                "buttons": ["copy", "excel", "pdf", "print", "colvis"],
+            }).buttons().container().appendTo('#example4_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+
+</body>
+
+</html>

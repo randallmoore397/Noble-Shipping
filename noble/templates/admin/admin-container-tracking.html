@@ -1,0 +1,281 @@
+{% extends "admin/admin_layout.html" %} {% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1 class="d-lg-block d-sm-none d-none ">{{title}}</h1>
+        <h1 class="d-sm-block d-lg-none">Noble Shipping Company</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">{{menu_item1}}</a></li>
+                <li class="breadcrumb-item">{{menu_item2}}</li>
+                <li class="breadcrumb-item active">{{menu_item3}}</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <style>
+        .tracking-number {
+            font-size: 25px;
+            font-weight: bold;
+            color: #1aac5af2;
+        }
+    </style>
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-7">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="mt-4 mb-0"><b><i class="ri ri-ship-2-line"></i> Tracking Information (Container)</b></h2>
+                        <p>Please enter tracking information for container</p>
+                        <hr class="mb-4">
+
+                        <!-- <h5 class="card-title">Container Tracking Information</h5> -->
+                        <form action="" method="post">
+                            {{ContainerTrackingForm.hidden_tag()}}
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <!--? TRACKING NUMBER -->
+                                        {% if ContainerTrackingForm.tracking_number.errors %} {{ContainerTrackingForm.tracking_number(class="form-control invalid-feedback tracking-number", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingForm.tracking_number.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{ContainerTrackingForm.tracking_number(class="form-control tracking-number", placeholder="...")}} {{ContainerTrackingForm.tracking_number.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <!--? ORIGIN -->
+                                        {% if ContainerTrackingForm.origin.errors %} {{ContainerTrackingForm.origin(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingForm.origin.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{ContainerTrackingForm.origin(class="form-control ", placeholder="...")}} {{ContainerTrackingForm.origin.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <!--? DESTINATION -->
+                                        {% if ContainerTrackingForm.destination.errors %} {{ContainerTrackingForm.destination(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingForm.destination.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{ContainerTrackingForm.destination(class="form-control ", placeholder="...")}} {{ContainerTrackingForm.destination.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <!--? LAST LOCATION -->
+                                        {% if ContainerTrackingForm.last_location.errors %} {{ContainerTrackingForm.last_location(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingForm.last_location.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{ContainerTrackingForm.last_location(class="form-control ", placeholder="...")}} {{ContainerTrackingForm.last_location.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <!--? ESTIMATED DELIVERY -->
+                                        {% if ContainerTrackingForm.estimated_delivery.errors %} {{ContainerTrackingForm.estimated_delivery(class="form-control invalid-feedback", placeholder="...",type='date')}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingForm.estimated_delivery.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{ContainerTrackingForm.estimated_delivery(class="form-control ", placeholder="...",type='date')}} {{ContainerTrackingForm.estimated_delivery.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <!--? CURRENT CARRIER -->
+                                        {% if ContainerTrackingForm.current_carrier.errors %} {{ContainerTrackingForm.current_carrier(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingForm.current_carrier.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{ContainerTrackingForm.current_carrier(class="form-control ", placeholder="...")}} {{ContainerTrackingForm.current_carrier.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <!--? WEIGHT -->
+                                        {% if ContainerTrackingForm.weight.errors %} {{ContainerTrackingForm.weight(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingForm.weight.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{ContainerTrackingForm.weight(class="form-control ", placeholder="...")}} {{ContainerTrackingForm.weight.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-5">
+                                    <div class="form-floating">
+                                        <!--? DIMENSION -->
+                                        {% if ContainerTrackingForm.dimensions.errors %} {{ContainerTrackingForm.dimensions(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingForm.dimensions.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{ContainerTrackingForm.dimensions(class="form-control ", placeholder="...")}} {{ContainerTrackingForm.dimensions.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <!--? VALUE -->
+                                        {% if ContainerTrackingForm.value.errors %} {{ContainerTrackingForm.value(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingForm.value.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{ContainerTrackingForm.value(class="form-control ", placeholder="...")}} {{ContainerTrackingForm.value.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <!--? DESCRIPTION -->
+                                        {% if ContainerTrackingForm.contents_description.errors %} {{ContainerTrackingForm.contents_description(class="form-control invalid-feedback", placeholder="...",style="height: 100px;")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingForm.contents_description.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{ContainerTrackingForm.contents_description(class="form-control ", placeholder="...",style="height: 100px;")}} {{ContainerTrackingForm.contents_description.label(class="form-label")}} {% endif %}
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <!--? STATUS -->
+                                        {% if ContainerTrackingForm.status.errors %} {{ContainerTrackingForm.status(class="form-select invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingForm.status.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{ContainerTrackingForm.status(class="form-select ", placeholder="...")}} {{ContainerTrackingForm.status.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-3">
+                                    <div class="form-floating mb-3">
+                                        <!--? INSURANCE -->
+                                        {% if ContainerTrackingForm.insurance.errors %} {{ContainerTrackingForm.insurance(class="form-select invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingForm.insurance.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{ContainerTrackingForm.insurance(class="form-select ", placeholder="...")}} {{ContainerTrackingForm.insurance.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <!--? DATE -->
+                                        {% if ContainerTrackingForm.updated_at.errors %} {{ContainerTrackingForm.updated_at(class="form-control invalid-feedback", placeholder="...",type="date")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingForm.updated_at.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{ContainerTrackingForm.updated_at(class="form-control ", placeholder="...",type="date")}} {{ContainerTrackingForm.updated_at.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="text-left">
+                                    <button type="submit" class="btn btn-primary btn-lg">Submit Tracking</button>
+                                    <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-5">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-1">Various Statuses and Meaning </h5>
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Pending:</b></div>
+                                    The shipment is created but hasn't been picked up or started moving yet.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Collected:</b></div>
+                                    The cargo has been collected from the sender.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>In Transit:</b></div>
+                                    The cargo is currently in route to its destination.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Held at Customs:</b></div>
+                                    The cargo is being held by customs authorities for inspection or clearance.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Delivered:</b></div>
+                                    The cargo has been successfully delivered to the recipient.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Awaiting Pickup:</b></div>
+                                    The cargo is at a pickup point, waiting for the recipient to collect it.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Delayed:</b></div>
+                                    The cargo has encountered an unexpected delay, such as bad weather or logistical issues.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Returned to Sender:</b></div>
+                                    The cargo is being returned to the sender due to delivery failure or other reasons.
+                                </div>
+                            </li>
+                        </ol>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+<!-- End #main -->
+{% endblock content %}

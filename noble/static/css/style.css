@@ -1475,7 +1475,7 @@ label {
 /* 6. Slider */
 
 .slider-bg {
-    background-image: url(../img/slider/1380.jpg);
+    background-image: url(../img/slider/index.jpg);
     position: relative;
     min-height: 749px;
     background-position: center;
@@ -2981,9 +2981,10 @@ label {
 }
 
 .service-tag-list {
-    border: 4px solid #ebebeb;
+    border: 4px solid #ffffff;
     border-top: none;
     padding: 20px 15px;
+    background-color: #ffffff !important;
 }
 
 .service-tag-list ul li {
@@ -2997,6 +2998,7 @@ label {
     font-size: 12px;
     color: #616161;
     padding: 6px 13px;
+    background-color: #ffffff !important;
 }
 
 .service-tag-list ul li a:hover {
@@ -4272,7 +4274,7 @@ label {
 }
 
 .support-bg {
-    background-image: url(../img/bg/delivery_bg.jpg);
+    /* background-image: url(../img/bg/delivery_bg.jpg); */
     background-position: center;
     background-size: cover;
 }

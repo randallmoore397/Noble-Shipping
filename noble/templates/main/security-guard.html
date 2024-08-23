@@ -1,0 +1,105 @@
+{% extends "main/main_layout.html" %} {% block content %}
+<!-- main-area -->
+<main>
+
+    <style>
+        .li-styles {
+            background-color: white !important;
+        }
+        
+        .services-blockquote {
+            background: #fff !important;
+        }
+    </style>
+
+    <!-- services-details -->
+    <div class="services-details-area pt-120 pb-115" style="background-color: ghostwhite !important;">
+        <div class="container">
+            <div class="services-details-wrap">
+                <div class="row">
+                    <div class="col-lg-4 order-2 order-lg-0">
+                        <aside class="services-sidebar">
+                            <div class="services-widget mb-40">
+                                <div class="service-widget-title">
+                                    <h3>Service Category</h3>
+                                </div>
+                                <div class="service-cat-list">
+                                    <ul>
+                                        <li class="li-styles"><a href="{{url_for('main.all_service')}}">All Services</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_aircargo')}}">AirCargo Tracking</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_container')}}">Container Tracking</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_parcel')}}">Parcel Tracking</a></li>
+                                        <li class="active li-styles"><a href="{{url_for('main.services_security_guard')}}">Provision of Security guard</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_goods_logistics')}}">Safekeeping of goods & logistics</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_bullion_vault')}}">Provision of bullion Vault</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="services-widget mb-40">
+                                <div class="service-doc-list">
+                                    <ul>
+                                        <li><a href="#">Noble Shipping Company Listing <i class="fas fa-file-pdf"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="services-widget mb-40">
+                                <div class="service-sidebar-support">
+                                    <h3>Need Support?</h3>
+                                    <p>Express delivery is an innovative service is effective logies</p>
+                                    <a href="#" class="btn">contact Us</a>
+                                </div>
+                            </div>
+                            <div class="services-widget">
+                                <div class="service-widget-title dark-bg">
+                                    <h3>Tags Post</h3>
+                                </div>
+                                <div class="service-tag-list">
+                                    <ul>
+                                        <li class="li-styles"><a href="#">Aircargo Tracking</a></li>
+                                        <li class="li-styles"><a href="#">Parcel Tracking</a></li>
+                                        <li class="li-styles"><a href="#">Container Tracking</a></li>
+                                        <li class="li-styles"><a href="#">Cargo Insurance</a></li>
+                                        <li class="li-styles"><a href="#">Security Guard</a></li>
+                                        <li class="li-styles"><a href="#">Goods and Logistics</a></li>
+                                        <li class="li-styles"><a href="#">Bullion Vault</a></li>
+                                        <li class="li-styles"><a href="#">Delivery</a></li>
+                                        <li class="li-styles"><a href="#">Warehouse</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="services-details-content">
+                            <h4>Provision of Security Guard</h4>
+                            <p>Security guard services are essential for protecting property, goods, and personnel. These guards are trained professionals who provide on-site security, ensuring that premises are secure and that any unauthorized access is
+                                prevented.
+                            </p>
+                            <div class="services-details-img">
+                                <img src="img/images/services_details_img02.jpg" alt="">
+                            </div>
+                            <h4>How It Works:</h4>
+                            <p>Express delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful for companies of various effective logistics scale.transport logistic is the world´s biggest
+                                trade show for logistics, mobility, IT and supply chain management. It takes place every two years in early May, at the Messe München exhibition center in Munich</p>
+                            <div class="services-details-list">
+                                <ul>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i> Site Assessment: Before deployment, a thorough assessment of the site is conducted to identify security risks and vulnerabilities.</li>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Deployment: Based on the assessment, security guards are strategically positioned to monitor and control access points, patrol the area, and respond to any suspicious activity.</li>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>24/7 Monitoring: Guards provide around-the-clock protection, ensuring that the site remains secure at all times. They also maintain logs of daily activities and incidents.</li>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Emergency Response: In the event of an emergency, security guards are trained to handle the situation effectively, whether it involves contacting law enforcement, administering
+                                        first aid, or securing the area.</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- services-details-end -->
+
+
+</main>
+<!-- main-area-end -->
+{% endblock content %}

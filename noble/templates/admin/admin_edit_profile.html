@@ -1,0 +1,296 @@
+{% extends "admin/admin_layout.html" %} {% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1 class="d-lg-block d-sm-none d-none ">{{title}}</h1>
+        <h1 class="d-sm-block d-lg-none">Noble Shipping Company</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">{{menu_item1}}</a></li>
+                <li class="breadcrumb-item">{{menu_item2}}</li>
+                <li class="breadcrumb-item active">{{menu_item3}}</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="row">
+            <div class="col-xl-4">
+
+                <div class="card">
+                    <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                        <img src="{{url_for('static',filename='/profile/' + current_user.user_staff[0].profile_pic)}}" alt="Profile" class="rounded-circle" style="width: 100px; height:100px">
+
+                        <h2>{{current_user.user_staff[0].first_name}} {{current_user.user_staff[0].middle_name}} {{current_user.user_staff[0].last_name}}</h2>
+                        <h3>{{current_user.user_staff[0].position}}</h3>
+                        <div class="social-links mt-2">
+                            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                        <div class="pt-2">
+                            <a href="{{url_for('admin.admin_profile')}}" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-person"></i> Profile</a>
+                            <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i> Delete</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xl-8">
+
+                <div class="card">
+                    <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <div class=" pt-3" id="profile-edit">
+
+                            <!-- Profile Edit Form -->
+                            <form method="post" action="" enctype="multipart/form-data">
+                                {{MyProfileForm.hidden_tag()}}
+                                <div class="row mb-3">
+                                    <div class="col-lg-2 col-md-4">
+
+                                    </div>
+                                    <!-- <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label> -->
+                                    <div class="col-md-8 col-lg-10">
+                                        <!-- <div class="text-center d-none d-sm-block">
+                                            <img src="{{url_for('static',filename='img/profile/default.png')}}" alt="Profile" style="width: 100px; height:100px">
+                                            <div class="pt-2">
+                                                <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                                                <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+
+                                 <!--? PROFILE PICTURE -->
+                                <div class="row mb-3">
+                                    {{MyProfileForm.profile_pic.label(class="col-sm-3 col-form-label")}} 
+                                    {% if MyProfileForm.profile_pic.errors %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.profile_pic(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in MyProfileForm.profile_pic.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.profile_pic(class="form-control ", placeholder="...")}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+                                <!--? EMAIL ADDRESS -->
+                                <div class="row mb-3">
+                                    {{MyProfileForm.email.label(class="col-sm-3 col-form-label")}} 
+                                    {% if MyProfileForm.email.errors %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.email(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in MyProfileForm.email.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.email(class="form-control ", placeholder="...")}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+                                
+                                <!--? FIRST NAME -->
+                                <div class="row mb-3">
+                                    {{MyProfileForm.first_name.label(class="col-sm-3 col-form-label")}} 
+                                    {% if MyProfileForm.first_name.errors %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.first_name(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in MyProfileForm.first_name.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.first_name(class="form-control ", placeholder="...")}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!--? MIDDLE NAME -->
+                                <div class="row mb-3">
+                                    {{MyProfileForm.middle_name.label(class="col-sm-3 col-form-label")}} 
+                                    {% if MyProfileForm.middle_name.errors %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.middle_name(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in MyProfileForm.middle_name.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.middle_name(class="form-control ", placeholder="...")}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!--? LAST NAME -->
+                                <div class="row mb-3">
+                                    {{MyProfileForm.last_name.label(class="col-sm-3 col-form-label")}} 
+                                    {% if MyProfileForm.last_name.errors %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.last_name(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in MyProfileForm.last_name.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.last_name(class="form-control ", placeholder="...")}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                              
+                                
+                                
+                                <!--? POSITION -->
+                                <div class="row mb-3">
+                                    {{MyProfileForm.position.label(class="col-sm-3 col-form-label")}} 
+                                    {% if MyProfileForm.position.errors %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.position(class="form-control invalid-feedback", placeholder="...",disabled='true')}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in MyProfileForm.position.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.position(class="form-control ", placeholder="...",disabled='true')}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!--? GENDER -->
+                                <div class="row mb-3">
+                                    {{MyProfileForm.gender.label(class="col-sm-3 col-form-label")}} 
+                                    {% if MyProfileForm.gender.errors %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.gender(class="form-select invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in MyProfileForm.gender.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.gender(class="form-select ", placeholder="...")}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!--? TELEPHONE -->
+                                <div class="row mb-3">
+                                    {{MyProfileForm.telephone_phone.label(class="col-sm-3 col-form-label")}} 
+                                    {% if MyProfileForm.telephone_phone.errors %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.telephone_phone(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in MyProfileForm.telephone_phone.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.telephone_phone(class="form-control ", placeholder="...")}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!--? MOBILE -->
+                                <div class="row mb-3">
+                                    {{MyProfileForm.mobile.label(class="col-sm-3 col-form-label")}} 
+                                    {% if MyProfileForm.mobile.errors %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.mobile(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in MyProfileForm.mobile.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.mobile(class="form-control ", placeholder="...")}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!--? ADDRESS ONE -->
+                                <div class="row mb-3">
+                                    {{MyProfileForm.address.label(class="col-sm-3 col-form-label")}} 
+                                    {% if MyProfileForm.address.errors %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.address(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in MyProfileForm.address.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.address(class="form-control ", placeholder="...")}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <!--? ADDRESS TWO-->
+                                <div class="row mb-3">
+                                    {{MyProfileForm.address_two.label(class="col-sm-3 col-form-label")}} 
+                                    {% if MyProfileForm.address_two.errors %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.address_two(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in MyProfileForm.address_two.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{MyProfileForm.address_two(class="form-control ", placeholder="...")}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+
+
+
+                                
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                            <!-- End Profile Edit Form -->
+
+                        </div>
+
+                    </div>
+                    <!-- End Bordered Tabs -->
+
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+</main>
+{% endblock content %}

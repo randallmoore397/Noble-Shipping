@@ -1,0 +1,104 @@
+{% extends "main/main_layout.html" %} {% block content %}
+<!-- main-area -->
+<main>
+
+    <style>
+        .li-styles {
+            background-color: white !important;
+        }
+        
+        .services-blockquote {
+            background: #fff !important;
+        }
+    </style>
+
+    <!-- services-details -->
+    <div class="services-details-area pt-120 pb-115" style="background-color: ghostwhite !important;">
+        <div class="container">
+            <div class="services-details-wrap">
+                <div class="row">
+                    <div class="col-lg-4 order-2 order-lg-0">
+                        <aside class="services-sidebar">
+                            <div class="services-widget mb-40">
+                                <div class="service-widget-title">
+                                    <h3>Service Category</h3>
+                                </div>
+                                <div class="service-cat-list">
+                                    <ul>
+                                        <li class="li-styles"><a href="{{url_for('main.all_service')}}">All Services</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_aircargo')}}">AirCargo Tracking</a></li>
+                                        <li class="active li-styles"><a href="{{url_for('main.services_container')}}">Container Tracking</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_parcel')}}">Parcel Tracking</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_security_guard')}}">Provision of Security guard</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_goods_logistics')}}">Safekeeping of goods & logistics</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_bullion_vault')}}">Provision of bullion Vault</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="services-widget mb-40">
+                                <div class="service-doc-list">
+                                    <ul>
+                                        <li><a href="#">Noble Shipping Company Listing <i class="fas fa-file-pdf"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="services-widget mb-40">
+                                <div class="service-sidebar-support">
+                                    <h3>Need Support?</h3>
+                                    <p>Express delivery is an innovative service is effective logies</p>
+                                    <a href="#" class="btn">contact Us</a>
+                                </div>
+                            </div>
+                            <div class="services-widget">
+                                <div class="service-widget-title dark-bg">
+                                    <h3>Tags Post</h3>
+                                </div>
+                                <div class="service-tag-list">
+                                    <ul>
+                                        <li class="li-styles"><a href="#">Aircargo Tracking</a></li>
+                                        <li class="li-styles"><a href="#">Parcel Tracking</a></li>
+                                        <li class="li-styles"><a href="#">Container Tracking</a></li>
+                                        <li class="li-styles"><a href="#">Cargo Insurance</a></li>
+                                        <li class="li-styles"><a href="#">Security Guard</a></li>
+                                        <li class="li-styles"><a href="#">Goods and Logistics</a></li>
+                                        <li class="li-styles"><a href="#">Bullion Vault</a></li>
+                                        <li class="li-styles"><a href="#">Delivery</a></li>
+                                        <li class="li-styles"><a href="#">Warehouse</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="services-details-content">
+                            <h4>Container Cargo Tracking</h4>
+                            <p>Container cargo tracking allows businesses and individuals to track their shipments that are transported in large containers via sea or land. This service is vital for international trade, where large volumes of goods are shipped
+                                across long distances.</p>
+
+                            <div class="services-details-img">
+                                <img src="{{url_for('static',filename='/services/services-container.webp')}}" alt="img">
+                            </div>
+                            <h4>How It Works:</h4>
+
+                            <div class="services-details-list">
+                                <ul>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Container Booking: Customers book space in a container, or a whole container, depending on the volume of goods. Each container is assigned a unique identification number.</li>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Tracking Number: The identification number is used to track the container as it moves through various stages, including loading at the port, shipment across the ocean or
+                                        land, and unloading at the destination.</li>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Real-Time Tracking: Customers can use the container number on the tracking website to get real-time updates, such as the container's current location, estimated arrival time,
+                                        and any delays.</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- services-details-end -->
+
+
+</main>
+<!-- main-area-end -->
+{% endblock content %}

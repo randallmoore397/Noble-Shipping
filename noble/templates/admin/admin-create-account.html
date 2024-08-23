@@ -1,0 +1,179 @@
+{% extends "admin/admin_layout.html" %} {% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1 class="d-lg-block d-sm-none d-none ">{{title}}</h1>
+        <h1 class="d-sm-block d-lg-none">Noble Shipping Company</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">{{menu_item1}}</a></li>
+                <li class="breadcrumb-item">{{menu_item2}}</li>
+                <li class="breadcrumb-item active">{{menu_item3}}</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-titl mt-4 mb-0">Account Registration</h3>
+                        <p class="mb-0 pb-0">Please enter details to create account</p>
+                        <hr class="mb-3 pb-3">
+
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {{RegistrationForm.hidden_tag()}}
+                            <div class="row g-3">
+                                <!--? PROFILE PICTURE -->
+                                <div class="row mb-3">
+                                    {{RegistrationForm.profile_pic.label(class="col-sm-2 col-form-label")}} 
+                                    {% if RegistrationForm.profile_pic.errors %} 
+                                    <div class="col-sm-10">
+                                        {{RegistrationForm.profile_pic(class="form-control invalid-feedback", placeholder="...",type='file')}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in RegistrationForm.profile_pic.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div> 
+                                    </div>
+                                    {% else %} 
+                                    <div class="col-sm-10">
+                                        {{RegistrationForm.profile_pic(class="form-control", placeholder="...",type='file')}}
+                                    </div> 
+                                    {% endif %}
+                                </div>
+                                <!--? EMAIL ADDRESS -->
+                                <div class="row mb-3">
+                                    {{RegistrationForm.email.label(class="col-sm-3 col-form-label")}} 
+                                    {% if RegistrationForm.email.errors %} 
+                                    <div class="col-sm-9">
+                                        {{RegistrationForm.email(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in RegistrationForm.email.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div> 
+                                    </div>
+                                    {% else %} 
+                                    <div class="col-sm-9">
+                                        {{RegistrationForm.email(class="form-control ", placeholder="...")}}
+                                    </div> 
+                                    {% endif %}
+                                </div>
+
+                                
+
+                               <!--? FIRST NAME -->
+                                <div class="row mb-3">
+                                    {{RegistrationForm.first_name.label(class="col-sm-3 col-form-label")}} 
+                                    {% if RegistrationForm.first_name.errors %} 
+                                    <div class="col-sm-9">
+                                        {{RegistrationForm.first_name(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in RegistrationForm.first_name.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div> 
+                                    </div>
+                                    {% else %} 
+                                    <div class="col-sm-9">
+                                        {{RegistrationForm.first_name(class="form-control ", placeholder="...")}}
+                                    </div> 
+                                    {% endif %}
+                                </div>
+
+                                <!--? MIDLE NAME -->
+                                <div class="row mb-3">
+                                    {{RegistrationForm.middle_name.label(class="col-sm-3 col-form-label")}} 
+                                    {% if RegistrationForm.middle_name.errors %} 
+                                    <div class="col-sm-9">
+                                        {{RegistrationForm.middle_name(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in RegistrationForm.middle_name.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div> 
+                                    </div>
+                                    {% else %} 
+                                    <div class="col-sm-9">
+                                        {{RegistrationForm.middle_name(class="form-control ", placeholder="...")}}
+                                    </div> 
+                                    {% endif %}
+                                </div>
+
+                                <!--? LAST NAME -->
+                                <div class="row mb-3">
+                                    {{RegistrationForm.last_name.label(class="col-sm-3 col-form-label")}} 
+                                    {% if RegistrationForm.last_name.errors %} 
+                                    <div class="col-sm-9">
+                                        {{RegistrationForm.last_name(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in RegistrationForm.last_name.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div> 
+                                    </div>
+                                    {% else %} 
+                                    <div class="col-sm-9">
+                                        {{RegistrationForm.last_name(class="form-control ", placeholder="...")}}
+                                    </div> 
+                                    {% endif %}
+                                </div>
+
+                                <!--? PASSWORD ONE -->
+                                <div class="row mb-3">
+                                    {{RegistrationForm.password_one.label(class="col-sm-3 col-form-label")}} 
+                                    {% if RegistrationForm.password_one.errors %} 
+                                    <div class="col-sm-9">
+                                        {{RegistrationForm.password_one(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in RegistrationForm.password_one.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div> 
+                                    </div>
+                                    {% else %} 
+                                    <div class="col-sm-9">
+                                        {{RegistrationForm.password_one(class="form-control ", placeholder="...")}}
+                                    </div> 
+                                    {% endif %}
+                                </div>
+
+                                <!--? PASSWORD TWO -->
+                                <div class="row mb-3">
+                                    {{RegistrationForm.password_two.label(class="col-sm-3 col-form-label")}} 
+                                    {% if RegistrationForm.password_two.errors %} 
+                                    <div class="col-sm-9">
+                                        {{RegistrationForm.password_two(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in RegistrationForm.password_two.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div> 
+                                    </div>
+                                    {% else %} 
+                                    <div class="col-sm-9">
+                                        {{RegistrationForm.password_two(class="form-control ", placeholder="...")}}
+                                    </div> 
+                                    {% endif %}
+                                </div>
+
+                                
+                                <div class="text-left mt-0">
+                                    <hr>
+                                    <button type="submit" class="btn btn-primary btn-lg">Create Account</button>
+                                    <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+            </div>
+        </div>
+    </section>
+
+</main>
+<!-- End #main -->
+{% endblock content %}

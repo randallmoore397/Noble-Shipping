@@ -8,3 +8,6 @@
 ./momo.py
 ./orange-money.py
 ./stripe.py
+
+./utils.py
+./NiceAdmin

@@ -1,7 +1,11 @@
 {% extends "main/main_layout.html" %} {% block content %}
 <!-- main-area -->
 <main>
-
+    <style>
+        .s-breadcrumb-bg {
+            background-image: url({{url_for('static',filename='/img/bg/quote_bg.jpg')}});
+        }
+    </style>
     <!-- breadcrumb-area -->
     <div class="breadcrumb-area breadcrumb-bg s-breadcrumb-bg">
         <div class="container">
@@ -86,9 +90,10 @@
                 <div class="col-xl-8 col-lg-10">
                     <div class="tracking-id-info text-center">
                         <p>Enter Tracking Code for Aircargo <a href="#">Tracking Number</a></p>
-                        <form action="#" class="tracking-id-form">
-                            <input type="text" placeholder="Tracking Number">
-                            <button class="btn red-btn">Tracking</button>
+                        <form action="" class="tracking-id-form" method="post">
+                            {{AircargoTrackingForm.hidden_tag()}} 
+                            {{AircargoTrackingForm.tracking_number(class="form-contro ", placeholder="Tracking Number")}}
+                            <button class="btn red-btn" type="submit">Tracking</button>
                         </form>
                         <div class="tracking-list">
                             <ul>
@@ -152,7 +157,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="s-single-services mb-50">
                             <div class="services-thumb mb-25">
-                                <a href="#"><img src="img/images/s_services_img01.jpg" alt="img"></a>
+                                <a href="#"><img src="{{url_for('static',filename='img/images/s_services_img01.jpg')}}" alt="img"></a>
                             </div>
                             <div class="s-services-content">
                                 <h6>Delivery Service</h6>
@@ -165,7 +170,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="s-single-services mb-50">
                             <div class="services-thumb mb-25">
-                                <a href="#"><img src="img/images/s_services_img02.jpg" alt="img"></a>
+                                <a href="#"><img src="{{url_for('static',filename='img/images/s_services_img02.jpg')}}" alt="img"></a>
                             </div>
                             <div class="s-services-content">
                                 <h6>Inspiration Service</h6>
@@ -178,7 +183,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="s-single-services mb-50">
                             <div class="services-thumb mb-25">
-                                <a href="#"><img src="img/images/s_services_img03.jpg" alt="img"></a>
+                                <a href="#"><img src="{{url_for('static',filename='img/images/s_services_img03.jpg')}}" alt="img"></a>
                             </div>
                             <div class="s-services-content">
                                 <h6>Discover Locations</h6>

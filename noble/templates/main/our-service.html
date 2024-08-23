@@ -1,0 +1,129 @@
+{% extends "main/main_layout.html" %} {% block content %}
+<!-- main-area -->
+<main>
+
+    <style>
+        .li-styles {
+            background-color: white !important;
+        }
+        
+        .services-blockquote {
+            background: #fff !important;
+        }
+    </style>
+
+    <!-- services-details -->
+    <div class="services-details-area pt-120 pb-115" style="background-color: ghostwhite !important;">
+        <div class="container">
+            <div class="services-details-wrap">
+                <div class="row">
+                    <div class="col-lg-4 order-2 order-lg-0">
+                        <aside class="services-sidebar">
+                            <div class="services-widget mb-40">
+                                <div class="service-widget-title">
+                                    <h3>Service Category</h3>
+                                </div>
+                                <div class="service-cat-list">
+                                    <ul>
+                                        <li class="active li-styles"><a href="{{url_for('main.all_service')}}">All Services</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_aircargo')}}">AirCargo Tracking</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_container')}}">Container Tracking</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_parcel')}}">Parcel Tracking</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_security_guard')}}">Provision of Security guard</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_goods_logistics')}}">Safekeeping of goods & logistics</a></li>
+                                        <li class="li-styles"><a href="{{url_for('main.services_bullion_vault')}}">Provision of bullion Vault</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="services-widget mb-40">
+                                <div class="service-doc-list">
+                                    <ul>
+                                        <li><a href="#">Noble Shipping Company Listing <i class="fas fa-file-pdf"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="services-widget mb-40">
+                                <div class="service-sidebar-support">
+                                    <h3>Need Support?</h3>
+                                    <p>Express delivery is an innovative service is effective logies</p>
+                                    <a href="#" class="btn">contact Us</a>
+                                </div>
+                            </div>
+                            <div class="services-widget">
+                                <div class="service-widget-title dark-bg">
+                                    <h3>Tags Post</h3>
+                                </div>
+                                <div class="service-tag-list">
+                                    <ul>
+                                        <li class="li-styles"><a href="#">Aircargo Tracking</a></li>
+                                        <li class="li-styles"><a href="#">Parcel Tracking</a></li>
+                                        <li class="li-styles"><a href="#">Container Tracking</a></li>
+                                        <li class="li-styles"><a href="#">Cargo Insurance</a></li>
+                                        <li class="li-styles"><a href="#">Security Guard</a></li>
+                                        <li class="li-styles"><a href="#">Goods and Logistics</a></li>
+                                        <li class="li-styles"><a href="#">Bullion Vault</a></li>
+                                        <li class="li-styles"><a href="#">Delivery</a></li>
+                                        <li class="li-styles"><a href="#">Warehouse</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="services-details-content">
+                            <h4>Was Our Solution is The Best?</h4>
+                            <p>At Noble Services, we are dedicated to delivering solutions that not only meet but exceed our clients' expectations. Our comprehensive approach to logistics and security ensures that we provide the best possible service for
+                                each unique situation. We continuously evaluate and refine our methods to ensure that our solutions remain at the forefront of industry standards.</p>
+
+                            <div class="services-details-img">
+                                <img src="{{url_for('static',filename='/services/our-services.jpg')}}" alt="img">
+                            </div>
+                            <h4>Our Solutions Stand Out Because:</h4>
+                            <div class="services-details-list">
+                                <ul>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Tailored Services: We customize our logistics and security solutions to fit the specific needs of each client, whether it's handling air cargo, container shipments, or providing
+                                        top-notch security.</li>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Advanced Technology: Our use of cutting-edge technology in tracking systems and security measures ensures accuracy, efficiency, and real-time updates, providing clients with
+                                        unparalleled visibility and control.</li>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Experienced Team: Our team of experts brings years of experience to the table, offering professional and knowledgeable support to handle all aspects of logistics and security.</li>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Comprehensive Security: From on-site security guards to high-security bullion vaults, our security services are designed to protect valuable assets and ensure peace of mind
+                                        for our clients.</li>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Help transportation and logistics companies</li>
+                                </ul>
+                            </div>
+
+                            <br>
+                            <h4>Why Our Clients Believe in Our Solutions:</h4>
+                            <div class="services-details-list">
+                                <ul>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Reliability: Clients consistently report high levels of satisfaction with our reliable and timely service, which is crucial for maintaining smooth operations and minimizing
+                                        disruptions.
+                                    </li>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Efficiency: Our streamlined processes and effective management strategies contribute to faster turnaround times and more efficient handling of shipments and security needs.</li>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Customer Support: We pride ourselves on providing exceptional customer service, with a dedicated support team available to address any concerns or questions promptly and
+                                        effectively.
+                                    </li>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Proven Results: Our track record of successful projects and satisfied customers demonstrates the effectiveness of our solutions, reinforcing our commitment to delivering
+                                        the best possible outcomes.</li>
+                                    <li><i class="fas fa-arrow-alt-circle-right"></i>Help transportation and logistics companies</li>
+                                </ul>
+                            </div>
+
+
+                            <blockquote>
+                                By continuously improving and adapting our services, Noble Services remains committed to providing solutions that are not only effective but also align with the evolving needs of our clients. Our focus on excellence ensures that we remain the preferred
+                                choice for logistics and security solutions
+                            </blockquote>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- services-details-end -->
+
+
+</main>
+<!-- main-area-end -->
+{% endblock content %}

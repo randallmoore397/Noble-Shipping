@@ -1,0 +1,375 @@
+{% extends "admin/admin_layout.html" %} {% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1 class="d-lg-block d-sm-none d-none ">{{title}}</h1>
+        <h1 class="d-sm-block d-lg-none">Noble Shipping Company</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">{{menu_item1}}</a></li>
+                <li class="breadcrumb-item">{{menu_item2}}</li>
+                <li class="breadcrumb-item active">{{menu_item3}}</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <style>
+        .tracking-number {
+            font-size: 25px;
+            font-weight: bold;
+            color: #1aac5af2;
+        }
+        
+        .flight-number {
+            font-size: 17px;
+            font-weight: bold;
+            color: #204680;
+        }
+    </style>
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-7">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="mt-4 mb-0"><b><i class="ri ri-plane-fill"></i> Tracking Information (Aircargo)</b></h2>
+                        <p>Please enter tracking information for Aircargo</p>
+                        <hr class="mb-4">
+
+                        <!-- <h5 class="card-title">Container Tracking Information</h5> -->
+                        <form action="" method="post">
+                            {{AircargoTrackingForm.hidden_tag()}}
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <!--? TRACKING NUMBER -->
+                                        {% if AircargoTrackingForm.tracking_number.errors %} {{AircargoTrackingForm.tracking_number(class="form-control invalid-feedback tracking-number", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.tracking_number.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.tracking_number(class="form-control tracking-number", placeholder="...")}} {{AircargoTrackingForm.tracking_number.label(class="form-label")}} {% endif %}
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <!--? ORIGIN -->
+                                        {% if AircargoTrackingForm.origin.errors %} {{AircargoTrackingForm.origin(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.origin.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.origin(class="form-control ", placeholder="...")}} {{AircargoTrackingForm.origin.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <!--? DESTINATION -->
+                                        {% if AircargoTrackingForm.destination.errors %} {{AircargoTrackingForm.destination(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.destination.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.destination(class="form-control ", placeholder="...")}} {{AircargoTrackingForm.destination.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <!--? LAST LOCATION -->
+                                        {% if AircargoTrackingForm.last_location.errors %} {{AircargoTrackingForm.last_location(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.last_location.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.last_location(class="form-control ", placeholder="...")}} {{AircargoTrackingForm.last_location.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <!--? ESTIMATED DELIVERY -->
+                                        {% if AircargoTrackingForm.estimated_delivery.errors %} {{AircargoTrackingForm.estimated_delivery(class="form-control invalid-feedback", placeholder="...",type='date')}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.estimated_delivery.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.estimated_delivery(class="form-control ", placeholder="...",type='date')}} {{AircargoTrackingForm.estimated_delivery.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <!--? CURRENT CARRIER -->
+                                        {% if AircargoTrackingForm.current_carrier.errors %} {{AircargoTrackingForm.current_carrier(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.current_carrier.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.current_carrier(class="form-control ", placeholder="...")}} {{AircargoTrackingForm.current_carrier.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <!--? WEIGHT -->
+                                        {% if AircargoTrackingForm.weight.errors %} {{AircargoTrackingForm.weight(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.weight.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.weight(class="form-control ", placeholder="...")}} {{AircargoTrackingForm.weight.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-5">
+                                    <div class="form-floating">
+                                        <!--? DIMENSION -->
+                                        {% if AircargoTrackingForm.dimensions.errors %} {{AircargoTrackingForm.dimensions(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.dimensions.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.dimensions(class="form-control ", placeholder="...")}} {{AircargoTrackingForm.dimensions.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <!--? VALUE -->
+                                        {% if AircargoTrackingForm.value.errors %} {{AircargoTrackingForm.value(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.value.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.value(class="form-control ", placeholder="...")}} {{AircargoTrackingForm.value.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <!--? DESCRIPTION -->
+                                        {% if AircargoTrackingForm.contents_description.errors %} {{AircargoTrackingForm.contents_description(class="form-control invalid-feedback", placeholder="...",style="height: 100px;")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.contents_description.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.contents_description(class="form-control ", placeholder="...",style="height: 100px;")}} {{AircargoTrackingForm.contents_description.label(class="form-label")}} {% endif %}
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <!--? STATUS -->
+                                        {% if AircargoTrackingForm.status.errors %} {{AircargoTrackingForm.status(class="form-select invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.status.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.status(class="form-select ", placeholder="...")}} {{AircargoTrackingForm.status.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <!--? INSURANCE -->
+                                        {% if AircargoTrackingForm.insurance.errors %} {{AircargoTrackingForm.insurance(class="form-select invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.insurance.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.insurance(class="form-select ", placeholder="...")}} {{AircargoTrackingForm.insurance.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="form-floating mb-3">
+                                        <!--? SENDER'S NAME -->
+                                        {% if AircargoTrackingForm.sender_name.errors %} {{AircargoTrackingForm.sender_name(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.sender_name.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.sender_name(class="form-control ", placeholder="...")}} {{AircargoTrackingForm.sender_name.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-3">
+                                        <!--? SENDER'S CONTACT -->
+                                        {% if AircargoTrackingForm.sender_contact.errors %} {{AircargoTrackingForm.sender_contact(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.sender_contact.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.sender_contact(class="form-control ", placeholder="...")}} {{AircargoTrackingForm.sender_contact.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="form-floating mb-3">
+                                        <!--? RECEIVER'S NAME -->
+                                        {% if AircargoTrackingForm.receiver_name.errors %} {{AircargoTrackingForm.receiver_name(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.receiver_name.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.receiver_name(class="form-control ", placeholder="...")}} {{AircargoTrackingForm.receiver_name.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-3">
+                                        <!--? RECEIVER CONTACT -->
+                                        {% if AircargoTrackingForm.receiver_contact.errors %} {{AircargoTrackingForm.receiver_contact(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.receiver_contact.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.receiver_contact(class="form-control", placeholder="...")}} {{AircargoTrackingForm.receiver_contact.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <!--? DEPARTURE DATE -->
+                                        {% if AircargoTrackingForm.departure_date.errors %} {{AircargoTrackingForm.departure_date(class="form-control invalid-feedback", placeholder="...",type="date")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.departure_date.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.departure_date(class="form-control ", placeholder="...",type="date")}} {{AircargoTrackingForm.departure_date.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <!--? ARRIVAL DATE -->
+                                        {% if AircargoTrackingForm.arrival_date.errors %} {{AircargoTrackingForm.arrival_date(class="form-control invalid-feedback", placeholder="...",type="date")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.arrival_date.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.arrival_date(class="form-control ", placeholder="...",type="date")}} {{AircargoTrackingForm.arrival_date.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <!--? AIRWAY BILL NUMBER -->
+                                        {% if AircargoTrackingForm.airway_bill_number.errors %} {{AircargoTrackingForm.airway_bill_number(class="form-control invalid-feedback flight-number", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.airway_bill_number.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.airway_bill_number(class="form-control flight-number", placeholder="...")}} {{AircargoTrackingForm.airway_bill_number.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <!--? DATE -->
+                                        {% if AircargoTrackingForm.updated_at.errors %} {{AircargoTrackingForm.updated_at(class="form-control invalid-feedback", placeholder="...",type="date")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in AircargoTrackingForm.updated_at.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                        {% else %} {{AircargoTrackingForm.updated_at(class="form-control ", placeholder="...",type="date")}} {{AircargoTrackingForm.updated_at.label(class="form-label")}} {% endif %}
+                                    </div>
+                                </div>
+
+
+                                <div class="text-left">
+                                    <button type="submit" class="btn btn-primary btn-lg">Submit Tracking</button>
+                                    <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-5">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-1">Various Statuses and Meaning </h5>
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Pending:</b></div>
+                                    The shipment is created but hasn't been picked up or started moving yet.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Collected:</b></div>
+                                    The cargo has been collected from the sender.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>In Transit:</b></div>
+                                    The cargo is currently in route to its destination.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Held at Customs:</b></div>
+                                    The cargo is being held by customs authorities for inspection or clearance.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Delivered:</b></div>
+                                    The cargo has been successfully delivered to the recipient.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Awaiting Pickup:</b></div>
+                                    The cargo is at a pickup point, waiting for the recipient to collect it.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Delayed:</b></div>
+                                    The cargo has encountered an unexpected delay, such as bad weather or logistical issues.
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><b>Returned to Sender:</b></div>
+                                    The cargo is being returned to the sender due to delivery failure or other reasons.
+                                </div>
+                            </li>
+                        </ol>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+<!-- End #main -->
+{% endblock content %}
