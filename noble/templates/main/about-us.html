@@ -37,10 +37,13 @@
     <section class="services-area delivery-bg pt-110 pb-90">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-10">
+                <div class="col-xl-10 col-lg-10">
                     <div class="s-section-title text-center mb-60">
-                        <h2>Noble Cargo Delivery</h2>
-                        <p>Express delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful for companies various.</p>
+                        <h4>About Our Company</h4>
+                        <h2>We Provide Services All Over The World</h2>
+                        <p>
+                            Noble Shipping and Security was established in 1945, and has developed into one of the largest, leading carriers in the global container shipping industry. At SCC, we are committed to providing our clients around the world with reliable, flexible shipping solutions based on expertise gained from over half a century of experience. We cultivate long-term partnerships with our customers to delivering a range of services adapted to meet their specific needs with the SCC seal of quality. For SCC’s highly skilled and professional staff, there is no cargo challenge that cannot be met. SCC’s customers enjoy the peace of mind that comes from working with a carrier that offers proven shipping solutions, including out-of-gauge cargo, perishable goods, or hazardous cargo. SCC remains at the forefront of the carrier industry by rapidly adapting to commercial developments and emerging markets. This approach is an integral part of SCC’s working philosophy, and drives the expansion of our operations in established East-West trade routes, while we pursue the development of our carrier services in the world’s newest, most dynamic markets.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -49,30 +52,34 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="single-services mb-30">
                             <div class="services-thumb">
-                                <a href="#"><img src="{{url_for('static',filename='img/close-up-delivery.jpg')}}" alt="img"></a>
+                                <a href="#"><img src="{{url_for('static',filename='img/images/91.jpg')}}" alt="img"></a>
                             </div>
                             <div class="services-content">
                                 <div class="services-icon">
                                     <i class="flaticon-shipping-and-delivery"></i>
                                 </div>
-                                <h3><a href="#">More Control, for Free</a></h3>
-                                <span>Delivery Service</span>
-                                <p>Express delivery is an innovativ service is effective logistics solutio for delivery of small cargo service.</p>
+                                <h3><a href="#">Our Expertise</a></h3>
+                                <span>Excellent Service</span>
+                                <p>
+                                    Our team is dedicated to ensuring that every shipment, whether large or small, is handled with the highest level of care and professionalism. We offer a range of logistics services, including the management and tracking of container cargo, air cargo, and parcels. Our state-of-the-art tracking system provides real-time updates, giving you peace of mind as your goods move through the supply chain.
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="single-services mb-30">
                             <div class="services-thumb">
-                                <a href="#"><img src="{{url_for('static',filename='img/african-woman-package-delivery.jpg')}}" alt="img"></a>
+                                <a href="#"><img src="{{url_for('static',filename='img/images/security.jpg')}}" alt="img"></a>
                             </div>
                             <div class="services-content">
                                 <div class="services-icon">
                                     <i class="flaticon-shipping"></i>
                                 </div>
-                                <h3><a href="#">Expand with E-Commerce</a></h3>
-                                <span>Delivery Service</span>
-                                <p>Express delivery is an innovativ service is effective logistics solutio for delivery of small cargo service.</p>
+                                <h3><a href="#">Our Commitment</a></h3>
+                                <span>Excellent Service</span>
+                                <p>
+                                    At Noble Services, we are committed to delivering exceptional service and support. Our experienced team works diligently to ensure that all your needs are met with efficiency and professionalism. We understand the importance of timely deliveries and secure handling, and we strive to exceed your expectations in every aspect of our service.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -85,9 +92,12 @@
                                 <div class="services-icon">
                                     <i class="flaticon-location"></i>
                                 </div>
-                                <h3><a href="#">More Than Anywhere Shipping</a></h3>
-                                <span>Delivery Service</span>
-                                <p>Express delivery is an innovativ service is effective logistics solutio for delivery of small cargo service.</p>
+                                <h3><a href="#">Why Choose Us?</a></h3>
+                                <span>Excellent Service</span>
+                                <p>
+                                    Our dedication to quality, security, and customer satisfaction sets us apart. We leverage our expertise and advanced technology to provide solutions that meet the highest standards. Whether you are looking to manage large-scale shipments or need comprehensive security for valuable assets, Noble Services is here to assist you every step of the way.
+                                    Thank you for considering Noble Services. 
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -101,7 +111,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 order-0 order-lg-2">
                         <div class="int-services-img text-center text-lg-right">
-                            <img src="{{url_for('static',filename='img/images/int_cargo_img.png')}}" alt="img">
+                            <img src="{{url_for('static',filename='img/images/container-isolated.png')}}" alt="img">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -111,7 +121,7 @@
                         </div>
                         <div class="int-services-content">
                             <p>Noble Cargo is an innovative service is effective logistics solution for the delivery of small and large cargo. This service is useful for companies of various effective logistics scale.</p>
-                            <a href="#" class="btn red-btn">comparison</a>
+                            <button  class="btn red-btn">comparison</>
                         </div>
                     </div>
                 </div>
@@ -130,13 +140,13 @@
                         <div class="video-title">
                             <span>Good Delivery</span>
                             <h2><span>We never</span> break our promise</h2>
-                            <a href="#">more services<span></span></a>
+                            <a href="{{url_for('main.our_services')}}">more services<span></span></a>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="video-play">
+                        <!-- <div class="video-play">
                             <a href="https://www.youtube.com/watch?v=iWKu6WNFf9M" class="popup-video"><img src="img/icon/play_btn.png" alt="img"></a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -151,7 +161,9 @@
                 <div class="col-xl-7 col-lg-10">
                     <div class="s-section-title text-center mb-60">
                         <h2>frequently asked questions</h2>
-                        <p>Express delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful for companies various.</p>
+                        <p>
+                            At Noble Services, we pride ourselves on being a leading provider of comprehensive logistics and security solutions. Established with a commitment to excellence, our company specializes in Container Cargo, Air Cargo, Parcel Delivery, and Security Services. Our mission is to offer reliable, efficient, and secure services tailored to meet the diverse needs of our clients.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -164,8 +176,8 @@
                                     <i class="far fa-bell"></i>
                                 </div>
                                 <div class="faq-tab-content d-none d-lg-block">
-                                    <h5>Anywhere Shipping</h5>
-                                    <p>Express delivery is an innovative service effective logistics.</p>
+                                    <h5>What types of cargo do you handle?</h5>
+                                    <p>Noble Services specializes in handling various types of cargo, including container cargo, air cargo, and parcels.</p>
                                 </div>
                             </a>
                             <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
@@ -173,7 +185,7 @@
                                     <i class="fas fa-award"></i>
                                 </div>
                                 <div class="faq-tab-content d-none d-lg-block">
-                                    <h5>Cargo Logistics Provides</h5>
+                                    <h5>How do I track my shipment?</h5>
                                     <p>Express delivery is an innovative service effective logistics.</p>
                                 </div>
                             </a>
@@ -182,8 +194,8 @@
                                     <i class="fas fa-bullseye"></i>
                                 </div>
                                 <div class="faq-tab-content d-none d-lg-block">
-                                    <h5>Words Cargo Freight</h5>
-                                    <p>Express delivery is an innovative service effective logistics.</p>
+                                    <h5>What security measures are in place for cargo?</h5>
+                                    <p>We prioritize the security of your cargo with comprehensive measures designed.</p>
                                 </div>
                             </a>
                             <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
@@ -191,8 +203,8 @@
                                     <i class="fas fa-cog"></i>
                                 </div>
                                 <div class="faq-tab-content d-none d-lg-block">
-                                    <h5>Shipping Lines</h5>
-                                    <p>Express delivery is an innovative service effective logistics.</p>
+                                    <h5>What should I do if my shipment is delayed?</h5>
+                                    <p>Noble Services will provide updates through our tracking system.</p>
                                 </div>
                             </a>
                         </div>
@@ -206,21 +218,26 @@
                                     </div>
                                     <div class="faq-accordion-content fix">
                                         <div class="faq-tab-content mb-30">
-                                            <h5>Anywhere Shipping</h5>
-                                            <p>Express delivery is an innovative service effective logistics.</p>
+                                            <h5>What types of cargo do you handle?</h5>
+                                            <p>
+                                                Noble Services specializes in handling various types of cargo, including container cargo, air cargo, and parcels. Container cargo involves large shipments transported via sea or land, while air cargo covers goods moved by air transport. Our parcel services cater to smaller packages, often handled by courier services. We offer tailored solutions for each type of cargo, ensuring efficient and secure transport based on the unique needs of your shipment.
+                                            Our team is equipped to manage different types of goods, whether you're sending bulk shipments or individual packages. We ensure that all cargo types are handled with the utmost care, providing real-time tracking and updates throughout the shipping process.
+                                            </p>
                                         </div>
                                         <div class="accordion" id="accordionExample">
                                             <div class="card">
                                                 <div class="card-header" id="headingOne">
                                                     <h5 class="mb-0">
                                                         <a href="#" class="btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                                    What is Startesk?
+                                                                    How do I ensure my goods are insured during transit?
                                                                 </a>
                                                     </h5>
                                                 </div>
                                                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                                     <div class="card-body">
-                                                        <p>Express delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful companies of various effective service is effective logistics scale.
+                                                        <p> 
+                                                            Noble Services provides insurance options for your goods during transit to protect against loss or damage. When booking your shipment, you can choose from various insurance plans based on the value and type of your cargo. Our team will guide you through the process to ensure that your goods are covered.
+                                                            In the event of a claim, our customer service team will assist you in filing and processing the claim efficiently. We aim to offer peace of mind by ensuring that your cargo is adequately insured throughout its journey.
                                                         </p>
                                                     </div>
                                                 </div>
@@ -229,13 +246,15 @@
                                                 <div class="card-header" id="headingTwo">
                                                     <h5 class="mb-0">
                                                         <a href="#" class="btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                                    What is cargo and logistics?
+                                                                    How do I prepare my cargo for shipping?
                                                                 </a>
                                                     </h5>
                                                 </div>
                                                 <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                                     <div class="card-body">
-                                                        <p>Express delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful companies of various effective service is effective logistics scale.
+                                                        <p>
+                                                            Proper preparation is key to ensuring that your cargo arrives safely. Noble Services provides guidelines for packaging and labeling your goods. For container and air cargo, ensure that items are securely packed, labeled correctly, and meet any specific requirements for the mode of transport.
+                                                            Our team can offer advice on packaging materials and methods to prevent damage during transit. By following our guidelines, you can help ensure that your cargo arrives in good condition.
                                                         </p>
                                                     </div>
                                                 </div>
@@ -244,13 +263,15 @@
                                                 <div class="card-header" id="headingThree">
                                                     <h5 class="mb-0">
                                                         <a href="#" class="btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                                    What is the difference between freight and cargo?
+                                                                    Do you offer international shipping services?
                                                                 </a>
                                                     </h5>
                                                 </div>
                                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                                                     <div class="card-body">
-                                                        <p>Express delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful companies of various effective service is effective logistics scale.
+                                                        <p>
+                                                            Yes, Noble Services provides international shipping services for air cargo, container cargo, and parcels. We handle shipments to and from various countries, ensuring compliance with international shipping regulations and customs requirements.
+                                                            Our team will assist you with the necessary documentation and customs procedures to facilitate smooth international deliveries. We aim to provide reliable and efficient service for your global shipping needs.
                                                         </p>
                                                     </div>
                                                 </div>
@@ -259,13 +280,15 @@
                                                 <div class="card-header" id="headingFour">
                                                     <h5 class="mb-0">
                                                         <a href="#" class="btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                                    What is between shipment cargo?
+                                                                    Can I track my cargo in real-time?
                                                                 </a>
                                                     </h5>
                                                 </div>
                                                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
                                                     <div class="card-body">
-                                                        <p>Express delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful companies of various effective service is effective logistics scale.
+                                                        <p>
+                                                            Yes, Noble Services provides real-time tracking for your cargo using the tracking number provided at the time of booking. Our tracking system offers up-to-date information on the status and location of your shipment.
+                                                            For air cargo, container cargo, and parcels, you can view detailed updates on our tracking page. If you have any questions or need further assistance, our customer service team is available to help.
                                                         </p>
                                                     </div>
                                                 </div>
@@ -274,13 +297,15 @@
                                                 <div class="card-header" id="headingFive">
                                                     <h5 class="mb-0">
                                                         <a href="#" class="btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                                                    What are types of cargo?
-                                                                </a>
+                                                            What are your service areas for security services?
+                                                        </a>
                                                     </h5>
                                                 </div>
                                                 <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
                                                     <div class="card-body">
-                                                        <p>Express delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful companies of various effective service is effective logistics scale.
+                                                        <p>
+                                                            Noble Services offers security services across a range of areas, including on-site security guards, safekeeping of goods, and bullion vault services. We can tailor our security solutions to meet the specific needs of different locations and clients.
+                                                            For detailed information about our service areas and to request security services, please contact our customer service team. We will work with you to provide the appropriate security measures for your location and requirements.
                                                         </p>
                                                     </div>
                                                 </div>
@@ -289,13 +314,32 @@
                                                 <div class="card-header" id="headingSix">
                                                     <h5 class="mb-0">
                                                         <a href="#" class="btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                                                    What is the difference between freight cargo?
+                                                                    What are the benefits of using your security guard services?
                                                                 </a>
                                                     </h5>
                                                 </div>
                                                 <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
                                                     <div class="card-body">
-                                                        <p>Express delivery is an innovative service is effective logistics solution for the delivery of small cargo. This service is useful companies of various effective service is effective logistics scale.
+                                                        <p>
+                                                            Noble Services' security guard services provide several benefits, including enhanced protection for your property, goods, and personnel. Our trained guards offer on-site security, deterring potential threats and responding to incidents effectively.
+                                                            With 24/7 monitoring and a proactive approach to security, our guards help ensure a safe and secure environment. Whether for commercial or residential needs, our security services offer peace of mind and comprehensive protection.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="headingSeven">
+                                                    <h5 class="mb-0">
+                                                        <a href="#" class="btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                                                    How do I book a security guard service?
+                                                                </a>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        <p>
+                                                            Booking a security guard service with Noble Services is easy. Simply contact our customer service team or use our online booking system to specify your security needs and requirements. We will assess your needs and arrange for a security guard to be deployed to your location.
+                                                            Our team will work with you to ensure that all security measures are tailored to your specific situation, providing the appropriate level of protection and support.
                                                         </p>
                                                     </div>
                                                 </div>
@@ -311,8 +355,11 @@
                                     </div>
                                     <div class="faq-accordion-content fix">
                                         <div class="faq-tab-content mb-30">
-                                            <h5>Cargo Logistics Provides</h5>
-                                            <p>Express delivery is an innovative service effective logistics.</p>
+                                            <h5>How do I track my shipment?</h5>
+                                            <p>
+                                                To track your shipment with Noble Services, simply use the tracking number provided at the time of booking. You can enter this number on our tracking page to receive real-time updates on the status and location of your cargo. For container cargo, air cargo, and parcels, our tracking system offers detailed information about each stage of your shipment's journey.
+                                                If you encounter any issues or have specific inquiries about your shipment, our customer service team is available to assist you. We are committed to providing accurate and timely updates to keep you informed every step of the way.
+                                                </p>
                                         </div>
                                         <div class="accordion" id="accordionAwardExample">
                                             <div class="card">
@@ -416,8 +463,11 @@
                                     </div>
                                     <div class="faq-accordion-content fix">
                                         <div class="faq-tab-content mb-30">
-                                            <h5>Words Cargo Freight</h5>
-                                            <p>Express delivery is an innovative service effective logistics.</p>
+                                            <h5>What security measures are in place for cargo?</h5>
+                                            <p>
+                                                At Noble Services, we prioritize the security of your cargo with comprehensive measures designed to protect your shipments. Our security protocols include secure storage facilities, surveillance systems, and controlled access points. For air cargo, our facilities are equipped to handle high-value and sensitive items with additional security checks.
+                                                We also offer on-site security guard services to ensure the safety of goods throughout the transportation and storage process. These measures are in place to prevent theft, damage, or unauthorized access, providing you with peace of mind.
+                                            </p>
                                         </div>
                                         <div class="accordion" id="accordionBullseyeExample">
                                             <div class="card">
@@ -521,8 +571,11 @@
                                     </div>
                                     <div class="faq-accordion-content fix">
                                         <div class="faq-tab-content mb-30">
-                                            <h5>Shipping Lines</h5>
-                                            <p>Express delivery is an innovative service effective logistics.</p>
+                                            <h5>What should I do if my shipment is delayed?</h5>
+                                            <p>
+                                                If your shipment experiences a delay, Noble Services will provide updates through our tracking system. You can also contact our customer service team for more information and assistance. We will investigate the cause of the delay and work to resolve any issues as quickly as possible.
+                                                Our team is committed to keeping you informed and providing solutions to minimize the impact of any delays. We understand the importance of timely deliveries and strive to address any issues promptly.
+                                            </p>
                                         </div>
                                         <div class="accordion" id="accordionCogExample">
                                             <div class="card">

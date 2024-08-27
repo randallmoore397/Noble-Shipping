@@ -8,6 +8,10 @@ from pathlib import Path
 from werkzeug.utils import secure_filename
 from pathlib import Path
 from datetime import datetime, timedelta
+# import barcode
+# from barcode import Code128
+# import secrets
+# import os
 
 
 
@@ -54,27 +58,30 @@ def userIDGenerator(stringLength=6):
     return ''.join(random.choice(letters) for i in range(stringLength))
 
 
+import barcode
+from barcode import Code128
+from barcode.writer import ImageWriter
+import secrets
+import os
+from flask import current_app
 
-# def gen_QRCode():
-#     import barcode
-#     from barcode import Code128
-#     import secrets
-#     import os
-#     from flask import current_app
-
-#     letters = string.digits
-#     data = ''.join(random.choice(letters) for i in range(15))
-
-#     new_file_name = secrets.token_hex(20)
-
-#     file_path = os.path.join(current_app.root_path, 'static/QR_Code/', new_file_name)
-
-#     import barcode
-#     from barcode.writer import ImageWriter
-
-
-#     EAN = barcode.get_barcode_class('ean13')
-#     ean = EAN(data, writer=ImageWriter())
-#     ean.save(file_path)
+def gen_QRCode():
     
-#     return new_file_name
+    
+
+    letters = string.digits
+    data = ''.join(random.choice(letters) for i in range(15))
+
+    new_file_name = secrets.token_hex(20)
+
+    file_path = os.path.join(current_app.root_path, 'static/QR_Code/', new_file_name)
+
+    import barcode
+    from barcode.writer import ImageWriter
+
+
+    EAN = barcode.get_barcode_class('ean13')
+    ean = EAN(data, writer=ImageWriter())
+    ean.save(file_path)
+    
+    return new_file_name

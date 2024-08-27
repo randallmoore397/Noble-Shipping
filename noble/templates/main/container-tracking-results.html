@@ -157,20 +157,20 @@
                     <tbody>
                         {% for history in tracking_details.history %}
                         <tr>
-                            <td class="text-capitalize">{{history.timestamp.strftime('%B %d, %Y')}}</td>
-                            <td class="text-capitalize"><i class="bi bi-arrow-up-right-circle text-success"></i> {{history.status}}</td>
-                            <td class="text-capitalize">{{history.location}}</td>
-                            <td class="text-capitalize">{{history.current_carrier}}</td>
-                            <td class="text-capitalize">{{tracking_details.origin}}</td>
-                            <td class="text-capitalize">{{tracking_details.destination}}</td>
-                            <td class="text-capitalize gray-tb"> {{tracking_details.tracking_number}}</td>
+                            <td class="text-capitalize"><b>{{history.timestamp.strftime('%B %d, %Y')}}</b></td>
+                            <td class="text-capitalize"><i class="bi bi-arrow-up-right-circle text-success"></i> <b>{{history.status}}</b></td>
+                            <td class="text-capitalize"><b>{{history.location}}</b></td>
+                            <td class="text-capitalize"><b>{{history.current_carrier}}</b></td>
+                            <td class="text-capitalize"><b>{{tracking_details.origin}}</b></td>
+                            <td class="text-capitalize"><b>{{tracking_details.destination}}</b></td>
+                            <td class="text-capitalize gray-tb"><b>{{tracking_details.tracking_number}}</b></td>
                             <!-- <i class="bi bi-arrow-right-circle-fill text-success"></i> -->
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
 
-                <img src="{{url_for('static',filename='/QR_Code/barcode.png')}}" alt="barcode" style="width: 170px; float: inline-end;">
+                <img src="{{url_for('static',filename='/QR_Code/'+ tracking_details.barcode + '.png')}}" alt="barcode" style="width: 170px; float: inline-end;">
             </div>
             <div class="card-footer text-center">
                 <p>© Copyright Noble Shipping Company| All Rights Reserved</p>
@@ -179,7 +179,7 @@
 
         <div class="text-left">
             <a href="{{url_for('main.container_tracking')}}" class="btn btn-primary btn-lg">Continue Tracking</a>
-            <button type="reset" class="btn btn-danger btn-lg">Return Home</button>
+            <a href="{{url_for('main.index')}}" type="reset" class="btn btn-danger btn-lg">Return Home</a>
         </div>
     </div>
 

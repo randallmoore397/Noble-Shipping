@@ -2,8 +2,8 @@ from flask import Blueprint, render_template, redirect, url_for, request
 from noble import db, bcrypt,user_datastore
 from flask_security import current_user
 from flask_security import login_required, current_user,roles_required, login_user, utils,roles_accepted,logout_user 
-from noble.Main.forms import ExtendedLogin,ContainerTracking,AircargoTracking
-from noble.models import Staffs, User, Staffs,Aircargo, Cargo
+from noble.Main.forms import ExtendedLogin,ContainerTracking,AircargoTracking,GetInTouchs,RequestQuotes
+from noble.models import Staffs, User, Staffs,Aircargo, Cargo,RequestQuote,GetInTouch
 from flask.helpers import flash
 from datetime import datetime
 from noble.User.utils import validate_tracking_number
@@ -117,9 +117,31 @@ def login():
 
 @main.route('/',methods=['GET','POST'])
 def index():
+    RequestQuoteForm = RequestQuotes()
+    
+    if request.method == 'POST':
+        #? SAVE THE INFORMATION TO NOTIFICATION TABLE FOR REQUESTED QUOTES
+        
+        add_quote = RequestQuote(
+            service=RequestQuoteForm.service.data,
+            weight=RequestQuoteForm.weight.data,
+            length=RequestQuoteForm.length.data,
+            height=RequestQuoteForm.height.data,
+            from_country=RequestQuoteForm.from_country.data,
+            to_country=RequestQuoteForm.to_country.data,
+            email_address=RequestQuoteForm.email_address.data
+        )
+        db.session.add(add_quote)
+        db.session.commit()
+        flash("Your Request has been submitted, We will contact you through email when quote ready",'success')
+        return redirect(url_for('main.index'))
     
     title = "home"
-    return render_template('main/index.html',title=title)
+    return render_template(
+        'main/index.html',
+        title=title,
+        RequestQuoteForm=RequestQuoteForm
+    )
 
 
 @main.route('/aircargo/tracking',methods=['GET','POST'])
@@ -197,9 +219,25 @@ def our_services():
 
 @main.route('/contact/us',methods=['GET','POST'])
 def contact_us():
+    GetInTouchForm = GetInTouchs()
+    
+    if GetInTouchForm.validate_on_submit():
+        #? SAVE THE INFORMATION TO NOTIFICATION TABLE FOR CLIENT MESSAGES
+        add_contact_msg = GetInTouch(
+            first_name=GetInTouchForm.first_name.data,
+            last_name=GetInTouchForm.last_name.data,
+            email=GetInTouchForm.email.data,
+            website=GetInTouchForm.website.data,
+            message=GetInTouchForm.message.data
+        )
+        db.session.add(add_contact_msg)
+        db.session.commit()
+        flash("Thank you for contacting us, we will respond to you shortly",'success')
+        return redirect(url_for('main.contact_us'))
+    
     
     title = "Contact Us"
-    return render_template('main/contact_us.html',title=title)
+    return render_template('main/contact_us.html',title=title,GetInTouchForm=GetInTouchForm)
 
 
 @main.route('/about/us',methods=['GET','POST'])

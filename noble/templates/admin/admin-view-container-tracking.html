@@ -154,14 +154,14 @@
                                     <th>Status</th>
                                     <th>Location</th>
                                     <th>Delivery</th>
-                                    <th>Carrier</th>
+                                    <th style="width: 300px !important;">Carrier</th>
                                     <th>Weight</th>
                                     <!-- <th>Description</th> -->
                                     <th>Dimension</th>
                                     <th>Value</th>
                                     <th>Insurance</th>
                                     <th>Description</th>
-                                    <th>Edit</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -173,9 +173,21 @@
                                     <td>{{container_tracking.origin}}</td>
                                     <td>{{container_tracking.destination}}</td>
                                     {% if container_tracking.status == 'Reached' %}
-                                    <td class="table-active">{{container_tracking.status}}</td>
+                                    <td class="table-active"><span class="badge bg-success">{{container_tracking.status}}</span></td>
+                                    {% elif container_tracking.status == 'Pending' %}
+                                    <td class="table-active">
+                                        <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> {{container_tracking.status}}</span>
+                                    </td>
+                                    {% elif container_tracking.status == 'Returned to Sender' %}
+                                    <td>
+                                        <span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i> {{container_tracking.status}}</span>
+                                    </td>
+                                    {% elif container_tracking.status == 'Delivered' %}
+                                    <td>
+                                        <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> {{container_tracking.status}}</span>
+                                    </td>
                                     {% else %}
-                                    <td>{{container_tracking.status}}</td>
+                                    <td><span class="badge bg-primary"><i class="bi bi-star me-1"></i> {{container_tracking.status}}</span></td>
                                     {% endif %}
                                     <td>{{container_tracking.last_location}}</td>
                                     <td>{{container_tracking.estimated_delivery.strftime('%B-%d-%Y')}}</td>
@@ -186,8 +198,11 @@
                                     <td>{{container_tracking.insurance}}</td>
                                     <td>{{container_tracking.contents_description}}</td>
                                     <td>
-                                        <a href="{{url_for('admin.admin_cargo_edit',tracking_number=container_tracking.tracking_number)}}" type="button" class="btn btn-edit btn-sm"><i class="ri ri-ball-pen-line"></i></a>
+                                        <a href="{{url_for('admin.admin_cargo_edit',tracking_number=container_tracking.tracking_number)}}" type="button" class="btn btn-danger btn-sm p-2"><i class="ri ri-ball-pen-line"></i> Edit</a>
+
+                                        <a href="{{url_for('admin.admin_view_container_tracking_history',container_id=container_tracking.id)}}" target="_blank" type="button" class="btn btn-dark btn-sm p-2"><i class="bi bi-hourglass-bottom"></i> History</a>
                                     </td>
+
                                 </tr>
                                 {% endfor %}
                             </tbody>

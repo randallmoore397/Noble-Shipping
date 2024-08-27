@@ -1,13 +1,13 @@
 from noble import db
 from flask import Blueprint, render_template, redirect, url_for, request
-from noble.Shipping.forms import ContainerTracking
-from noble.Airline.forms import AircargoTracking
+from noble.Shipping.forms import ContainerTracking,ContainerTrackingHistory
+from noble.Airline.forms import AircargoTracking,AircargoTrackingHistory
 from noble.Airline.utils import generate_flight_number,generate_airway_bill_number
 from noble import db, bcrypt,user_datastore
 from noble.User.utils import generate_tracking_number,validate_tracking_number
 from noble.User.Admin.forms import Registration,ResetMyPassword,ResetPassword,MyProfile
-from noble.User.Admin.utils import save_profile,userIDGenerator#,gen_QRCode
-from noble.models import Cargo,Aircargo,Staffs,User,AircargoStatusHistory,CargoStatusHistory
+from noble.User.Admin.utils import save_profile,userIDGenerator,gen_QRCode
+from noble.models import Cargo,Aircargo,Staffs,User,AircargoStatusHistory,CargoStatusHistory,RequestQuote,GetInTouch
 from datetime import datetime, date
 from flask.helpers import flash
 from flask_security import login_required, current_user,roles_required, login_user, utils,roles_accepted,logout_user 
@@ -23,27 +23,46 @@ def admin_dashboard():
     
     #? TOTAL AIRCARGO TRACKING
     total_aircargo_tracking = None
+    air_tracking = Aircargo.query.all()
+    total_aircargo_tracking = len(air_tracking)
+    print(f'air_tracking :{air_tracking}')
+    print(f'total_aircargo_tracking :{total_aircargo_tracking}')
     
     #? TOTAL CONTAINER CARGO TRACKING
     total_container_cargo_tracking = None
+    container_tracking = Cargo.query.all()
+    total_container_cargo_tracking = len(container_tracking)
+    print(f'container_tracking :{container_tracking}')
+    print(f'total_container_cargo_tracking :{total_container_cargo_tracking}')
     
     #? TOTAL ACTIVE USERS
     total_active_users = None
+    users = User.query.all()
+    total_active_users = len(users)
+    print(f'users :{users}')
+    print(f'total_active_users :{total_active_users}')
     
     #? TOTAL VISITORS TODAY
     total_visitors_total = None
     
     #? 10 RECENT AIRCARGO
-    ten_recent_aircargo = None
+    ten_recent_aircargo = Aircargo.query.order_by(Aircargo.id.desc()).limit(10).all()
     
     #? 10 RECENT CONTAINER CARGO
-    ten_recent_container_cargo = None
+    ten_recent_container_cargo = Cargo.query.order_by(Cargo.id.desc()).limit(10).all()
+    print(f"ten_recent_container_cargo: {ten_recent_container_cargo}")
     
     
     title = "Dashboard"
     return render_template(
         'admin/admin_dashboard.html',
-        title=title
+        title=title,
+        total_aircargo_tracking=total_aircargo_tracking,
+        total_container_cargo_tracking=total_container_cargo_tracking,
+        total_active_users=total_active_users,
+        total_visitors_total=total_visitors_total,
+        ten_recent_aircargo=ten_recent_aircargo,
+        ten_recent_container_cargo=ten_recent_container_cargo
     )
 
 #? admin PROFILE
@@ -263,6 +282,8 @@ def admin_container_tracking():
         contents_description = ContainerTrackingForm.contents_description.data
         value = ContainerTrackingForm.value.data
         
+        barcode = gen_QRCode()
+        
         updated_at = ContainerTrackingForm.updated_at.data
         print(f"Inside updated_at : {type(updated_at)}")
         
@@ -302,7 +323,8 @@ def admin_container_tracking():
                 value=value,
                 insurance=insurance,
                 created_at=updated_at,
-                updated_at=updated_at
+                updated_at=updated_at,
+                barcode=barcode
         )
         db.session.add(create_cargo)
         db.session.commit()
@@ -373,7 +395,109 @@ def admin_view_container_tracking():
         menu_item3=menu_item3,
         all_container_tracking=all_container_tracking
         )
+    
 
+
+#? VIEW CONTAINER TRACKING HISTORY
+@admin.route('/noble/admin/view/container/tracking/history/<string:container_id>',methods=['GET','POST'])
+@login_required
+@roles_accepted('admin','staff')
+def admin_view_container_tracking_history(container_id):
+
+    # Query to get the last 100 records, ordered by `id` in descending order
+    all_tracking_history = CargoStatusHistory.query.filter_by(cargo_id=container_id)\
+                              .order_by(CargoStatusHistory.id.desc())\
+                              .limit(100)\
+                              .all()
+    
+    print(f"all_tracking_history : {all_tracking_history}")
+    title = "Container Tracking History"
+    menu_item1 = "Container"
+    menu_item2 = "Tracking"
+    menu_item3 = "History"
+    return render_template(
+        'admin/admin-view-container-tracking-history.html',
+        title=title,
+        menu_item1=menu_item1,
+        menu_item2=menu_item2,
+        menu_item3=menu_item3,
+        all_tracking_history=all_tracking_history
+        )
+
+
+#? EDIT CONTAINER TRACKING HISTORY USING HISTORY ID
+@admin.route('/noble/admin/edit/container/tracking/history/<string:history_id>',methods=['GET','POST'])
+@login_required
+@roles_accepted('admin','staff')
+def admin_edit_container_tracking_history(history_id):
+    ContainerTrackingHistoryForm = ContainerTrackingHistory()
+    
+    prev_route = request.referrer
+    is_history = CargoStatusHistory.query.filter_by(id=history_id).first()
+    
+    if ContainerTrackingHistoryForm.validate_on_submit():
+
+        is_history.current_carrier=ContainerTrackingHistoryForm.current_carrier.data
+        is_history.location=ContainerTrackingHistoryForm.location.data
+        is_history.timestamp=ContainerTrackingHistoryForm.timestamp.data
+        
+        
+        is_history.status= None        
+        if ContainerTrackingHistoryForm.status.data == '1':
+            is_history.status = 'Pending'
+        elif ContainerTrackingHistoryForm.status.data == '2':
+            is_history.status = 'Collected'
+        elif ContainerTrackingHistoryForm.status.data == '3':
+            is_history.status = 'In Transit'
+        elif ContainerTrackingHistoryForm.status.data == '4':
+            is_history.status = 'Held at Customs'
+        elif ContainerTrackingHistoryForm.status.data == '5':
+            is_history.status = 'Delivered'
+        elif ContainerTrackingHistoryForm.status.data == '6':
+            is_history.status = 'Awaiting Pickup'
+        elif ContainerTrackingHistoryForm.status.data == '7':
+            is_history.status = 'Delayed'
+        elif ContainerTrackingHistoryForm.status.data == '8':
+            is_history.status = 'Returned to Sender'
+        
+        db.session.commit()
+        flash("History was updated successfully",'success')
+        return redirect(url_for('admin.admin_view_container_tracking_history',container_id=is_history.cargo_id))
+    
+    ContainerTrackingHistoryForm.current_carrier.data=is_history.current_carrier
+    ContainerTrackingHistoryForm.location.data=is_history.location
+    ContainerTrackingHistoryForm.timestamp.data=is_history.timestamp
+    
+    if is_history.status == 'Pending':
+        ContainerTrackingHistoryForm.status.data = '1'
+    elif is_history.status == 'Collected':
+        ContainerTrackingHistoryForm.status.data = '2'
+    elif is_history.status == 'In Transit':
+        ContainerTrackingHistoryForm.status.data = '3'
+    elif is_history.status == 'Held at Customs':
+        ContainerTrackingHistoryForm.status.data = '4'
+    elif is_history.status == 'Delivered':
+        ContainerTrackingHistoryForm.status.data = '4'
+    elif is_history.status == 'Awaiting Pickup':
+        ContainerTrackingHistoryForm.status.data = '6'
+    elif is_history.status == 'Delayed':
+        ContainerTrackingHistoryForm.status.data = '7'
+    elif is_history.status == 'Returned to Sender':
+        ContainerTrackingHistoryForm.status.data = '8'
+    
+    title = "Edit Tracking History"
+    menu_item1 = "Edit"
+    menu_item2 = "Tracking"
+    menu_item3 = "History"
+    return render_template(
+        'admin/admin-edit-container-tracking-history.html',
+        title=title,
+        menu_item1=menu_item1,
+        menu_item2=menu_item2,
+        menu_item3=menu_item3,
+        is_history=is_history,
+        ContainerTrackingHistoryForm=ContainerTrackingHistoryForm
+        )
 
 #? CONTAINER TRACKING
 @admin.route('/noble/admin/container/tracking/edit/<string:tracking_number>',methods=['GET','POST'])
@@ -564,7 +688,9 @@ def admin_aircargo_tracking():
         
         
         carrier = current_carrier
-        airway_bill_number = generate_airway_bill_number(carrier)        
+        airway_bill_number = generate_airway_bill_number(carrier)      
+        
+        barcode = gen_QRCode()  
                 
         create_cargo = Aircargo(                
                 tracking_number=tracking_number,
@@ -588,7 +714,8 @@ def admin_aircargo_tracking():
                 departure_date = departure_date,
                 arrival_date = arrival_date,
                 created_at=updated_at,
-                updated_at=updated_at 
+                updated_at=updated_at,
+                barcode=barcode
         )
         db.session.add(create_cargo)
         db.session.commit()
@@ -669,6 +796,110 @@ def admin_view_aircargo_tracking():
         all_container_tracking=all_container_tracking
     )
 
+
+
+#? VIEW AIRCARGO TRACKING HISTORY
+@admin.route('/noble/admin/view/aircargo/tracking/history/<string:aircargo_id>',methods=['GET','POST'])
+@login_required
+@roles_accepted('admin','staff')
+def admin_view_aircargo_tracking_history(aircargo_id):
+
+    # Query to get the last 100 records, ordered by `id` in descending order
+    all_tracking_history = AircargoStatusHistory.query.filter_by(aircargo_id=aircargo_id)\
+                              .order_by(AircargoStatusHistory.id.desc())\
+                              .limit(100)\
+                              .all()
+    
+    print(f"all_tracking_history : {all_tracking_history}")
+    title = "Aircargo Tracking History"
+    menu_item1 = "Aircargo"
+    menu_item2 = "Tracking"
+    menu_item3 = "History"
+    return render_template(
+        'admin/admin-view-aircargo-tracking-history.html',
+        title=title,
+        menu_item1=menu_item1,
+        menu_item2=menu_item2,
+        menu_item3=menu_item3,
+        all_tracking_history=all_tracking_history
+        )
+
+
+#? EDIT AIRCARGO TRACKING HISTORY USING HISTORY ID
+@admin.route('/noble/admin/edit/aircargo/tracking/history/<string:history_id>',methods=['GET','POST'])
+@login_required
+@roles_accepted('admin','staff')
+def admin_edit_aircargo_tracking_history(history_id):
+    AircargoTrackingHistoryForm = AircargoTrackingHistory()
+    
+    prev_route = request.referrer
+    is_history = AircargoStatusHistory.query.filter_by(id=history_id).first()
+    
+    if AircargoTrackingHistoryForm.validate_on_submit():
+
+        is_history.current_carrier=AircargoTrackingHistoryForm.current_carrier.data
+        is_history.location=AircargoTrackingHistoryForm.location.data
+        is_history.timestamp=AircargoTrackingHistoryForm.timestamp.data
+        
+        
+        is_history.status= None        
+        if AircargoTrackingHistoryForm.status.data == '1':
+            is_history.status = 'Pending'
+        elif AircargoTrackingHistoryForm.status.data == '2':
+            is_history.status = 'Collected'
+        elif AircargoTrackingHistoryForm.status.data == '3':
+            is_history.status = 'In Transit'
+        elif AircargoTrackingHistoryForm.status.data == '4':
+            is_history.status = 'Held at Customs'
+        elif AircargoTrackingHistoryForm.status.data == '5':
+            is_history.status = 'Delivered'
+        elif AircargoTrackingHistoryForm.status.data == '6':
+            is_history.status = 'Awaiting Pickup'
+        elif AircargoTrackingHistoryForm.status.data == '7':
+            is_history.status = 'Delayed'
+        elif AircargoTrackingHistoryForm.status.data == '8':
+            is_history.status = 'Returned to Sender'
+        
+        db.session.commit()
+        flash("History was updated successfully",'success')
+        return redirect(url_for('admin.admin_view_aircargo_tracking_history',aircargo_id=is_history.aircargo_id))
+    
+    AircargoTrackingHistoryForm.current_carrier.data=is_history.current_carrier
+    AircargoTrackingHistoryForm.location.data=is_history.location
+    AircargoTrackingHistoryForm.timestamp.data=is_history.timestamp
+    
+    if is_history.status == 'Pending':
+        AircargoTrackingHistoryForm.status.data = '1'
+    elif is_history.status == 'Collected':
+        AircargoTrackingHistoryForm.status.data = '2'
+    elif is_history.status == 'In Transit':
+        AircargoTrackingHistoryForm.status.data = '3'
+    elif is_history.status == 'Held at Customs':
+        AircargoTrackingHistoryForm.status.data = '4'
+    elif is_history.status == 'Delivered':
+        AircargoTrackingHistoryForm.status.data = '4'
+    elif is_history.status == 'Awaiting Pickup':
+        AircargoTrackingHistoryForm.status.data = '6'
+    elif is_history.status == 'Delayed':
+        AircargoTrackingHistoryForm.status.data = '7'
+    elif is_history.status == 'Returned to Sender':
+        AircargoTrackingHistoryForm.status.data = '8'
+    
+    title = "Edit Tracking History"
+    menu_item1 = "Edit"
+    menu_item2 = "Tracking"
+    menu_item3 = "History"
+    return render_template(
+        'admin/admin-edit-aircargo-tracking-history.html',
+        title=title,
+        menu_item1=menu_item1,
+        menu_item2=menu_item2,
+        menu_item3=menu_item3,
+        is_history=is_history,
+        AircargoTrackingHistoryForm=AircargoTrackingHistoryForm
+        )
+    
+    
 
 #? AIRCARGO TRACKING
 @admin.route('/noble/admin/aircargo/tracking/edit/<string:tracking_number>',methods=['GET','POST'])
@@ -857,40 +1088,45 @@ def admin_view_parcel_tracking():
 
 
 #? SEND NOTIFICATION
-@admin.route('/noble/admin/send/notification',methods=['GET','POST'])
+@admin.route('/noble/admin/view/request/quotes',methods=['GET','POST'])
 @login_required
 @roles_accepted('admin','staff')
-def admin_notification():
+def admin_request_quotes():                              
+    request_quotes = RequestQuote.query.order_by(RequestQuote.id.desc()).limit(100).all()
     
-    title = "Send Notification"
-    menu_item1 = "Account"
-    menu_item2 = "send"
-    menu_item3 = "Notification"
+    title = "Request Quotes"
+    menu_item1 = "View"
+    menu_item2 = "Request"
+    menu_item3 = "Quotes"
     return render_template(
-        'admin/admin-parcel-tracking.html',
+        'admin/admin-view-request-quotes.html',
         title=title,
         menu_item1=menu_item1,
         menu_item2=menu_item2,
-        menu_item3=menu_item3
+        menu_item3=menu_item3,
+        request_quotes=request_quotes
     )
 
 
 #? VIEW NOTIFICATION
-@admin.route('/noble/admin/view/notification',methods=['GET','POST'])
+@admin.route('/noble/admin/contact/us/messages',methods=['GET','POST'])
 @login_required
 @roles_accepted('admin','staff')
-def admin_view_notification():
+def admin_contact_us():
     
-    title = "View Notifications"
-    menu_item1 = "Account"
-    menu_item2 = "View"
-    menu_item3 = "Notifications"
+    contact_us_messages = GetInTouch.query.order_by(GetInTouch.id.desc()).limit(100).all()
+    
+    title = "Contact Us Messages"
+    menu_item1 = "Contact"
+    menu_item2 = "US"
+    menu_item3 = "Messages"
     return render_template(
-        'admin/admin-view-parcel-tracking.html',
+        'admin/admin-view-contact-us-messages.html',
         title=title,
         menu_item1=menu_item1,
         menu_item2=menu_item2,
-        menu_item3=menu_item3
+        menu_item3=menu_item3,
+        contact_us_messages=contact_us_messages
     )
 
 

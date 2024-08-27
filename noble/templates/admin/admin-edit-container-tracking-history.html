@@ -1,0 +1,124 @@
+ {% extends "admin/admin_layout.html" %} {% block content %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1 class="d-lg-block d-sm-none d-none ">{{title}}</h1>
+        <h1 class="d-sm-block d-lg-none">Noble Shipping Company</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">{{menu_item1}}</a></li>
+                <li class="breadcrumb-item">{{menu_item2}}</li>
+                <li class="breadcrumb-item active">{{menu_item3}}</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-titl mt-4 mb-0"><b>Edit Container Tracking History</b></h3>
+                        <p class="mb-0 pb-0"><b>Tracking Number [ {{is_history.history.tracking_number}} ]</b></p>
+                        <hr class="mb-3 pb-3">
+                        <form action="" method="post">
+                            {{ContainerTrackingHistoryForm.hidden_tag()}}
+                            <div class="row">
+                                <!--? CURRENT CARRIER -->
+                                <div class="row mb-3">
+                                    {{ContainerTrackingHistoryForm.current_carrier.label(class="col-sm-3 col-form-label")}} {% if ContainerTrackingHistoryForm.current_carrier.errors %}
+                                    <div class="col-sm-9">
+                                        {{ContainerTrackingHistoryForm.current_carrier(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingHistoryForm.current_carrier.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{ContainerTrackingHistoryForm.current_carrier(class="form-control ", placeholder="...")}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+
+
+
+                                <!--? STATUS  -->
+                                <div class="row mb-3">
+                                    {{ContainerTrackingHistoryForm.status.label(class="col-sm-3 col-form-label")}} {% if ContainerTrackingHistoryForm.status.errors %}
+                                    <div class="col-sm-9">
+                                        {{ContainerTrackingHistoryForm.status(class="form-select invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingHistoryForm.status.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{ContainerTrackingHistoryForm.status(class="form-select ", placeholder="...")}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+
+                                <!--? LOCATION -->
+                                <div class="row mb-3">
+                                    {{ContainerTrackingHistoryForm.location.label(class="col-sm-3 col-form-label")}} {% if ContainerTrackingHistoryForm.location.errors %}
+                                    <div class="col-sm-9">
+                                        {{ContainerTrackingHistoryForm.location(class="form-control invalid-feedback", placeholder="...")}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingHistoryForm.location.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{ContainerTrackingHistoryForm.location(class="form-control ", placeholder="...")}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+
+                                <!--? TIME STAMP -->
+                                <div class="row mb-3">
+                                    {{ContainerTrackingHistoryForm.timestamp.label(class="col-sm-3 col-form-label")}} {% if ContainerTrackingHistoryForm.timestamp.errors %}
+                                    <div class="col-sm-9">
+                                        {{ContainerTrackingHistoryForm.timestamp(class="form-control invalid-feedback", placeholder="...",type='date')}}
+                                        <div class="invalid-feedback text-danger">
+                                            {% for error in ContainerTrackingHistoryForm.timestamp.errors %}
+                                            <span>{{error}}</span> {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="col-sm-9">
+                                        {{ContainerTrackingHistoryForm.timestamp(class="form-control ", placeholder="...",type='date')}}
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="text-left mt-0">
+                                    <hr>
+                                    <button type="submit" class="btn btn-primary btn-lg">Update History</button>
+                                    <button type="reset" class="btn btn-danger btn-lg">Clear Form</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+
+
+
+            </div>
+        </div>
+    </section>
+
+</main>
+<!-- End #main -->
+{% endblock content %}

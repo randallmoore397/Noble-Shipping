@@ -63,8 +63,8 @@ class Staffs(db.Model):
         return f"User('{self.first_name} {self.middle_name}', '{self.last_name}', '{self.position}')"
  
     
-    # Relationships
-    notifications = db.relationship('Notification', backref='user', lazy=True)
+    # # Relationships
+    # notifications = db.relationship('Notification', backref='user', lazy=True)
 
 
 #? Cargo Table
@@ -84,12 +84,13 @@ class Cargo(db.Model):
     contents_description = db.Column(db.String(255), nullable=True)
     value = db.Column(db.String(100), nullable=True)
     insurance = db.Column(db.String(100), nullable=True)
+    barcode=db.Column(db.String(100), nullable=True)
     created_at =  db.Column(db.DateTime(),nullable=False,default=datetime.utcnow)
     updated_at =  db.Column(db.DateTime(),nullable=False,default=datetime.utcnow)
     
     # Relationships
     history = db.relationship('CargoStatusHistory', backref='history', lazy=True)
-    updates = db.relationship('CargoUpdate', backref='updates', lazy=True)
+    # updates = db.relationship('CargoUpdate', backref='updates', lazy=True)
     carrier = db.relationship('Carrier', backref='carrier', lazy=True)
 
 
@@ -102,17 +103,6 @@ class CargoStatusHistory(db.Model):
     status = db.Column(db.String(50), nullable=False)
     location = db.Column(db.String(100), nullable=True)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-
-
-#? CargoUpdate Table
-#? Stores updates made to the cargo by admin or automated systems.
-class CargoUpdate(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    cargo_id = db.Column(db.Integer, db.ForeignKey('cargo.id'), nullable=False)
-    update_type = db.Column(db.String(50), nullable=False)  # e.g., "Status Change", "Location Update"
-    description = db.Column(db.String(255), nullable=False)
-    created_by = db.Column(db.String(50), nullable=False)  # could store admin username or system name
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
 class Aircargo(db.Model):
@@ -138,12 +128,13 @@ class Aircargo(db.Model):
     airway_bill_number = db.Column(db.String(20), nullable=True)
     departure_date = db.Column(db.DateTime, nullable=True)
     arrival_date = db.Column(db.DateTime, nullable=True)
+    barcode=db.Column(db.String(100), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     # Relationships
     aircargo_history = db.relationship('AircargoStatusHistory', backref='aircargo_history', lazy=True)
-    aircargo_updates = db.relationship('AircargoUpdate', backref='aircargo_updates', lazy=True)
+    # aircargo_updates = db.relationship('AircargoUpdate', backref='aircargo_updates', lazy=True)
     aircargo_carrier = db.relationship('Carrier', backref='aircargo_carrier', lazy=True)
     
 class AircargoStatusHistory(db.Model):
@@ -155,15 +146,6 @@ class AircargoStatusHistory(db.Model):
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
 
-class AircargoUpdate(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    aircargo_id = db.Column(db.Integer, db.ForeignKey('aircargo.id'), nullable=False)
-    update_type = db.Column(db.String(50), nullable=False)  # e.g., "Status Change", "Location Update"
-    description = db.Column(db.String(255), nullable=False)
-    created_by = db.Column(db.String(50), nullable=False)  # could store admin username or system name
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-
-    
 class Parcel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     tracking_number = db.Column(db.String(20), unique=True, nullable=False)  # Unique identifier for tracking
@@ -179,12 +161,13 @@ class Parcel(db.Model):
     current_location = db.Column(db.String(100), nullable=True)  # Current location of the parcel
     estimated_delivery = db.Column(db.DateTime, nullable=True)  # Estimated delivery date
     delivery_date = db.Column(db.DateTime, nullable=True)  # Actual delivery date
+    barcode=db.Column(db.String(100), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)  # Timestamp when the record was created
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)  # Timestamp when the record was last updated
 
     # Relationships (optional, if you have related tables)
     parcel_history = db.relationship('ParcelStatusHistory', backref='parcel_history', lazy=True)  # Historical status updates
-    parcel_updates = db.relationship('ParcelUpdate', backref='parcel_updates', lazy=True)  # Updates related to the parcel
+    # parcel_updates = db.relationship('ParcelUpdate', backref='parcel_updates', lazy=True)  # Updates related to the parcel
     parcel_carrier = db.relationship('Carrier', backref='parcel_carrier', lazy=True)
 
 class ParcelStatusHistory(db.Model):
@@ -194,26 +177,18 @@ class ParcelStatusHistory(db.Model):
     location = db.Column(db.String(100), nullable=True)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
-
-class ParcelUpdate(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    parcel_id = db.Column(db.Integer, db.ForeignKey('parcel.id'), nullable=False)
-    update_type = db.Column(db.String(50), nullable=False)  # e.g., "Status Change", "Location Update"
-    description = db.Column(db.String(255), nullable=False)
-    created_by = db.Column(db.String(50), nullable=False)  # could store admin username or system name
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
     
     
-#? Notification Table
-#? Manages notifications for users, including what type of notifications they receive (e.g., SMS, email).
-class Notification(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    cargo_id = db.Column(db.Integer, db.ForeignKey('cargo.id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('staffs.id'), nullable=False)
-    message = db.Column(db.String(255), nullable=False)
-    notification_type = db.Column(db.String(20), nullable=False)  # e.g., "Email", "SMS"
-    sent_at = db.Column(db.DateTime, default=datetime.utcnow)
+# #? Notification Table
+# #? Manages notifications for users, including what type of notifications they receive (e.g., SMS, email).
+# class Notification(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     cargo_id = db.Column(db.Integer, db.ForeignKey('cargo.id'), nullable=False)
+#     user_id = db.Column(db.Integer, db.ForeignKey('staffs.id'), nullable=False)
+#     message = db.Column(db.String(255), nullable=False)
+#     notification_type = db.Column(db.String(20), nullable=False)  # e.g., "Email", "SMS"
+#     sent_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
 
@@ -245,3 +220,24 @@ class Insurance(db.Model):
     insurance_cargo = db.relationship('Cargo', backref=db.backref('insurance_cargo', uselist=False))
 
 
+    
+class RequestQuote(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    service=db.Column(db.String(200), nullable=False)
+    weight=db.Column(db.String(100), nullable=False)
+    length=db.Column(db.String(100), nullable=False)
+    height=db.Column(db.String(100), nullable=False)
+    from_country=db.Column(db.String(160), nullable=False)
+    to_country=db.Column(db.String(160), nullable=False)
+    email_address=db.Column(db.String(160), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    
+class GetInTouch(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name=db.Column(db.String(100), nullable=False)
+    last_name=db.Column(db.String(100), nullable=False)
+    email=db.Column(db.String(100), nullable=False)
+    website=db.Column(db.String(200), nullable=True)
+    message=db.Column(db.String(1000), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)

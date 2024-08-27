@@ -42,11 +42,11 @@
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-cart"></i>
+                                        <i class="ri ri-plane-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
-                                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                        <h6>{{total_aircargo_tracking}}</h6>
+                                        <span class="text-success small pt-1 fw-bold">1%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                                     </div>
                                 </div>
@@ -78,11 +78,11 @@
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-currency-dollar"></i>
+                                        <i class="bi bi-box"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>$3,264</h6>
-                                        <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                                        <h6>{{total_container_cargo_tracking}}</h6>
+                                        <span class="text-success small pt-1 fw-bold">3%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                                     </div>
                                 </div>
@@ -115,11 +115,11 @@
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-people"></i>
+                                       <i class="bi bi-person-check"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1244</h6>
-                                        <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                                        <h6>{{total_active_users}}</h6>
+                                        <span class="text-danger small pt-1 fw-bold">0%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
 
                                     </div>
                                 </div>
@@ -237,48 +237,39 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Customer</th>
-                                            <th scope="col">Product</th>
-                                            <th scope="col">Price</th>
+                                            <th scope="col">Origin</th>
+                                            <th scope="col">Destination</th>
+                                            <th scope="col">Last Location</th>
                                             <th scope="col">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {% for aircargo in ten_recent_aircargo %}
                                         <tr>
-                                            <th scope="row"><a href="#">#2457</a></th>
-                                            <td>Brandon Jacob</td>
-                                            <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                            <td>$64</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
+                                            <th scope="row"><a href="#">{{aircargo.tracking_number}}</a></th>
+                                            <th scope="row"><a href="#">{{aircargo.origin}}</a></th>
+                                            <th scope="row"><a href="#">{{aircargo.destination}}</a></th>
+                                            <th scope="row"><a href="#">{{aircargo.last_location}}</a></th>
+                                            <td><span class="badge bg-success">{{aircargo.status}}</span></td>
+                                            {% if aircargo.status == 'Reached' %}
+                                                <td class=""><span class="badge bg-success">{{aircargo.status}}</span></td>
+                                            {% elif aircargo.status == 'Pending' %}
+                                                <td class="">
+                                                    <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> {{aircargo.status}}</span>
+                                                </td>
+                                            {% elif aircargo.status == 'Returned to Sender' %}
+                                                <td>
+                                                    <span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i> {{aircargo.status}}</span>
+                                                </td>
+                                            {% elif aircargo.status == 'Delivered' %}
+                                                <td>
+                                                    <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> {{aircargo.status}}</span>
+                                                </td>
+                                            {% else %}
+                                                <td><span class="badge bg-primary"><i class="bi bi-star me-1"></i> {{aircargo.status}}</span></td>
+                                            {% endif %}
                                         </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2147</a></th>
-                                            <td>Bridie Kessler</td>
-                                            <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                                            <td>$47</td>
-                                            <td><span class="badge bg-warning">Pending</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2049</a></th>
-                                            <td>Ashleigh Langosh</td>
-                                            <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                            <td>$147</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2644</a></th>
-                                            <td>Angus Grady</td>
-                                            <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                            <td>$67</td>
-                                            <td><span class="badge bg-danger">Rejected</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2644</a></th>
-                                            <td>Raheem Lehner</td>
-                                            <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                            <td>$165</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
-                                        </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
 
@@ -312,48 +303,39 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Customer</th>
-                                            <th scope="col">Product</th>
-                                            <th scope="col">Price</th>
+                                            <th scope="col">Origin</th>
+                                            <th scope="col">Destination</th>
+                                            <th scope="col">Last Location</th>
                                             <th scope="col">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {% for container in ten_recent_container_cargo %}
                                         <tr>
-                                            <th scope="row"><a href="#">#2457</a></th>
-                                            <td>Brandon Jacob</td>
-                                            <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                            <td>$64</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
+                                            <th scope="row"><a href="#">{{container.tracking_number}}</a></th>
+                                            <th scope="row"><a href="#">{{container.origin}}</a></th>
+                                            <th scope="row"><a href="#">{{container.destination}}</a></th>
+                                            <th scope="row"><a href="#">{{container.last_location}}</a></th>
+                                            {% if container.status == 'Reached' %}
+                                                <td class=""><span class="badge bg-success">{{container.status}}</span></td>
+                                            {% elif container.status == 'Pending' %}
+                                                <td class="">
+                                                    <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle me-1"></i> {{container.status}}</span>
+                                                </td>
+                                            {% elif container.status == 'Returned to Sender' %}
+                                                <td>
+                                                    <span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i> {{container.status}}</span>
+                                                </td>
+                                            {% elif container.status == 'Delivered' %}
+                                                <td>
+                                                    <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> {{container.status}}</span>
+                                                </td>
+                                            {% else %}
+                                                <td><span class="badge bg-primary"><i class="bi bi-star me-1"></i> {{container.status}}</span></td>
+                                            {% endif %}
                                         </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2147</a></th>
-                                            <td>Bridie Kessler</td>
-                                            <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                                            <td>$47</td>
-                                            <td><span class="badge bg-warning">Pending</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2049</a></th>
-                                            <td>Ashleigh Langosh</td>
-                                            <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                            <td>$147</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2644</a></th>
-                                            <td>Angus Grady</td>
-                                            <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                            <td>$67</td>
-                                            <td><span class="badge bg-danger">Rejected</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2644</a></th>
-                                            <td>Raheem Lehner</td>
-                                            <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                            <td>$165</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
-                                        </tr>
+                                        {% endfor %}
+
                                     </tbody>
                                 </table>
 

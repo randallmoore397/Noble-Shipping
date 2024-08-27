@@ -295,7 +295,7 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="{{url_for('static',filename='/profile/' + current_user.user_staff[0].profile_pic)}}" alt="Profile" class="rounded-circle">
+                        <img src="{{url_for('static',filename='/profile/' + current_user.user_staff[0].profile_pic)}}" alt="Profile" class="rounded-circle" style="width: 40px;">
                         <span class="d-none d-md-block dropdown-toggle ps-2">{{current_user.user_staff[0].first_name}}</span>
                     </a>
                     <!-- End Profile Iamge Icon -->
@@ -479,13 +479,13 @@
                 </a>
                 <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="{{url_for('admin.admin_notification')}}">
-                            <i class="bi bi-circle"></i><span>Send Notification</span>
+                        <a href="{{url_for('admin.admin_request_quotes')}}">
+                            <i class="bi bi-circle"></i><span>View Request Quote</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{url_for('admin.admin_view_notification')}}">
-                            <i class="bi bi-circle"></i><span>View Notification</span>
+                        <a href="{{url_for('admin.admin_contact_us')}}">
+                            <i class="bi bi-circle"></i><span>Contact Us Messages</span>
                         </a>
                     </li>
                 </ul>

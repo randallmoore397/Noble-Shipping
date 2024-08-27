@@ -167,7 +167,7 @@
                                     <td>{{staff.position}}</td>
                                     <td>{{staff.datetime.strftime('%B %d, %Y')}}</td>
                                     <td>
-                                        <a href="{{url_for('admin.admin_edit_account',user_id=staff.id)}}" type="button" class="btn btn-edit btn-sm"><i class="ri ri-ball-pen-line"></i></a>
+                                        <a href="{{url_for('admin.admin_edit_account',user_id=staff.id)}}" type="button" class="btn btn-danger btn-sm"><i class="ri ri-ball-pen-line"></i> Edit</a>
                                     </td>
                                 </tr>
                                 {% endfor %}

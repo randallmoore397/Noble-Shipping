@@ -63,7 +63,7 @@
         }
     </style>
     <div class="container mt-4 ">
-        <div class="card gallery-bg">
+        <div class="card ">
             <div class="card-heade mt-3 pb-2" style="background-color: #f64148 !important; color: #fff !important;">
                 <h3 class="text-center text-dar text-uppercas mb-0 mt-2 pb-0 pt-0"><img class="mb-0" src="{{url_for('static',filename='/img/result.png')}}" alt="logo" style="width: 50px;"> <b>Noble Shipping Company</b>
                     <h5 class="text-center mt-0"><small><small>+231770961810/info@nobleshipping.com </small></small>
@@ -73,7 +73,7 @@
                 </h5>
                 <h5 class="text-center mt-0">Aircargo Tracking [ {{tracking_details.tracking_number}} ] Results</h5>
             </div>
-            <div class="card-body mt-4 ">
+            <div class="card-body mt-4 gallery-bg">
                 <h5 class="mb-2"><i class="ri ri-plane-fill"></i> <b>Airline Info</b></h5>
                 <table class="table table-bordered  mt-0" id="example" style="margin-top: 3rem;">
                     <thead>
@@ -186,19 +186,19 @@
                             <th class="dark-tr"><i class="ri ri-plane-fill"></i> Carrier</th>
                             <th class="dark-tr"><i class="bi bi-globe"></i> Origin</th>
                             <th class="dark-tr"><i class="bi bi-map-fill"></i> Destination</th>
-                            <th class="dark-tr"><i class="bi bi-clipboard-data"></i> Tracking Number</th>
+                            <th class="dark-tr"><i class="bi bi-clipboard-data"></i> Receiver Name</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for history in tracking_details.aircargo_history %}
                         <tr>
-                            <td class="text-capitalize">{{history.timestamp.strftime('%B %d, %Y')}}</td>
-                            <td class="text-capitalize"><i class="bi bi-arrow-up-right-circle text-success"></i> {{history.status}}</td>
-                            <td class="text-capitalize">{{history.location}}</td>
-                            <td class="text-capitalize">{{history.current_carrier}}</td>
-                            <td class="text-capitalize">{{tracking_details.origin}}</td>
-                            <td class="text-capitalize">{{tracking_details.destination}}</td>
-                            <td class="text-capitalize gray-tb"> {{tracking_details.tracking_number}}</td>
+                            <td class="text-capitalize"><b>{{history.timestamp.strftime('%B %d, %Y')}}</b></td>
+                            <td class="text-capitalize"><i class="bi bi-arrow-up-right-circle text-success"></i> <b>{{history.status}}</b></td>
+                            <td class="text-capitalize"><b>{{history.location}}</b></td>
+                            <td class="text-capitalize"><b>{{history.current_carrier}}</b></td>
+                            <td class="text-capitalize"><b>{{tracking_details.origin}}</b></td>
+                            <td class="text-capitalize"><b>{{tracking_details.destination}}</b></td>
+                            <td class="text-capitalize gray-tb"><b>{{tracking_details.receiver_name}}</b></td>
                             <!-- <i class="bi bi-arrow-right-circle-fill text-success"></i> -->
                         </tr>
                         {% endfor %}
@@ -207,7 +207,7 @@
 
 
 
-                <img src="{{url_for('static',filename='/QR_Code/barcode.png')}}" alt="barcode" style="width: 170px; float: inline-end;">
+                <img src="{{url_for('static',filename='/QR_Code/'+ tracking_details.barcode + '.png')}}" alt="barcode" style="width: 170px; float: inline-end;">
             </div>
             <div class="card-footer text-center">
                 <p>© Copyright Noble Shipping Company| All Rights Reserved</p>
@@ -216,7 +216,7 @@
 
         <div class="text-left">
             <a href="{{url_for('main.air_cargo_tracking')}}" class="btn btn-primary btn-lg">Continue Tracking</a>
-            <button type="reset" class="btn btn-danger btn-lg">Return Home</button>
+            <a href="{{url_for('main.index')}}" type="reset" class="btn btn-danger btn-lg">Return Home</a>
         </div>
     </div>
 

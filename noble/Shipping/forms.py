@@ -26,3 +26,16 @@ class ContainerTracking(FlaskForm):
     # updated_at = DateTimeField('Date')
     updated_at = DateField('Date', format='%Y-%m-%d')
     
+
+
+class ContainerTrackingHistory(FlaskForm):
+    STATUS = [('1','Pending'),('2','Collected'),('3','In Transit'),('4','Held at Customs'),('5','Delivered'),('6','Awaiting Pickup'),('7','Delayed'),('8','Returned to Sender')]
+    current_carrier = StringField('Carrier', validators=[DataRequired()])
+    status = SelectField('Status',choices=STATUS, validators=[DataRequired()])
+    location = StringField('Location', validators=[DataRequired()])
+    timestamp = DateField('Date', format='%Y-%m-%d')
+    
+
+    
+    
+    

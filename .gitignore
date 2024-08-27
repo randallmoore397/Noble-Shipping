@@ -1,13 +1,13 @@
 ./env
-./migrations
-./.vscode
+/migrations
+/vscode
 ./__pycache__
 ./.git
-./.gitignore
+./gitignore
 ./application.py
 ./momo.py
 ./orange-money.py
 ./stripe.py
 
-./utils.py
-./NiceAdmin
+utils.py
+/NiceAdmin

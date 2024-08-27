@@ -25,23 +25,24 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="support-form text-center">
-                        <form action="#">
+                        <form action="" method="post">
+                            {{GetInTouchForm.hidden_tag()}}
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" placeholder="First Name *">
+                                    {{GetInTouchForm.first_name(class="form-contro", placeholder="First Name *")}}
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" placeholder="Last Name *">
+                                    {{GetInTouchForm.last_name(class="form-contro", placeholder="Last Name *")}}
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" placeholder="Your E-mail *">
+                                    {{GetInTouchForm.email(class="form-contro ", placeholder="Your E-mail *")}}
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" placeholder="Website">
+                                    {{GetInTouchForm.website(class="form-contro ", placeholder="Website")}}
                                 </div>
                             </div>
-                            <textarea name="message" id="message" placeholder="Message"></textarea>
-                            <button class="btn red-btn">Submit Now</button>
+                            {{GetInTouchForm.message(class="form-contro ", placeholder="Message")}}
+                            <button class="btn red-btn" type="submit">Submit Now</button>
                         </form>
                     </div>
                 </div>
@@ -54,7 +55,7 @@
     <section class="contact-area primary-bg pt-70 pb-15">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-4 col-sm-6">
                     <div class="single-contact-box mb-50">
                         <div class="contact-icon mb-30">
                             <img src="{{url_for('static',filename='img/icon/contact_box_icon01.png')}}" alt="img">
@@ -65,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-4 col-sm-6">
                     <div class="single-contact-box mb-50">
                         <div class="contact-icon mb-30">
                             <img src="{{url_for('static',filename='img/icon/contact_box_icon02.png')}}" alt="img">
@@ -73,30 +74,19 @@
                         <div class="contact-content">
                             <h5>Phone Number</h5>
                             <span>+231-770-961-810</span>
-                            <span>+231-770-961-810</span>
+                            <!-- <span>+231-770-961-810</span> -->
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-contact-box mb-50">
-                        <div class="contact-icon mb-30">
-                            <img src="{{url_for('static',filename='img/icon/contact_box_icon03.png')}}" alt="img">
-                        </div>
-                        <div class="contact-content">
-                            <h5>Social Media</h5>
-                            <span> info@nobleshipping.com </span>
-                            <span> info@nobleshipping.com </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
+
+                <div class="col-lg-4 col-sm-6">
                     <div class="single-contact-box mb-50">
                         <div class="contact-icon mb-30">
                             <img src="{{url_for('static',filename='img/icon/contact_box_icon04.png')}}" alt="img">
                         </div>
                         <div class="contact-content">
                             <h5>email informing</h5>
-                            <span>99 NY Address street, Bronk Center Brooklyn</span>
+                            <span> info@nobleshipping.com </span>
                         </div>
                     </div>
                 </div>
@@ -104,11 +94,6 @@
         </div>
     </section>
     <!-- contact-area-end -->
-
-    <!-- contact-map -->
-    <div id="contact-page-map"></div>
-    <!-- contact-map-end -->
-
 </main>
 <!-- main-area-end -->
 {% endblock content %}
