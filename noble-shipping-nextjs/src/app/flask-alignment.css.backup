@@ -1,0 +1,989 @@
+/* ========================================
+   FLASK ALIGNMENT STYLES
+   Comprehensive CSS to align Next.js app with Flask app
+   ======================================== */
+
+/* ========================================
+   PHASE 1: BASE TYPOGRAPHY & LAYOUT
+   ======================================== */
+
+/* Body & Base Styles */
+body {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 15px !important;
+    color: #545454 !important;
+    line-height: normal !important;
+}
+
+p {
+    font-size: 15px !important;
+    line-height: 30px !important;
+    color: #545454 !important;
+    margin-bottom: 15px !important;
+}
+
+/* Heading Sizes - Exact from Flask */
+h1 {
+    font-size: 40px !important;
+    font-weight: 500 !important;
+}
+
+h2 {
+    font-size: 35px !important;
+}
+
+h3 {
+    font-size: 28px !important;
+}
+
+h4 {
+    font-size: 22px !important;
+}
+
+h5 {
+    font-size: 18px !important;
+    padding-right: 110px !important;
+}
+
+/* ========================================
+   PHASE 2: HEADER & NAVIGATION
+   ======================================== */
+
+/* Header Top */
+.header-top-wrap {
+    padding: 14px 0 !important;
+}
+
+.header-contact ul li {
+    font-size: 13px !important;
+    padding-right: 15px !important;
+    margin-right: 15px !important;
+}
+
+/* Main Header */
+.main-header {
+    padding: 8px 0 !important;
+    background: #fff !important;
+}
+
+/* Menu Spacing */
+.main-menu ul li {
+    margin-left: 42px !important;
+}
+
+.main-menu ul li:first-child {
+    margin-left: 0 !important;
+}
+
+.main-menu ul li a {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    padding: 35px 0 !important;
+    line-height: 1 !important;
+}
+
+/* Header Search */
+.header-search {
+    margin-left: 40px !important;
+}
+
+.header-search a {
+    font-size: 17px !important;
+    padding: 5px !important;
+}
+
+/* Header Button */
+.header-btn {
+    margin-left: 30px !important;
+}
+
+.header-btn .btn {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    padding: 13px 15px !important;
+}
+
+/* ========================================
+   PHASE 3: BUTTONS
+   ======================================== */
+
+.btn {
+    background: #ff4612 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.5px !important;
+    line-height: 1 !important;
+    padding: 18px 30px !important;
+    text-transform: uppercase !important;
+    position: relative !important;
+    z-index: 1 !important;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+}
+
+.btn::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    height: 0 !important;
+    width: 100% !important;
+    z-index: -1 !important;
+    background: #152a47 !important;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+}
+
+.btn:hover::before {
+    top: 0 !important;
+    bottom: auto !important;
+    height: 100% !important;
+}
+
+.btn:hover {
+    color: #fff !important;
+}
+
+.red-btn {
+    background: #e32222 !important;
+}
+
+/* ========================================
+   PHASE 4: SLIDER
+   ======================================== */
+
+.slider-content h2 {
+    font-size: 100px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    margin-bottom: 10px !important;
+}
+
+.slider-content p {
+    font-size: 18px !important;
+    line-height: 28px !important;
+    font-weight: 500 !important;
+    width: 67% !important;
+    margin: 0 auto !important;
+}
+
+/* ========================================
+   PHASE 5: SERVICES SECTION
+   ======================================== */
+
+/* Services Area */
+.services-area {
+    padding: 115px 0 90px !important;
+}
+
+.services-wrapper {
+    padding: 0 50px !important;
+}
+
+/* Services Icon */
+.services-icon {
+    height: 115px !important;
+    width: 115px !important;
+    line-height: 82px !important;
+    background: #fff !important;
+    border-radius: 50% !important;
+    font-size: 40px !important;
+    color: #ff4800 !important;
+    margin-bottom: -30px !important;
+    margin-top: -40px !important;
+    z-index: -1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.services-icon i {
+    font-size: 40px !important;
+}
+
+/* Services Content */
+.services-content {
+    padding: 0 30px 35px !important;
+    border-top: 4px solid transparent !important;
+}
+
+.services-content h3 {
+    font-size: 18px !important;
+    margin-bottom: 5px !important;
+}
+
+.services-content span {
+    font-size: 15px !important;
+    color: #ff4612 !important;
+    font-weight: 900 !important;
+    font-family: 'Playfair Display', serif !important;
+    margin-bottom: 20px !important;
+    display: block !important;
+}
+
+/* ========================================
+   PHASE 6: SECTION TITLES
+   ======================================== */
+
+.section-title h6 {
+    font-size: 18px !important;
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 900 !important;
+    color: #ff4612 !important;
+    margin-bottom: 12px !important;
+}
+
+.section-title h2 {
+    font-size: 36px !important;
+    margin-bottom: 0 !important;
+}
+
+.section-title p {
+    margin-bottom: 0 !important;
+    margin-top: 15px !important;
+    padding: 0 55px !important;
+    line-height: 28px !important;
+}
+
+.s-section-title h2 {
+    font-size: 36px !important;
+    margin-bottom: 0 !important;
+}
+
+.s-section-title h6 {
+    font-size: 18px !important;
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 900 !important;
+    color: #ff4612 !important;
+}
+
+/* ========================================
+   PHASE 7: FOOTER
+   ======================================== */
+
+.footer-wrap {
+    padding-top: 190px !important;
+    padding-bottom: 40px !important;
+}
+
+.footer-widget {
+    margin-bottom: 50px !important;
+}
+
+.footer-widget h5 {
+    margin-bottom: 30px !important;
+}
+
+/* ========================================
+   PHASE 8: ABOUT SECTION
+   ======================================== */
+
+.about-bg {
+    padding-top: 185px !important;
+    padding-bottom: 150px !important;
+    margin-top: -100px !important;
+}
+
+.single-about-wrap {
+    border-radius: 30px !important;
+    padding: 102px 55px !important;
+    margin: 15px !important;
+}
+
+.about-content {
+    padding-left: 30px !important;
+}
+
+.about-content p {
+    margin-bottom: 35px !important;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* Large Desktop: 1200px - 1919px */
+@media (max-width: 1919px) {
+    .header-container-p {
+        padding-left: 80px !important;
+        padding-right: 80px !important;
+    }
+}
+
+/* Desktop: 992px - 1199px */
+@media (max-width: 1199px) {
+    .header-container-p {
+        padding-left: 50px !important;
+        padding-right: 50px !important;
+    }
+
+    .main-menu ul li {
+        margin-left: 30px !important;
+    }
+
+    .slider-content h2 {
+        font-size: 80px !important;
+    }
+}
+
+/* Tablet: 768px - 991px */
+@media (max-width: 991px) {
+    .header-container-p {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .slider-content h2 {
+        font-size: 60px !important;
+    }
+
+    .slider-content p {
+        width: 85% !important;
+    }
+
+    .services-wrapper {
+        padding: 0 !important;
+    }
+}
+
+/* Mobile: 576px - 767px */
+@media (max-width: 767px) {
+    .slider-content h2 {
+        font-size: 40px !important;
+    }
+
+    .slider-content p {
+        width: 100% !important;
+        font-size: 16px !important;
+    }
+
+    .section-title h2 {
+        font-size: 28px !important;
+    }
+
+    .section-title p {
+        padding: 0 !important;
+    }
+}
+
+/* Small Mobile: < 576px */
+@media (max-width: 575px) {
+    .slider-content h2 {
+        font-size: 32px !important;
+    }
+
+    h2 {
+        font-size: 28px !important;
+    }
+
+    h3 {
+        font-size: 22px !important;
+    }
+}
+
+/* ========================================
+   ADDITIONAL FLASK-SPECIFIC STYLES
+   ======================================== */
+
+/* Tracking Form */
+.tracking-id-form {
+    position: relative !important;
+}
+
+.tracking-id-form input {
+    width: 100% !important;
+    padding: 20px 30px !important;
+    border: 1px solid #e8e8e8 !important;
+    margin-bottom: 20px !important;
+}
+
+.tracking-id-form button {
+    position: absolute !important;
+    right: 5px !important;
+    top: 5px !important;
+    padding: 15px 30px !important;
+}
+
+/* Support Form */
+.support-form input,
+.support-form textarea {
+    width: 100% !important;
+    padding: 18px 30px !important;
+    border: 1px solid #e8e8e8 !important;
+    margin-bottom: 30px !important;
+    background: #fff !important;
+}
+
+.support-form textarea {
+    height: 180px !important;
+    resize: none !important;
+}
+
+/* Contact Boxes */
+.single-contact-box {
+    text-align: center !important;
+    padding: 40px 30px !important;
+    background: #fff !important;
+    border-radius: 10px !important;
+}
+
+.contact-icon {
+    margin-bottom: 30px !important;
+}
+
+.contact-content h5 {
+    font-size: 18px !important;
+    margin-bottom: 10px !important;
+    color: #fff !important;
+}
+
+.contact-content span {
+    color: #d8d8d8 !important;
+    font-size: 14px !important;
+}
+
+transition: all 0.3s ease-out 0s !important;
+}
+
+a:hover {
+    color: #ff4612 !important;
+}
+
+/* Menu Links */
+.main-menu ul li a {
+    color: #52465e !important;
+}
+
+.main-menu ul li:hover>a,
+.main-menu ul li.active>a {
+    color: #ff4612 !important;
+}
+
+/* Header Contact */
+.header-contact ul li {
+    color: #cacaca !important;
+}
+
+.header-contact ul li i {
+    color: #cacaca !important;
+}
+
+.header-contact ul li:hover i {
+    color: #ff4612 !important;
+}
+
+/* Header Social */
+.header-social ul li a {
+    color: #ababab !important;
+}
+
+.header-social ul li a:hover {
+    color: #ff4612 !important;
+}
+
+/* Category Icons */
+.category-icon i {
+    color: #ff693f !important;
+}
+
+.category-list ul li a:hover .category-icon i {
+    color: #fff !important;
+}
+
+/* Services Icons */
+.services-icon {
+    color: #ff4800 !important;
+}
+
+.services-icon i {
+    color: #ff4800 !important;
+}
+
+/* Services Content */
+.services-content span {
+    color: #ff4612 !important;
+}
+
+/* Section Titles */
+.section-title h6,
+.s-section-title h6 {
+    color: #ff4612 !important;
+}
+
+/* Tracking List */
+.tracking-list ul li.active .tracking-list-icon {
+    background: #ff4612 !important;
+    color: #fff !important;
+}
+
+.tracking-list ul li.active .tracking-list-icon i {
+    color: #fff !important;
+}
+
+/* FAQ Tabs */
+.faq-tab-pills .nav-link.active {
+    background: #ff4612 !important;
+    color: #fff !important;
+}
+
+.faq-tab-icon i {
+    color: #ff4612 !important;
+}
+
+.faq-tab-pills .nav-link.active .faq-tab-icon i {
+    color: #fff !important;
+}
+
+/* Footer */
+.footer-widget h5 {
+    color: #fff !important;
+}
+
+.footer-widget ul li a {
+    color: #b4b4b4 !important;
+}
+
+.footer-widget ul li a:hover {
+    color: #ff4612 !important;
+}
+
+/* Breadcrumb */
+.breadcrumb-content h2 {
+    color: #fff !important;
+}
+
+.breadcrumb-item a {
+    color: #fff !important;
+}
+
+.breadcrumb-item.active {
+    color: #fff !important;
+}
+
+/* Contact Boxes */
+.primary-bg {
+    background: #4e148c !important;
+}
+
+.single-contact-box .contact-content h5 {
+    color: #fff !important;
+}
+
+.single-contact-box .contact-content span {
+    color: #d8d8d8 !important;
+}
+
+/* Purple Background */
+.purple-bg {
+    background: #4e148c !important;
+}
+
+/* Video Section */
+.video-title h2 {
+    color: #fff !important;
+}
+
+.video-title span {
+    color: #ff4612 !important;
+}
+
+.video-title a {
+    color: #fff !important;
+}
+
+.video-title a:hover {
+    color: #ff4612 !important;
+}
+
+/* Newsletter */
+.newsletter-content h4 {
+    color: #fff !important;
+}
+
+.newsletter-content span {
+    color: #d8d8d8 !important;
+}
+
+/* Sidebar */
+.service-cat-list ul li a {
+    color: #52465e !important;
+}
+
+.service-cat-list ul li.active a,
+.service-cat-list ul li a:hover {
+    color: #ff4612 !important;
+}
+
+/* Tags */
+.service-tag-list ul li a {
+    color: #52465e !important;
+}
+
+.service-tag-list ul li a:hover {
+    color: #ff4612 !important;
+}
+
+/* Blockquote */
+blockquote {
+    background: #fff !important;
+    border-left: 4px solid #ff4612 !important;
+    color: #545454 !important;
+}
+
+/* List Icons */
+.services-details-list ul li i {
+    color: #ff4612 !important;
+}
+
+/* Form Elements */
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #ff4612 !important;
+    outline: none !important;
+}
+
+/* Slider Content */
+.slider-content h2 {
+    color: #fff !important;
+}
+
+.slider-content p {
+    color: #fff !important;
+}
+
+/* About Content */
+.about-content h3 {
+    color: #4e3668 !important;
+}
+
+/* Brand Area */
+.brand-area {
+    background: #f8f8f8 !important;
+}
+
+/* Fact Area */
+.fact-content h4 {
+    color: #ff4612 !important;
+}
+
+/* Support Sidebar */
+.service-sidebar-support {
+    background: #ff4612 !important;
+    color: #fff !important;
+}
+
+.service-sidebar-support h3 {
+    color: #fff !important;
+}
+
+.service-sidebar-support p {
+    color: #fff !important;
+}
+
+/* Dark Background */
+.dark-bg {
+    background: #1a1c27 !important;
+}
+
+.service-widget-title.dark-bg h3 {
+    color: #fff !important;
+}
+
+/* International Services */
+.int-services-content h2 {
+    color: #4e3668 !important;
+}
+
+/* Services Content */
+.services-content span {
+    color: #ff4612 !important;
+}
+
+/* Section Titles */
+.section-title h6,
+.s-section-title h6 {
+    color: #ff4612 !important;
+}
+
+/* Tracking List */
+.tracking-list ul li.active .tracking-list-icon {
+    background: #ff4612 !important;
+    color: #fff !important;
+}
+
+.tracking-list ul li.active .tracking-list-icon i {
+    color: #fff !important;
+}
+
+/* FAQ Tabs */
+.faq-tab-pills .nav-link.active {
+    background: #ff4612 !important;
+    color: #fff !important;
+}
+
+.faq-tab-icon i {
+    color: #ff4612 !important;
+}
+
+.faq-tab-pills .nav-link.active .faq-tab-icon i {
+    color: #fff !important;
+}
+
+/* Footer */
+.footer-widget h5 {
+    color: #fff !important;
+}
+
+.footer-widget ul li a {
+    color: #b4b4b4 !important;
+}
+
+.footer-widget ul li a:hover {
+    color: #ff4612 !important;
+}
+
+/* Breadcrumb */
+.breadcrumb-content h2 {
+    color: #fff !important;
+}
+
+.breadcrumb-item a {
+    color: #fff !important;
+}
+
+.breadcrumb-item.active {
+    color: #fff !important;
+}
+
+/* Contact Boxes */
+.primary-bg {
+    background: #4e148c !important;
+}
+
+.single-contact-box .contact-content h5 {
+    color: #fff !important;
+}
+
+.single-contact-box .contact-content span {
+    color: #d8d8d8 !important;
+}
+
+/* Purple Background */
+.purple-bg {
+    background: #4e148c !important;
+}
+
+/* Video Section */
+.video-title h2 {
+    color: #fff !important;
+}
+
+.video-title span {
+    color: #ff4612 !important;
+}
+
+.video-title a {
+    color: #fff !important;
+}
+
+.video-title a:hover {
+    color: #ff4612 !important;
+}
+
+/* Newsletter */
+.newsletter-content h4 {
+    color: #fff !important;
+}
+
+.newsletter-content span {
+    color: #d8d8d8 !important;
+}
+
+/* Sidebar */
+.service-cat-list ul li a {
+    color: #52465e !important;
+}
+
+.service-cat-list ul li.active a,
+.service-cat-list ul li a:hover {
+    color: #ff4612 !important;
+}
+
+/* Tags */
+.service-tag-list ul li a {
+    color: #52465e !important;
+}
+
+.service-tag-list ul li a:hover {
+    color: #ff4612 !important;
+}
+
+/* Blockquote */
+blockquote {
+    background: #fff !important;
+    border-left: 4px solid #ff4612 !important;
+    color: #545454 !important;
+}
+
+/* List Icons */
+.services-details-list ul li i {
+    color: #ff4612 !important;
+}
+
+/* Form Elements */
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #ff4612 !important;
+    outline: none !important;
+}
+
+/* Slider Content */
+.slider-content h2 {
+    color: #fff !important;
+}
+
+.slider-content p {
+    color: #fff !important;
+}
+
+/* About Content */
+.about-content h3 {
+    color: #4e3668 !important;
+}
+
+/* Brand Area */
+.brand-area {
+    background: #f8f8f8 !important;
+}
+
+/* Fact Area */
+.fact-content h4 {
+    color: #ff4612 !important;
+}
+
+/* Support Sidebar */
+.service-sidebar-support {
+    background: #ff4612 !important;
+    color: #fff !important;
+}
+
+.service-sidebar-support h3 {
+    color: #fff !important;
+}
+
+.service-sidebar-support p {
+    color: #fff !important;
+}
+
+/* Dark Background */
+.dark-bg {
+    background: #1a1c27 !important;
+}
+
+.service-widget-title.dark-bg h3 {
+    color: #fff !important;
+}
+
+/* International Services */
+.int-services-content h2 {
+    color: #4e3668 !important;
+}
+
+.int-services-content h6 {
+    color: #ff4612 !important;
+}
+
+/* Overlay Title */
+.overlay-title {
+    color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* ========================================
+   MASTER.CSS UTILITY STYLES
+   ======================================== */
+
+/* Login/Auth Pages */
+.back {
+    background: #e2e2e2 !important;
+    width: 100% !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+}
+
+.div-center {
+    width: 400px !important;
+    height: 400px !important;
+    background-color: #fff !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    margin: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    overflow: auto !important;
+    padding: 1em 2em !important;
+    border-bottom: 2px solid #ccc !important;
+    display: table !important;
+}
+
+div.content {
+    display: table-cell !important;
+    vertical-align: middle !important;
+}
+
+/* DataTables */
+table.dataTable {
+    clear: both !important;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    max-width: none !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+}
+
+/* Bootstrap Badges */
+.badge {
+    --bs-badge-padding-x: 0.65em !important;
+    --bs-badge-padding-y: 0.35em !important;
+    --bs-badge-font-size: 0.75em !important;
+    --bs-badge-font-weight: 700 !important;
+    --bs-badge-color: #fff !important;
+    --bs-badge-border-radius: 0.375rem !important;
+    display: inline-block !important;
+    padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x) !important;
+    font-size: var(--bs-badge-font-size) !important;
+    font-weight: var(--bs-badge-font-weight) !important;
+    line-height: 1 !important;
+    color: var(--bs-badge-color) !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    vertical-align: baseline !important;
+    border-radius: var(--bs-badge-border-radius) !important;
+}
+
+/* ========================================
+   INLINE STYLE OVERRIDES FROM FLASK LAYOUT
+   ======================================== */
+
+/* SweetAlert2 Customizations */
+.swal2-title {
+    color: #0e0e23 !important;
+}
+
+body.swal2-toast-shown .swal2-container {
+    box-sizing: border-box !important;
+    width: 473px !important;
+    max-width: 100% !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    pointer-events: none !important;
+}
+
+.swal2-popup {
+    width: 145% !important;
+}

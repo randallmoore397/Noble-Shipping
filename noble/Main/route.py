@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, request
-from noble import db, bcrypt,user_datastore
+from noble import db, bcrypt,user_datastore,app
 from flask_security import current_user
 from flask_security import login_required, current_user,roles_required, login_user, utils,roles_accepted,logout_user 
 from noble.Main.forms import ExtendedLogin,ContainerTracking,AircargoTracking,GetInTouchs,RequestQuotes
@@ -215,6 +215,13 @@ def our_services():
     
     title = "Our Services"
     return render_template('main/our-service.html',title=title)
+
+
+@main.route('/test_error',methods=['GET','POST'])
+def test_error():
+    
+    app.logger.error('This is a test error')
+    raise Exception('Test Exception')
 
 
 @main.route('/contact/us',methods=['GET','POST'])

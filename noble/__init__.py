@@ -6,6 +6,8 @@ from flask_bcrypt import Bcrypt
 from flask_security import Security, SQLAlchemyUserDatastore, UserMixin, RoleMixin, login_required
 from flask_mail import Mail
 from noble.Main.forms import ExtendedLogin
+import logging
+from logging.handlers import RotatingFileHandler
 
 app = Flask(__name__)
 
@@ -27,6 +29,19 @@ def create_app(config_class=Config):
     mail.init_app(app)
     bcrypt.init_app(app)
     
+    
+    # Configure the logging
+    if not app.debug:
+        # Create a file handler object
+        handler = RotatingFileHandler('error.log', maxBytes=10000, backupCount=1)
+        handler.setLevel(logging.ERROR)  # Log errors and above (critical)
+        
+        # Create a logging format
+        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+        
+        # Add the file handler to the Flask app's logger
+        app.logger.addHandler(handler)
     
     
     #?##################### BLUEPRINTS #########################

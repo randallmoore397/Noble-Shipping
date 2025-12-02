@@ -1,0 +1,163 @@
+/* ========================================
+   TEXT VISIBILITY & COLOR FIXES
+   ======================================== */
+
+/* Header Top Bar - Purple Background */
+.header-top-wrap {
+    background: var(--purple-color) !important;
+}
+
+.header-top-wrap * {
+    color: #cacaca !important;
+}
+
+.header-contact ul li {
+    color: #cacaca !important;
+}
+
+.header-social span,
+.header-social ul li a {
+    color: #cacaca !important;
+}
+
+/* Main Header - White Background */
+.main-header {
+    background: var(--white) !important;
+}
+
+.main-menu ul li a {
+    color: #52465e !important;
+}
+
+/* Slider - Dark Background with Overlay */
+.slider-content h2,
+.slider-content p {
+    color: var(--white) !important;
+}
+
+/* About Section - Dark Background */
+.about-bg {
+    background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.about-content h2,
+.about-content h6,
+.about-content p {
+    color: var(--white) !important;
+}
+
+/* Testimonial Section - Black Background */
+.area-wrapper.black-bg {
+    background: #1a1c27 !important;
+}
+
+.white-title h6,
+.white-title h2 {
+    color: var(--white) !important;
+}
+
+.testimonial-content p {
+    color: var(--white) !important;
+}
+
+.testi-avatar-info h6,
+.testi-avatar-info span {
+    color: var(--white) !important;
+}
+
+/* Footer - Dark Background */
+.footer-wrap {
+    background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.footer-text p,
+.fw-link ul li a,
+.f-support-content p {
+    color: #b4b4b4 !important;
+}
+
+.fw-title h5 {
+    color: var(--white) !important;
+}
+
+.copyright-text p {
+    color: #b4b4b4 !important;
+}
+
+/* Newsletter - Light Background */
+.newsletter-area {
+    background-color: aliceblue !important;
+}
+
+.newsletter-content h4 {
+    color: var(--heading-color) !important;
+}
+
+.newsletter-content span {
+    color: var(--text-color) !important;
+}
+
+/* Gallery Overlay - Orange Background */
+.gallery-overlay {
+    background: rgba(255, 70, 18, 0.8) !important;
+}
+
+.gallery-overlay-title a,
+.gallery-overlay span {
+    color: var(--white) !important;
+}
+
+/* Service Cards - White Background */
+.services-content h3 a {
+    color: var(--heading-color) !important;
+}
+
+.services-content span {
+    color: var(--primary-color) !important;
+}
+
+.services-content p {
+    color: var(--text-color) !important;
+}
+
+/* Section Titles */
+.section-title h6 {
+    color: var(--primary-color) !important;
+}
+
+.section-title h2 {
+    color: var(--heading-color) !important;
+}
+
+.section-title p {
+    color: var(--text-color) !important;
+}
+
+/* Facts Section */
+.fact-content h4 {
+    color: var(--primary-color) !important;
+}
+
+.fact-content h6 {
+    color: var(--heading-color) !important;
+}
+
+/* Category Items */
+.category-list ul li a {
+    color: var(--heading-color) !important;
+}
+
+/* Buttons */
+.btn {
+    color: var(--white) !important;
+}
+
+/* Form Elements */
+input, select, textarea {
+    color: var(--text-color) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #999 !important;
+}

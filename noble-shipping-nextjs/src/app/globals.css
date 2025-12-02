@@ -1,0 +1,605 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   GLOBAL STYLES - Noble Shipping NextJS
+   CSS files from /public are loaded via <link> tags in layout.tsx
+   ======================================== */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+/* Note: Bootstrap, Vendor CSS, Style CSS, NiceAdmin CSS, and Master CSS */
+/* are now loaded via <link> tags in layout.tsx for Next.js compatibility */
+/* Next.js does not properly resolve @import statements for /public directory files */
+
+/* Flask Alignment CSS - MUST BE LAST to override */
+/* This works because it's a relative import within src/app directory */
+@import url('./flask-alignment-fixed.css');
+@import url('./gallery-footer-fix.css');
+@import url('./text-visibility-fix.css');
+@import url('./gray-background-fix.css');
+@import url('./about-section-fix.css');
+@import url('./footer-complete-fix.css');
+@import url('./header-top-fix.css');
+
+/* ========================================
+   CSS VARIABLES
+   ======================================== */
+@layer base {
+  :root {
+    /* Legacy Colors */
+    --primary-color: #ff4612;
+    --secondary-color: #152a47;
+    --purple-color: #6f42c1;
+    --text-color: #545454;
+    --heading-color: #fff;
+    --white: #fff;
+    --black: #000;
+
+    /* Tailwind Design Tokens */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    /* Fonts */
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Playfair Display', serif;
+
+    /* Spacing */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+    --spacing-xxl: 50px;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+/* ========================================
+   BASE RESET
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: 15px;
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+/* Text Alignment */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Display */
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+/* Flex Utilities */
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/* Padding Utilities */
+.p-0 {
+  padding: 0 !important;
+}
+
+.pt-50 {
+  padding-top: 50px !important;
+}
+
+.pt-80 {
+  padding-top: 80px !important;
+}
+
+.pt-100 {
+  padding-top: 100px !important;
+}
+
+.pt-115 {
+  padding-top: 115px !important;
+}
+
+.pt-150 {
+  padding-top: 150px !important;
+}
+
+.pt-185 {
+  padding-top: 185px !important;
+}
+
+.pt-190 {
+  padding-top: 190px !important;
+}
+
+.pb-40 {
+  padding-bottom: 40px !important;
+}
+
+.pb-50 {
+  padding-bottom: 50px !important;
+}
+
+.pb-80 {
+  padding-bottom: 80px !important;
+}
+
+.pb-90 {
+  padding-bottom: 90px !important;
+}
+
+.pb-100 {
+  padding-bottom: 100px !important;
+}
+
+.pb-120 {
+  padding-bottom: 120px !important;
+}
+
+.pb-150 {
+  padding-bottom: 150px !important;
+}
+
+/* Margin Utilities */
+.m-0 {
+  margin: 0 !important;
+}
+
+.mt-20 {
+  margin-top: 20px !important;
+}
+
+.mt-30 {
+  margin-top: 30px !important;
+}
+
+.mt-50 {
+  margin-top: 50px !important;
+}
+
+.mb-10 {
+  margin-bottom: 10px !important;
+}
+
+.mb-15 {
+  margin-bottom: 15px !important;
+}
+
+.mb-20 {
+  margin-bottom: 20px !important;
+}
+
+.mb-25 {
+  margin-bottom: 25px !important;
+}
+
+.mb-30 {
+  margin-bottom: 30px !important;
+}
+
+.mb-40 {
+  margin-bottom: 40px !important;
+}
+
+.mb-50 {
+  margin-bottom: 50px !important;
+}
+
+.mb-60 {
+  margin-bottom: 60px !important;
+}
+
+/* Width Utilities */
+.w-100 {
+  width: 100% !important;
+}
+
+/* Position Utilities */
+.position-relative {
+  position: relative !important;
+}
+
+.position-absolute {
+  position: absolute !important;
+}
+
+/* ========================================
+   LINKS
+   ======================================== */
+a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* ========================================
+   IMAGES
+   ======================================== */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ========================================
+   LISTS
+   ======================================== */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========================================
+   CONTAINER
+   ======================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ========================================
+   SECTION SPACING
+   ======================================== */
+section {
+  position: relative;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* ========================================
+   PRELOADER (if needed)
+   ======================================== */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   SCROLLBAR CUSTOMIZATION
+   ======================================== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+/* ========================================
+   SELECTION
+   ======================================== */
+::selection {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+::-moz-selection {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+/* ========================================
+   FOCUS STATES
+   ======================================== */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* ========================================
+   RESPONSIVE HELPERS
+   ======================================== */
+@media (max-width: 991px) {
+  .mobile-hide {
+    display: none !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .desktop-hide {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   ADMIN LAYOUT OVERRIDES
+   ======================================== */
+
+/* Hide Flask footer on admin pages */
+body.admin-layout .footer-wrap,
+body.admin-layout .copyright-wrap,
+body.admin-layout footer:not(.admin-footer) {
+  display: none !important;
+}
+
+/* Ensure admin footer is properly styled */
+body.admin-layout .admin-footer {
+  position: relative;
+  z-index: 1000;
+}
+
+/* ========================================
+   FLASK TEMPLATE INLINE STYLES
+   Migrated from noble/templates/main_layout.html and index.html
+   ======================================== */
+
+/* Slider Blur Overlay Styles (from noble/templates/main/index.html lines 4-30) */
+.slider-area .single-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(3.3px);
+  background: rgba(0, 0, 0, 0.41);
+  z-index: 1;
+}
+
+.slider-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.slider-content h1 {
+  font-size: 71px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+/* SweetAlert2 Custom Styles (from noble/templates/main_layout.html lines 36-63) */
+.swal2-title {
+  color: #4e3668 !important;
+}
+
+.swal2-container {
+  width: 100% !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+}
+
+.swal2-popup {
+  width: 400px !important;
+  display: flex !important;
+}
+
+/* Sidebar Navigation Hover (from admin_layout.html) */
+.sidebar-nav .nav-link i:hover {
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+/* Logo Sizing - Exact Match Flask */
+.logo img {
+  width: 250px !important;
+  height: auto;
+}
+
+.footer-logo img {
+  width: 200px !important;
+  height: auto;
+}
+
+/* Header Top Bar - Purple Background */
+.purple-bg,
+.header-top-wrap {
+  background-color: #6f42c1 !important;
+}
+
+/* Footer Background and Padding */
+.footer-wrap {
+  padding-top: 190px !important;
+  padding-bottom: 40px !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.footer-widget {
+  margin-bottom: 50px !important;
+}
+
+/* App Store Badges */
+.app-store-badge img {
+  width: 140px !important;
+  height: auto;
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS FOR FLASK STYLES
+   ======================================== */
+@media (max-width: 767px) {
+  .slider-content h1 {
+    font-size: 36px;
+  }
+
+  .logo img {
+    width: 180px !important;
+  }
+
+  .footer-wrap {
+    padding-top: 80px !important;
+    padding-bottom: 30px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .slider-content h1 {
+    font-size: 48px;
+  }
+
+  .logo img {
+    width: 220px !important;
+  }
+}

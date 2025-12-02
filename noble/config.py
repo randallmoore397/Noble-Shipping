@@ -7,5 +7,5 @@ class Config:
     WTF_CSRF_SECRET_KEY = 'f9f1ca4a90b0de0c1bf047069a15fcb0118169a9efa719737a55f11d968bda090a5669b305f98e8aced9857ae'
     MAX_CONTENT_LENGTH = 10 * 1024 * 1024  # 10 MB in bytes
     #********************** MySQL DATABASE CONFIG *******************#
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///Cargo.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlitecloud://czfztvaivz.g4.sqlite.cloud:8860/Cargo_backup_November_24.db?apikey=CIMDXeITdftbo6RP4ZwtmB8LRh5TxgaXvH5oD03hWf4'
     # SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:@localhost:3306/studyliberia?charset=utf8"

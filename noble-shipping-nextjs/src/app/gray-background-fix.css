@@ -1,0 +1,38 @@
+/* ========================================
+   GRAY BACKGROUND TEXT COLOR FIXES
+   ======================================== */
+
+/* Gallery Section - Gray Background */
+.gallery-bg .section-title h6,
+.gallery-bg .section-title h2,
+.gallery-bg .section-title p {
+    color: var(--black) !important;
+}
+
+/* Services Section - Light Background */
+.services-area .section-title h6 {
+    color: var(--primary-color) !important;
+}
+
+.services-area .section-title h2,
+.services-area .section-title p {
+    color: var(--black) !important;
+}
+
+/* Any gray/light background sections */
+.bg-light,
+.bg-gray,
+[style*="background-color: #f8f8f8"],
+[style*="background-color: aliceblue"] {
+    color: var(--black) !important;
+}
+
+.bg-light h1, .bg-light h2, .bg-light h3, .bg-light h4, .bg-light h5, .bg-light h6,
+.bg-gray h1, .bg-gray h2, .bg-gray h3, .bg-gray h4, .bg-gray h5, .bg-gray h6 {
+    color: var(--black) !important;
+}
+
+.bg-light p, .bg-light span,
+.bg-gray p, .bg-gray span {
+    color: var(--black) !important;
+}

@@ -1,0 +1,168 @@
+/* ========================================
+   HEADER TOP SECTION FIX
+   ======================================== */
+
+/* Header Top Background - Purple */
+.header-top-wrap {
+    background: #4e3668 !important;
+    padding: 14px 0 !important;
+}
+
+/* Header Contact Styling */
+.header-contact ul {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.header-contact ul li {
+    display: inline-block !important;
+    position: relative !important;
+    padding-right: 15px !important;
+    margin-right: 15px !important;
+    color: #cacaca !important;
+    font-size: 13px !important;
+}
+
+.header-contact ul li:last-child {
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+}
+
+.header-contact ul li::before {
+    content: "" !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 1px !important;
+    height: 28px !important;
+    background: #6729aa !important;
+}
+
+.header-contact ul li:last-child::before {
+    display: none !important;
+}
+
+.header-contact ul li i {
+    margin-right: 8px !important;
+    transition: 0.3s linear !important;
+    color: #cacaca !important;
+}
+
+.header-contact ul li:hover i {
+    color: #ff4612 !important;
+}
+
+/* Header Social Section */
+.header-social {
+    position: relative !important;
+    margin-left: 25px !important;
+    padding-left: 25px !important;
+}
+
+.header-social::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 1px !important;
+    height: 28px !important;
+    background: #6729aa !important;
+}
+
+.header-social ul {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.header-social ul li {
+    display: inline-block !important;
+    font-size: 14px !important;
+    color: #cacaca !important;
+    margin-left: 10px !important;
+}
+
+.header-social ul li:first-child {
+    margin-left: 0 !important;
+    color: #cacaca !important;
+    font-size: 13px !important;
+}
+
+.header-social ul li a {
+    color: #ababab !important;
+    display: inline-block !important;
+    font-size: 14px !important;
+}
+
+.header-social ul li a:hover {
+    color: #ff4612 !important;
+}
+
+/* Header Country Select */
+.header-country .nice-select {
+    border-radius: 0 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding-left: 25px !important;
+    padding-right: 23px !important;
+    color: #d8d8d8 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.header-country .nice-select::after {
+    border-bottom: 2px solid #d8d8d8 !important;
+    border-right: 2px solid #d8d8d8 !important;
+    right: 3px !important;
+}
+
+.header-country .nice-select::before {
+    content: "\\f0ac" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-weight: 700 !important;
+    font-family: "Font Awesome 5 Free" !important;
+    font-size: 14px !important;
+    color: #d8d8d8 !important;
+}
+
+/* Header Top Right Alignment */
+.header-top-right {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+}
+
+/* Container Padding */
+.header-container-p {
+    padding-left: 110px !important;
+    padding-right: 110px !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1199px) {
+    .header-container-p {
+        padding-left: 50px !important;
+        padding-right: 50px !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .header-container-p {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    .header-top-wrap {
+        display: none !important;
+    }
+}

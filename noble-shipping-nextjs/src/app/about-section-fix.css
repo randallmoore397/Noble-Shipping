@@ -1,0 +1,36 @@
+/* ========================================
+   ABOUT SECTION BACKGROUND RESTORATION
+   ======================================== */
+
+/* About Section - Original Flask Background */
+.about-area.about-bg {
+    background-image: url(/img/bg/about_bg.jpg) !important;
+    padding-top: 185px !important;
+    background-position: center !important;
+    background-size: cover !important;
+    margin-top: -100px !important;
+    padding-bottom: 150px !important;
+}
+
+.single-about-wrap {
+    background: #fff !important;
+    box-shadow: 0px 0px 18px 0px rgba(47, 19, 78, 0.08) !important;
+    border-radius: 30px !important;
+    padding: 102px 55px !important;
+    margin: 15px !important;
+}
+
+/* About Content - Dark text on white cards */
+.about-content h2,
+.about-content h6,
+.about-content p {
+    color: var(--black) !important;
+}
+
+.single-about-wrap {
+    border-radius: 30px !important;
+    padding: 102px 55px !important;
+    margin: 15px !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+}

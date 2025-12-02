@@ -1,0 +1,121 @@
+/* ========================================
+   GALLERY & FOOTER ALIGNMENT FIXES
+   ======================================== */
+
+/* Gallery Section Fixes */
+.gallery-bg {
+    background: #f8f8f8 !important;
+}
+
+.gallery-active {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+.gallery-overlay {
+    flex-direction: column !important;
+    text-align: center !important;
+}
+
+.gallery-overlay-title a {
+    color: var(--white) !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    margin-bottom: 5px !important;
+}
+
+.gallery-overlay span {
+    color: var(--white) !important;
+    font-size: 14px !important;
+}
+
+/* Newsletter Section */
+.newsletter-area {
+    background-color: aliceblue !important;
+    padding: 50px 0 !important;
+}
+
+.newsletter-wrap {
+    background: var(--white) !important;
+    padding: 40px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.newsletter-content h4 {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: var(--heading-color) !important;
+    margin-bottom: 10px !important;
+}
+
+.newsletter-content span {
+    color: var(--text-color) !important;
+    font-size: 16px !important;
+}
+
+.newsletter-form {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.newsletter-form form {
+    display: flex !important;
+    width: 100% !important;
+    gap: 15px !important;
+}
+
+.newsletter-form input {
+    flex: 1 !important;
+    padding: 15px 20px !important;
+    border: 1px solid #e8e8e8 !important;
+    border-radius: 5px !important;
+    font-size: 15px !important;
+}
+
+.newsletter-form button {
+    padding: 15px 30px !important;
+    white-space: nowrap !important;
+}
+
+/* Brand Section */
+.brand-area {
+    background-color: aliceblue !important;
+    padding: 120px 0 !important;
+}
+
+.brand-active {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 30px !important;
+}
+
+.single-brand img {
+    max-width: 150px !important;
+    height: auto !important;
+    opacity: 0.7 !important;
+    transition: all 0.3s ease !important;
+}
+
+.single-brand:hover img {
+    opacity: 1 !important;
+}
+
+/* Responsive Fixes */
+@media (max-width: 767px) {
+    .newsletter-form {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    
+    .newsletter-form form {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    
+    .newsletter-form input {
+        width: 100% !important;
+    }
+}

@@ -1,0 +1,183 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Role {
+  id          Int    @id @default(autoincrement())
+  name        String @unique
+  description String?
+  users       User[]
+}
+
+model User {
+  id                Int       @id @default(autoincrement())
+  user_id           String    @unique
+  email             String    @unique
+  password          String
+  active            Boolean   @default(true)
+  confirmed_at      DateTime?
+  current_login_at  DateTime  @default(now())
+  current_login_ip  String?
+  login_count       Int       @default(0)
+  DateCreated       DateTime  @default(now())
+  
+  roles             Role[]
+  Staffs            Staffs[]
+}
+
+model Staffs {
+  id               Int      @id @default(autoincrement())
+  profile_pic      String   @default("default.png")
+  first_name       String?
+  middle_name      String?
+  last_name        String?
+  position         String?
+  gender           String?
+  telephone_phone  String?
+  mobile           String?
+  user_attribute   String   @default("")
+  address          String?
+  address_two      String?
+  datetime         DateTime @default(now())
+  user_id          Int?
+  
+  user             User?    @relation(fields: [user_id], references: [id])
+  
+  @@map("staffs")
+}
+
+model Cargo {
+  id                    Int      @id @default(autoincrement())
+  tracking_number       String   @unique
+  cargo_type            String
+  origin                String
+  destination           String
+  status                String   @default("Pending")
+  last_location         String?
+  estimated_delivery    DateTime @default(now())
+  current_carrier       String?
+  weight                String?
+  dimensions            String?
+  contents_description  String?
+  value                 String?
+  insurance             String?
+  barcode               String?
+  created_at            DateTime @default(now())
+  updated_at            DateTime @default(now()) @updatedAt
+  
+  CargoStatusHistory    CargoStatusHistory[]
+}
+
+model CargoStatusHistory {
+  id              Int      @id @default(autoincrement())
+  cargo_id        Int
+  current_carrier String?
+  status          String
+  location        String?
+  timestamp       DateTime @default(now())
+  
+  Cargo           Cargo    @relation(fields: [cargo_id], references: [id])
+}
+
+model Aircargo {
+  id                    Int      @id @default(autoincrement())
+  tracking_number       String   @unique
+  cargo_type            String
+  origin                String
+  destination           String
+  status                String   @default("Pending")
+  last_location         String?
+  estimated_delivery    DateTime @default(now())
+  current_carrier       String?
+  weight                String?
+  dimensions            String?
+  contents_description  String?
+  value                 String?
+  insurance             String?
+  sender_name           String?
+  sender_contact        String?
+  receiver_name         String?
+  receiver_contact      String?
+  flight_number         String?
+  airway_bill_number    String?
+  departure_date        DateTime?
+  arrival_date          DateTime?
+  barcode               String?
+  created_at            DateTime @default(now())
+  updated_at            DateTime @default(now()) @updatedAt
+  
+  AircargoStatusHistory AircargoStatusHistory[]
+}
+
+model AircargoStatusHistory {
+  id              Int      @id @default(autoincrement())
+  aircargo_id     Int
+  current_carrier String?
+  status          String
+  location        String?
+  timestamp       DateTime @default(now())
+  
+  Aircargo         Aircargo @relation(fields: [aircargo_id], references: [id])
+}
+
+model Parcel {
+  id                     Int      @id @default(autoincrement())
+  tracking_number        String   @unique
+  sender_name            String
+  sender_address         String
+  recipient_name         String
+  recipient_address      String
+  weight                 Float
+  dimensions             String?
+  contents_description   String?
+  value                  Float?
+  status                 String   @default("In Transit")
+  current_location       String?
+  estimated_delivery     DateTime?
+  delivery_date          DateTime?
+  barcode                String?
+  created_at             DateTime @default(now())
+  updated_at             DateTime @default(now()) @updatedAt
+  
+  ParcelStatusHistory    ParcelStatusHistory[]
+}
+
+model ParcelStatusHistory {
+  id         Int      @id @default(autoincrement())
+  parcel_id  Int
+  status     String
+  location   String?
+  timestamp  DateTime @default(now())
+  
+  Parcel         Parcel @relation(fields: [parcel_id], references: [id])
+}
+
+
+
+model RequestQuote {
+  id           Int      @id @default(autoincrement())
+  service      String
+  weight       String
+  length       String
+  height       String
+  from_country String
+  to_country   String
+  email_address String
+  timestamp    DateTime @default(now())
+}
+
+model GetInTouch {
+  id         Int      @id @default(autoincrement())
+  first_name String
+  last_name  String
+  email      String
+  website    String?
+  message    String
+  timestamp  DateTime @default(now())
+}
